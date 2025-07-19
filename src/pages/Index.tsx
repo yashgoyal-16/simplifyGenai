@@ -10,11 +10,20 @@ const Index = () => {
     <div className="bg-black">
       {/* Hero Section */}
       <div className="min-h-screen bg-black relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* Background text - positioned differently for mobile and desktop */}
+        <div className="absolute inset-0 hidden md:flex items-center justify-center">
           <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
             SIMPLIFYGENAI
           </h1>
         </div>
+        
+        {/* Mobile background text - at top */}
+        <div className="absolute top-8 left-0 right-0 md:hidden flex justify-center px-4">
+          <h1 className="text-[2.5rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
+            SIMPLIFYGENAI
+          </h1>
+        </div>
+        
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
           <SplineSceneBasic />
           <div className="mt-8">
