@@ -2,12 +2,13 @@ import { SplineSceneBasic } from "@/components/SplineDemo";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background pt-20 pb-20">{/* Added padding for navbar */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Interactive 3D Experience</h1>
-          <p className="text-xl text-muted-foreground">Powered by Spline and React</p>
-        </div>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-[12rem] lg:text-[16rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter']">
+          SIMPLIFYGENAI
+        </h1>
+      </div>
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
         <SplineSceneBasic />
       </div>
     </div>
