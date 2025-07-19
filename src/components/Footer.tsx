@@ -4,11 +4,11 @@ const Footer = () => {
   return (
     <footer className="relative">
       {/* Main Black Section with Curved Bottom */}
-      <div className="bg-black pt-20 pb-40 px-6 relative overflow-hidden">
-        {/* Curved bottom using SVG for perfect curve */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1200 100" className="w-full h-auto">
-            <path d="M0,0 Q600,80 1200,0 L1200,100 L0,100 Z" fill="white"/>
+      <div className="bg-black pt-20 pb-20 px-6 relative">
+        {/* Smooth curved bottom like the reference */}
+        <div className="absolute bottom-0 left-0 right-0 h-20">
+          <svg viewBox="0 0 1200 120" className="w-full h-full" preserveAspectRatio="none">
+            <path d="M0,120 Q600,40 1200,120 L1200,120 L0,120 Z" fill="white"/>
           </svg>
         </div>
         
