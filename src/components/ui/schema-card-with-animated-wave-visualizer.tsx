@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Orb from './orb';
 
 export default function SchemaCard() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -79,8 +80,8 @@ export default function SchemaCard() {
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
       <div className="fixed inset-0 flex items-center justify-center p-4 z-10">
         {/* SIMPLIFYGENAI Text */}
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-6xl lg:text-8xl font-semibold text-white/10 select-none pointer-events-none font-['Inter'] whitespace-nowrap">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
             SIMPLIFYGENAI
           </h1>
         </div>
@@ -133,6 +134,16 @@ export default function SchemaCard() {
                   </svg>
                 </a>
                 <span className="text-white/50 text-xs glass px-2 py-1 rounded-full border border-white/10">Live</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Voice AI Orb - Test Section */}
+          <div className="mt-8 text-center">
+            <p className="text-white/70 text-sm mb-4">Test the Voice AI agent on web - click the orb and talk to it</p>
+            <div className="w-32 h-32 mx-auto bg-black/30 rounded-full flex items-center justify-center border border-white/20">
+              <div className="w-24 h-24">
+                <Orb />
               </div>
             </div>
           </div>

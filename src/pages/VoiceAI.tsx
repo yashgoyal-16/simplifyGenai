@@ -19,7 +19,7 @@ const VoiceAI = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section with Animated Wave Component */}
-      <section className="relative min-h-screen">
+      <section className="relative min-h-screen overflow-hidden">
         <SchemaCard />
         
         {/* Phone Mockup overlay */}
