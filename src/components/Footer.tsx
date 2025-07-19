@@ -23,14 +23,14 @@ const Footer = () => {
           >
             <path 
               d="M0,0 C300,100 900,100 1200,0 L1200,120 L0,120 Z" 
-              fill="white"
+              fill="hsl(var(--background))"
             />
           </svg>
         </div>
       </div>
       
       {/* White footer content */}
-      <div className="bg-white py-8 px-6">
+      <div className="bg-background py-8 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Social Media Icons - Left */}
