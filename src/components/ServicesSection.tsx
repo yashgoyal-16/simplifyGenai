@@ -2,114 +2,57 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Brain, Mic, Rocket, Zap, Search, Users, Palette, Code, Sparkles } from 'lucide-react'
+import { Brain, Mic, Rocket, Zap, Search, Palette } from 'lucide-react'
 import { GradientHeading } from '@/components/ui/gradient-heading'
-import { BentoCard, BentoGrid } from '@/components/ui/bento-grid'
 
 const services = [
   {
     id: 'ai-consulting',
-    name: 'AI Consulting',
+    name: 'AI CONSULTING',
     description: 'Strategic AI integration guidance for enterprise businesses. We help Fortune 500 companies implement generative AI solutions that drive real ROI.',
     Icon: Brain,
+    iconBg: 'bg-blue-500',
     href: '#ai-consulting',
-    cta: 'Learn More',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-indigo-900/20 to-purple-900/40">
-        <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-8 left-8 w-24 h-24 bg-indigo-500/30 rounded-full blur-xl" />
-      </div>
-    ),
-    className: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-    keywords: 'AI consulting, enterprise AI, generative AI strategy'
   },
   {
     id: 'creative-ai',
-    name: 'Creative AI Services',
-    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation.',
+    name: 'CREATIVE AI SERVICES',
+    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation for modern businesses.',
     Icon: Palette,
+    iconBg: 'bg-pink-500',
     href: '#creative-ai',
-    cta: 'Explore',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-900/40 via-rose-900/20 to-orange-900/40">
-        <div className="absolute top-8 left-8 w-20 h-20 bg-pink-500/30 rounded-lg rotate-12 blur-xl" />
-        <div className="absolute bottom-4 right-4 w-28 h-28 bg-orange-500/20 rounded-full blur-2xl" />
-        <Sparkles className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-pink-300/30 w-16 h-16" />
-      </div>
-    ),
-    className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-3",
-    keywords: 'creative AI, AI content creation, AI image generation'
   },
   {
     id: 'voice-ai',
-    name: 'Voice AI Solutions',
-    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition.',
+    name: 'VOICE AI SOLUTIONS',
+    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition systems.',
     Icon: Mic,
+    iconBg: 'bg-teal-500',
     href: '#voice-ai',
-    cta: 'Listen',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/40 via-cyan-900/20 to-blue-900/40">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-16 h-16 bg-cyan-500/30 rounded-full animate-pulse" />
-          <div className="absolute inset-0 w-24 h-24 bg-teal-500/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}} />
-        </div>
-      </div>
-    ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4",
-    keywords: 'voice AI, conversational AI, speech recognition'
   },
   {
     id: 'ai-mvp',
-    name: 'AI MVP Development',
-    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster.',
+    name: 'AI MVP DEVELOPMENT',
+    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster with proven frameworks.',
     Icon: Rocket,
+    iconBg: 'bg-emerald-500',
     href: '#ai-mvp',
-    cta: 'Build',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-green-900/20 to-lime-900/40">
-        <div className="absolute bottom-4 left-4 w-6 h-24 bg-emerald-500/30 rounded-full blur-sm" />
-        <div className="absolute top-8 right-8 w-4 h-16 bg-lime-500/40 rounded-full blur-sm" />
-        <Code className="absolute top-1/4 right-1/4 text-emerald-300/20 w-12 h-12 rotate-12" />
-      </div>
-    ),
-    className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
-    keywords: 'AI MVP, AI prototype development, Cursor, Lovable'
   },
   {
     id: 'ai-automation',
-    name: 'AI Automation',
-    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n.',
+    name: 'AI AUTOMATION',
+    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n. Transform workflows and boost efficiency.',
     Icon: Zap,
+    iconBg: 'bg-amber-500',
     href: '#ai-automation',
-    cta: 'Automate',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 via-yellow-900/20 to-orange-900/40">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-8 h-8 bg-yellow-500/40 rounded rotate-45" />
-          <div className="absolute w-12 h-1 bg-amber-500/30 blur-sm" />
-          <div className="absolute w-1 h-12 bg-orange-500/30 blur-sm" />
-        </div>
-      </div>
-    ),
-    className: "lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4",
-    keywords: 'AI automation, Make automation, GoHighLevel, n8n'
   },
   {
     id: 'llmo-geo',
-    name: 'LLMO/GEO Optimization',
-    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach.',
+    name: 'LLMO/GEO OPTIMIZATION',
+    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach and enhanced performance.',
     Icon: Search,
+    iconBg: 'bg-violet-500',
     href: '#llmo-geo',
-    cta: 'Optimize',
-    background: (
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-900/40 via-purple-900/20 to-fuchsia-900/40">
-        <div className="absolute top-4 left-4 w-16 h-2 bg-violet-500/30 rounded-full blur-sm" />
-        <div className="absolute bottom-8 right-8 w-12 h-2 bg-fuchsia-500/30 rounded-full blur-sm" />
-        <div className="absolute top-1/2 right-1/4 w-8 h-8 border border-purple-400/30 rounded-full" />
-      </div>
-    ),
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-4 lg:row-end-5",
-    keywords: 'LLMO, GEO optimization, LLM optimization'
   }
 ]
 
@@ -131,29 +74,22 @@ export function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <GradientHeading 
-            size="lg" 
-            variant="light" 
-            weight="bold"
-            className="mb-6"
-          >
-            Our AI Services
-          </GradientHeading>
-          <div className="max-w-3xl mx-auto">
+          <div className="flex justify-center items-center gap-8 mb-8">
+            <span className="text-zinc-400 text-sm font-medium tracking-wider">CREATIVE SOLUTIONS</span>
             <GradientHeading 
-              size="md" 
-              variant="secondary" 
-              weight="semi"
-              className="mb-4"
+              size="xl" 
+              variant="light" 
+              weight="bold"
+              className="text-4xl md:text-6xl"
             >
-              Transforming Businesses with Cutting-Edge AI Solutions
+              SERVICES
             </GradientHeading>
-            <p className="text-zinc-400 text-lg leading-relaxed">
-              Founded by Gurleen and Daksh, SimplifyGenAI delivers enterprise-grade AI consulting 
-              and development services. We specialize in generative AI integration, creative solutions, 
-              and intelligent automation for Fortune 500 companies.
-            </p>
           </div>
+          <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mx-auto">
+            Founded by Gurleen and Daksh, SimplifyGenAI delivers enterprise-grade AI consulting 
+            and development services. We specialize in generative AI integration, creative solutions, 
+            and intelligent automation for Fortune 500 companies.
+          </p>
         </motion.div>
 
         <motion.div
@@ -161,12 +97,35 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-4xl mx-auto"
         >
-          <BentoGrid className="lg:grid-rows-4 max-w-6xl mx-auto">
-            {services.map((service) => (
-              <BentoCard key={service.id} {...service} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-6 border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 group cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`w-16 h-16 ${service.iconBg} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white text-xl font-bold mb-3 group-hover:text-zinc-200 transition-colors">
+                      {service.name}
+                    </h3>
+                    <p className="text-zinc-400 leading-relaxed text-sm">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
-          </BentoGrid>
+          </div>
         </motion.div>
 
         {/* CTA Section */}
@@ -215,8 +174,7 @@ export function ServicesSection() {
             "services": services.map(service => ({
               "@type": "Service",
               "name": service.name,
-              "description": service.description,
-              "keywords": service.keywords
+              "description": service.description
             }))
           })
         }}
