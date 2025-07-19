@@ -80,7 +80,7 @@ export default function SchemaCard() {
       <div className="fixed inset-0 flex items-center justify-center p-4 z-10">
         {/* SIMPLIFYGENAI Text */}
         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-6xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-orange-500 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-6xl lg:text-8xl font-semibold text-white/10 select-none pointer-events-none font-['Inter'] whitespace-nowrap">
             SIMPLIFYGENAI
           </h1>
         </div>
@@ -106,7 +106,7 @@ export default function SchemaCard() {
                     {[...Array(5)].map((_, i) => (
                       <div
                         key={i}
-                        className="w-2 bg-gradient-to-t from-blue-500 to-purple-500 rounded-full animate-pulse"
+                        className="w-2 bg-gradient-to-t from-gray-400 to-gray-600 rounded-full animate-pulse"
                         style={{
                           height: `${20 + Math.random() * 40}px`,
                           animationDelay: `${i * 0.1}s`,
@@ -120,13 +120,13 @@ export default function SchemaCard() {
             </div>
             <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             <div className="p-4 bg-black/50 backdrop-blur-sm">
-              <span className="inline-block px-3 py-1 glass text-indigo-300 rounded-full text-xs font-medium mb-3 border border-indigo-400/30">Voice AI</span>
+              <span className="inline-block px-3 py-1 glass text-gray-400 rounded-full text-xs font-medium mb-3 border border-gray-500/30">Voice AI</span>
               <h3 className="text-lg font-medium text-white mb-2">Call AI Agent</h3>
               <p className="text-white/70 mb-4 leading-relaxed text-xs">
                 Experience intelligent voice interactions powered by advanced AI technology.
               </p>
               <div className="flex justify-between items-center">
-                <a href="#" className="text-indigo-400 hover:text-indigo-300 transition flex items-center text-xs font-medium glass px-3 py-1.5 rounded-lg border border-indigo-400/30">
+                <a href="#" className="text-gray-400 hover:text-gray-300 transition flex items-center text-xs font-medium glass px-3 py-1.5 rounded-lg border border-gray-500/30">
                   Call Now
                   <svg className="w-3 h-3 ml-1" viewBox="0 0 24 24" fill="none">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
