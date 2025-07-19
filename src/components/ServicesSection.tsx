@@ -2,57 +2,59 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Brain, Mic, Rocket, Zap, Search, Palette } from 'lucide-react'
 import { GradientHeading } from '@/components/ui/gradient-heading'
+import { GlowCard } from '@/components/ui/spotlight-card'
+import { Button } from '@/components/ui/button'
+import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 const services = [
   {
     id: 'ai-consulting',
-    name: 'AI CONSULTING',
+    name: 'AI Consulting',
     description: 'Strategic AI integration guidance for enterprise businesses. We help Fortune 500 companies implement generative AI solutions that drive real ROI.',
-    Icon: Brain,
-    iconBg: 'bg-blue-500',
-    href: '#ai-consulting',
+    glowColor: 'blue' as const,
+    className: 'lg:col-span-2 lg:row-span-1',
+    cta: 'Learn More'
   },
   {
     id: 'creative-ai',
-    name: 'CREATIVE AI SERVICES',
-    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation for modern businesses.',
-    Icon: Palette,
-    iconBg: 'bg-pink-500',
-    href: '#creative-ai',
+    name: 'Creative AI Services',
+    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation.',
+    glowColor: 'purple' as const,
+    className: 'lg:col-span-1 lg:row-span-2',
+    cta: 'Explore'
   },
   {
     id: 'voice-ai',
-    name: 'VOICE AI SOLUTIONS',
-    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition systems.',
-    Icon: Mic,
-    iconBg: 'bg-teal-500',
-    href: '#voice-ai',
+    name: 'Voice AI Solutions',
+    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition.',
+    glowColor: 'green' as const,
+    className: 'lg:col-span-1 lg:row-span-2',
+    cta: 'Listen'
   },
   {
     id: 'ai-mvp',
-    name: 'AI MVP DEVELOPMENT',
-    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster with proven frameworks.',
-    Icon: Rocket,
-    iconBg: 'bg-emerald-500',
-    href: '#ai-mvp',
+    name: 'AI MVP Development',
+    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster.',
+    glowColor: 'orange' as const,
+    className: 'lg:col-span-1 lg:row-span-1',
+    cta: 'Build'
   },
   {
     id: 'ai-automation',
-    name: 'AI AUTOMATION',
-    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n. Transform workflows and boost efficiency.',
-    Icon: Zap,
-    iconBg: 'bg-amber-500',
-    href: '#ai-automation',
+    name: 'AI Automation',
+    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n.',
+    glowColor: 'red' as const,
+    className: 'lg:col-span-2 lg:row-span-1',
+    cta: 'Automate'
   },
   {
     id: 'llmo-geo',
-    name: 'LLMO/GEO OPTIMIZATION',
-    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach and enhanced performance.',
-    Icon: Search,
-    iconBg: 'bg-violet-500',
-    href: '#llmo-geo',
+    name: 'LLMO/GEO Optimization',
+    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach.',
+    glowColor: 'purple' as const,
+    className: 'lg:col-span-1 lg:row-span-1',
+    cta: 'Optimize'
   }
 ]
 
@@ -97,9 +99,9 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-3 gap-4 auto-rows-[22rem]">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -107,22 +109,32 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-6 border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 group cursor-pointer"
-                whileHover={{ scale: 1.02 }}
+                className={service.className}
               >
-                <div className="flex items-start gap-4">
-                  <div className={`w-16 h-16 ${service.iconBg} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
-                    <service.Icon className="w-8 h-8 text-white" />
+                <GlowCard 
+                  glowColor={service.glowColor}
+                  customSize
+                  className="h-full w-full"
+                >
+                  <div className="flex flex-col justify-between h-full">
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-3">
+                        {service.name}
+                      </h3>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="self-start mt-4 text-white hover:text-zinc-200"
+                    >
+                      {service.cta}
+                      <ArrowRightIcon className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-white text-xl font-bold mb-3 group-hover:text-zinc-200 transition-colors">
-                      {service.name}
-                    </h3>
-                    <p className="text-zinc-400 leading-relaxed text-sm">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+                </GlowCard>
               </motion.div>
             ))}
           </div>
