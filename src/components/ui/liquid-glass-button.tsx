@@ -72,17 +72,17 @@ const liquidbuttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 text-xs gap-1.5 px-4 has-[>svg]:px-4",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        xl: "h-12 rounded-md px-8 has-[>svg]:px-6",
-        xxl: "h-14 rounded-md px-10 has-[>svg]:px-8",
+        default: "h-9 px-4 py-2 text-sm",
+        sm: "h-8 text-xs gap-1.5 px-3",
+        lg: "h-10 px-6 text-base",
+        xl: "h-12 px-8 text-lg",
+        xxl: "h-14 px-10 text-xl",
         icon: "size-9",
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "lg",
+      size: "default",
     },
   }
 )
@@ -90,7 +90,7 @@ const liquidbuttonVariants = cva(
 function LiquidButton({
   className,
   variant = "default",
-  size = "lg",
+  size = "default",
   asChild = false,
   children,
   ...props
@@ -100,11 +100,23 @@ function LiquidButton({
   }) {
   const Comp = asChild ? Slot : "button"
 
+  const sizeClasses = {
+    default: "px-4 py-2 text-sm",
+    sm: "px-3 py-1.5 text-xs",
+    lg: "px-6 py-3 text-base",
+    xl: "px-8 py-4 text-lg",
+    xxl: "px-10 py-5 text-xl",
+    icon: "p-2"
+  }
+
+  const currentSizeClass = sizeClasses[size as keyof typeof sizeClasses] || sizeClasses.default
+
   return (
     <div className="relative inline-block">
       <Comp
         className={cn(
-          "relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:border-white/30 cursor-pointer",
+          "relative z-10 inline-flex items-center justify-center gap-2 font-semibold text-white bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:border-white/30 cursor-pointer",
+          currentSizeClass,
           className
         )}
         {...props}
