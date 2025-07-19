@@ -2,6 +2,7 @@
 import { SplineSceneBasic } from "@/components/SplineDemo";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -27,6 +28,9 @@ const Index = () => {
 
       {/* Services Section */}
       <ServicesSection />
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
