@@ -48,7 +48,11 @@ const GlowCard: React.FC<GlowCardProps> = ({
       }
     };
 
-    document.addEventListener('pointermove', syncPointer);
+    // Only add hover effects on non-touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (!isTouchDevice) {
+      document.addEventListener('pointermove', syncPointer);
+    }
     return () => document.removeEventListener('pointermove', syncPointer);
   }, []);
 

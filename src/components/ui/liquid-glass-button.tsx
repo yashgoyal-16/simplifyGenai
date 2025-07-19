@@ -82,7 +82,7 @@ const liquidbuttonVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "xxl",
+      size: "lg",
     },
   }
 )
@@ -90,7 +90,7 @@ const liquidbuttonVariants = cva(
 function LiquidButton({
   className,
   variant = "default",
-  size = "xxl",
+  size = "lg",
   asChild = false,
   children,
   ...props
