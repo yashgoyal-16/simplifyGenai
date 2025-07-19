@@ -3,38 +3,45 @@ import { Linkedin, Facebook, Instagram } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="relative">
-      {/* Main Black Section with Curved Bottom */}
-      <div className="bg-black pt-20 pb-20 px-6 relative rounded-t-[3rem] mx-6">
-        {/* Smooth curved bottom like the reference */}
-        <div className="absolute bottom-0 left-0 right-0 h-20">
-          <svg viewBox="0 0 1200 120" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,120 Q600,40 1200,120 L1200,120 L0,120 Z" fill="white"/>
-          </svg>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Massive Brand Text */}
-          <div className="flex items-center justify-center">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold text-white tracking-tight leading-none text-center">
+      {/* Black curved section with large brand text */}
+      <div className="bg-black relative">
+        {/* Curved container */}
+        <div className="mx-4 sm:mx-8 bg-black rounded-t-[2rem] sm:rounded-t-[3rem] pt-16 pb-20 px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8rem] font-bold text-white tracking-tight">
               SimplifyGenAI
             </h1>
           </div>
         </div>
+        
+        {/* Smooth curved bottom transition */}
+        <div className="relative bg-black">
+          <svg 
+            viewBox="0 0 1200 120" 
+            className="w-full h-20 sm:h-24" 
+            preserveAspectRatio="none"
+          >
+            <path 
+              d="M0,0 C300,100 900,100 1200,0 L1200,120 L0,120 Z" 
+              fill="white"
+            />
+          </svg>
+        </div>
       </div>
       
-      {/* White Footer Content */}
-      <div className="bg-white py-8 px-6 relative -mt-16 pt-24">
+      {/* White footer content */}
+      <div className="bg-white py-8 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Social Media Icons - Left */}
             <div className="flex items-center gap-4">
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
                 <Linkedin className="w-5 h-5 text-gray-600" />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
                 <Facebook className="w-5 h-5 text-gray-600" />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
                 <Instagram className="w-5 h-5 text-gray-600" />
               </a>
             </div>
