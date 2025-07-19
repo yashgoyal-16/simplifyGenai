@@ -1,5 +1,7 @@
+
 import { SplineSceneBasic } from "@/components/SplineDemo";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
+import { ServicesSection } from "@/components/ServicesSection";
 
 const Index = () => {
   return (
@@ -22,6 +24,9 @@ const Index = () => {
       <div className="bg-black">
         <LogoCarouselDemo />
       </div>
+
+      {/* Services Section */}
+      <ServicesSection />
     </div>
   );
 };
