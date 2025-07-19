@@ -30,32 +30,30 @@ const Footer = () => {
       </div>
       
       {/* White footer content */}
-      <div className="bg-background py-8 px-6">
+      <div className="bg-background py-8 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            {/* Social Media Icons - Left */}
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
-                <Linkedin className="w-5 h-5 text-gray-600" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-4 order-1 sm:order-1">
+              <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
-                <Facebook className="w-5 h-5 text-gray-600" />
+              <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
-                <Instagram className="w-5 h-5 text-gray-600" />
+              <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </a>
             </div>
 
-            {/* Address - Center */}
-            <div className="text-gray-800 text-center">
-              <p>123 Innovation Drive</p>
-              <p>San Francisco, CA</p>
-              <p>United States</p>
+            {/* Address */}
+            <div className="text-gray-800 text-sm sm:text-base order-2 sm:order-2">
+              <p>123 Innovation Drive, San Francisco, CA, United States</p>
             </div>
 
-            {/* Copyright - Right */}
-            <div className="text-gray-800">
-              <p>@2024 - Powered by</p>
+            {/* Copyright */}
+            <div className="text-gray-800 text-sm sm:text-base order-3 sm:order-3">
+              <p>©2024 - Powered by SimplifyGenAI</p>
             </div>
           </div>
         </div>

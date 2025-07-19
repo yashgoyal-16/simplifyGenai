@@ -3,6 +3,7 @@ import { SplineSceneBasic } from "@/components/SplineDemo";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -43,6 +44,9 @@ const Index = () => {
 
       {/* Services Section */}
       <ServicesSection />
+      
+      {/* CTA Section */}
+      <CTASection />
       
       {/* Footer */}
       <Footer />

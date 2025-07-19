@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { GradientHeading } from '@/components/ui/gradient-heading'
 import { GlowCard } from '@/components/ui/spotlight-card'
-import { Button } from '@/components/ui/button'
+import { LiquidButton } from '@/components/ui/liquid-glass-button'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 const services = [
@@ -47,14 +47,6 @@ const services = [
     glowColor: 'red' as const,
     className: 'lg:col-span-2 lg:row-span-1',
     cta: 'Automate'
-  },
-  {
-    id: 'llmo-geo',
-    name: 'LLMO/GEO Optimization',
-    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach.',
-    glowColor: 'purple' as const,
-    className: 'lg:col-span-1 lg:row-span-1',
-    cta: 'Optimize'
   }
 ]
 
@@ -94,21 +86,11 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-3 gap-4 auto-rows-[22rem]">
-            {services.map((service, index) => (
-              <motion.div
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 auto-rows-[22rem]">
+            {services.map((service) => (
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={service.className}
               >
                 <GlowCard 
@@ -125,76 +107,70 @@ export function ServicesSection() {
                         {service.description}
                       </p>
                     </div>
-                    <Button 
+                    <LiquidButton 
                       variant="ghost" 
                       size="sm" 
-                      className="self-start mt-4 text-white hover:text-zinc-200"
+                      className="self-start mt-4 text-white"
                     >
                       {service.cta}
                       <ArrowRightIcon className="ml-2 h-4 w-4" />
-                    </Button>
+                    </LiquidButton>
                   </div>
                 </GlowCard>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* AI Consultation Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
-        >
+        <div className="text-center mt-16">
           <GradientHeading 
             size="sm" 
             variant="light" 
             weight="semi"
-            className="mb-6"
+            className="mb-12"
           >
             Why Your Business Needs AI Consultation Now
           </GradientHeading>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <div className="text-center border border-zinc-800 rounded-lg p-6 bg-zinc-950/50">
+              <div className="w-16 h-16 bg-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">1</span>
               </div>
-              <h4 className="text-white text-lg font-semibold mb-2">Stay Ahead of Competition</h4>
-              <p className="text-zinc-400 text-sm">
+              <h4 className="text-white text-lg font-semibold mb-3">Stay Ahead of Competition</h4>
+              <p className="text-zinc-400 text-sm leading-relaxed">
                 85% of businesses will integrate AI by 2025. Don't let your competitors get there first and capture your market share.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <div className="text-center border border-zinc-800 rounded-lg p-6 bg-zinc-950/50">
+              <div className="w-16 h-16 bg-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">2</span>
               </div>
-              <h4 className="text-white text-lg font-semibold mb-2">Maximize ROI & Efficiency</h4>
-              <p className="text-zinc-400 text-sm">
+              <h4 className="text-white text-lg font-semibold mb-3">Maximize ROI & Efficiency</h4>
+              <p className="text-zinc-400 text-sm leading-relaxed">
                 Our clients see 40-60% operational efficiency gains and 300% ROI within 6 months of AI implementation.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <div className="text-center border border-zinc-800 rounded-lg p-6 bg-zinc-950/50">
+              <div className="w-16 h-16 bg-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">3</span>
               </div>
-              <h4 className="text-white text-lg font-semibold mb-2">Avoid Costly Mistakes</h4>
-              <p className="text-zinc-400 text-sm">
+              <h4 className="text-white text-lg font-semibold mb-3">Avoid Costly Mistakes</h4>
+              <p className="text-zinc-400 text-sm leading-relaxed">
                 SimplifyGenAI's proven framework helps you adopt AI the right way, avoiding the 70% failure rate of DIY AI projects.
               </p>
             </div>
           </div>
 
-          <p className="text-zinc-400 mb-8 max-w-3xl mx-auto text-lg">
+          <p className="text-zinc-400 mb-8 max-w-3xl mx-auto text-lg leading-relaxed">
             SimplifyGenAI's AI phone agents sound human, speak any language, and work 24/7. We make it simple to integrate 
             the latest conversational AI technology into your business. Build the perfect employee to handle sales, 
             scheduling, and all your customer support needs.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Structured Data for SEO */}
