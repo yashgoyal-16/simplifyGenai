@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="relative">
       {/* Main Black Section with Curved Bottom */}
-      <div className="bg-black pt-20 pb-20 px-6 relative">
+      <div className="bg-black pt-20 pb-20 px-6 relative rounded-t-[3rem] mx-6">
         {/* Smooth curved bottom like the reference */}
         <div className="absolute bottom-0 left-0 right-0 h-20">
           <svg viewBox="0 0 1200 120" className="w-full h-full" preserveAspectRatio="none">
