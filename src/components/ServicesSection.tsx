@@ -1,130 +1,117 @@
-
 "use client"
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Brain, Mic, Rocket, Zap, Search, Users } from 'lucide-react'
+import { Brain, Mic, Rocket, Zap, Search, Users, Palette, Code, Sparkles } from 'lucide-react'
 import { GradientHeading } from '@/components/ui/gradient-heading'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { BentoCard, BentoGrid } from '@/components/ui/bento-grid'
 
 const services = [
   {
     id: 'ai-consulting',
-    title: 'AI Consulting',
-    description: 'Strategic AI integration guidance for enterprise businesses. We help Fortune 500 companies implement generative AI solutions that drive real ROI and competitive advantage.',
-    icon: Brain,
-    keywords: 'AI consulting, enterprise AI, generative AI strategy, AI transformation'
+    name: 'AI Consulting',
+    description: 'Strategic AI integration guidance for enterprise businesses. We help Fortune 500 companies implement generative AI solutions that drive real ROI.',
+    Icon: Brain,
+    href: '#ai-consulting',
+    cta: 'Learn More',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-indigo-900/20 to-purple-900/40">
+        <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-8 left-8 w-24 h-24 bg-indigo-500/30 rounded-full blur-xl" />
+      </div>
+    ),
+    className: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    keywords: 'AI consulting, enterprise AI, generative AI strategy'
   },
   {
     id: 'creative-ai',
-    title: 'Creative AI Services',
-    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation. Transform your creative workflows with AI-powered tools.',
-    icon: Users,
-    keywords: 'creative AI, AI content creation, AI image generation, brand automation'
+    name: 'Creative AI Services',
+    description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation.',
+    Icon: Palette,
+    href: '#creative-ai',
+    cta: 'Explore',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-900/40 via-rose-900/20 to-orange-900/40">
+        <div className="absolute top-8 left-8 w-20 h-20 bg-pink-500/30 rounded-lg rotate-12 blur-xl" />
+        <div className="absolute bottom-4 right-4 w-28 h-28 bg-orange-500/20 rounded-full blur-2xl" />
+        <Sparkles className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-pink-300/30 w-16 h-16" />
+      </div>
+    ),
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-3",
+    keywords: 'creative AI, AI content creation, AI image generation'
   },
   {
     id: 'voice-ai',
-    title: 'Voice AI Solutions',
-    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition systems for enhanced customer experiences.',
-    icon: Mic,
-    keywords: 'voice AI, conversational AI, speech recognition, voice synthesis'
+    name: 'Voice AI Solutions',
+    description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition.',
+    Icon: Mic,
+    href: '#voice-ai',
+    cta: 'Listen',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/40 via-cyan-900/20 to-blue-900/40">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-16 h-16 bg-cyan-500/30 rounded-full animate-pulse" />
+          <div className="absolute inset-0 w-24 h-24 bg-teal-500/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}} />
+        </div>
+      </div>
+    ),
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4",
+    keywords: 'voice AI, conversational AI, speech recognition'
   },
   {
     id: 'ai-mvp',
-    title: 'AI MVP Development',
-    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get your AI product to market faster with our proven development methodology.',
-    icon: Rocket,
-    keywords: 'AI MVP, AI prototype development, Cursor, Lovable, rapid AI development'
+    name: 'AI MVP Development',
+    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster.',
+    Icon: Rocket,
+    href: '#ai-mvp',
+    cta: 'Build',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-green-900/20 to-lime-900/40">
+        <div className="absolute bottom-4 left-4 w-6 h-24 bg-emerald-500/30 rounded-full blur-sm" />
+        <div className="absolute top-8 right-8 w-4 h-16 bg-lime-500/40 rounded-full blur-sm" />
+        <Code className="absolute top-1/4 right-1/4 text-emerald-300/20 w-12 h-12 rotate-12" />
+      </div>
+    ),
+    className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+    keywords: 'AI MVP, AI prototype development, Cursor, Lovable'
   },
   {
     id: 'ai-automation',
-    title: 'AI Automation',
-    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n. Reduce costs and increase efficiency through smart process automation.',
-    icon: Zap,
-    keywords: 'AI automation, Make automation, GoHighLevel, n8n, process automation'
+    name: 'AI Automation',
+    description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n.',
+    Icon: Zap,
+    href: '#ai-automation',
+    cta: 'Automate',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/40 via-yellow-900/20 to-orange-900/40">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 bg-yellow-500/40 rounded rotate-45" />
+          <div className="absolute w-12 h-1 bg-amber-500/30 blur-sm" />
+          <div className="absolute w-1 h-12 bg-orange-500/30 blur-sm" />
+        </div>
+      </div>
+    ),
+    className: "lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4",
+    keywords: 'AI automation, Make automation, GoHighLevel, n8n'
   },
   {
     id: 'llmo-geo',
-    title: 'LLMO/GEO Optimization',
-    description: 'Large Language Model Optimization and Geographic Expansion Optimization. Enhance your AI models performance and expand your reach globally.',
-    icon: Search,
-    keywords: 'LLMO, GEO optimization, LLM optimization, AI model performance, geographic expansion'
+    name: 'LLMO/GEO Optimization',
+    description: 'Large Language Model Optimization and Geographic Expansion Optimization for global reach.',
+    Icon: Search,
+    href: '#llmo-geo',
+    cta: 'Optimize',
+    background: (
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-900/40 via-purple-900/20 to-fuchsia-900/40">
+        <div className="absolute top-4 left-4 w-16 h-2 bg-violet-500/30 rounded-full blur-sm" />
+        <div className="absolute bottom-8 right-8 w-12 h-2 bg-fuchsia-500/30 rounded-full blur-sm" />
+        <div className="absolute top-1/2 right-1/4 w-8 h-8 border border-purple-400/30 rounded-full" />
+      </div>
+    ),
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-4 lg:row-end-5",
+    keywords: 'LLMO, GEO optimization, LLM optimization'
   }
 ]
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-}
-
-interface ServiceCardProps {
-  service: typeof services[0]
-  index: number
-}
-
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
-  const Icon = service.icon
-
-  return (
-    <motion.div
-      variants={cardVariants}
-      className="group"
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-    >
-      <Card className="h-full bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10">
-        <CardHeader className="pb-4">
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300">
-              <Icon className="h-6 w-6 text-white" />
-            </div>
-          </div>
-          <CardTitle className="text-xl">
-            <GradientHeading 
-              size="sm" 
-              variant="light" 
-              weight="semi"
-              className="text-left"
-            >
-              {service.title}
-            </GradientHeading>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <CardDescription className="text-zinc-400 text-base leading-relaxed mb-6">
-            {service.description}
-          </CardDescription>
-          <Button 
-            variant="outline" 
-            className="w-full bg-transparent border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-all duration-300"
-          >
-            Learn More
-          </Button>
-        </CardContent>
-      </Card>
-    </motion.div>
-  )
-}
 
 export function ServicesSection() {
   return (
@@ -138,10 +125,10 @@ export function ServicesSection() {
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <GradientHeading 
@@ -170,19 +157,16 @@ export function ServicesSection() {
         </motion.div>
 
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={service.id} 
-              service={service} 
-              index={index}
-            />
-          ))}
+          <BentoGrid className="lg:grid-rows-4 max-w-6xl mx-auto">
+            {services.map((service) => (
+              <BentoCard key={service.id} {...service} />
+            ))}
+          </BentoGrid>
         </motion.div>
 
         {/* CTA Section */}
@@ -190,7 +174,7 @@ export function ServicesSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-16"
         >
           <GradientHeading 
@@ -205,12 +189,13 @@ export function ServicesSection() {
             Get a free consultation to discover how AI can revolutionize your operations, 
             enhance customer experiences, and drive unprecedented growth.
           </p>
-          <Button 
-            size="lg"
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 text-lg font-semibold"
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
           >
             Schedule Free Consultation
-          </Button>
+          </motion.button>
         </motion.div>
       </div>
 
@@ -229,7 +214,7 @@ export function ServicesSection() {
             ],
             "services": services.map(service => ({
               "@type": "Service",
-              "name": service.title,
+              "name": service.name,
               "description": service.description,
               "keywords": service.keywords
             }))

@@ -56,7 +56,7 @@ const App = () => {
     });
 
     // Add structured data for organization
-    let structuredData = document.querySelector('#structured-data');
+    let structuredData = document.querySelector('#structured-data') as HTMLScriptElement;
     if (!structuredData) {
       structuredData = document.createElement('script');
       structuredData.id = 'structured-data';
