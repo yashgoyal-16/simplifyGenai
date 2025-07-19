@@ -4,7 +4,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-[12rem] lg:text-[16rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter']">
+        <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
           SIMPLIFYGENAI
         </h1>
       </div>
