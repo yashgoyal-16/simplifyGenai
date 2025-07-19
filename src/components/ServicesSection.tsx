@@ -140,7 +140,7 @@ export function ServicesSection() {
           </div>
         </motion.div>
 
-        {/* CTA Section */}
+        {/* AI Consultation Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,21 +152,48 @@ export function ServicesSection() {
             size="sm" 
             variant="light" 
             weight="semi"
-            className="mb-4"
+            className="mb-6"
           >
-            Ready to Transform Your Business with AI?
+            Why Your Business Needs AI Consultation Now
           </GradientHeading>
-          <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-            Get a free consultation to discover how AI can revolutionize your operations, 
-            enhance customer experiences, and drive unprecedented growth.
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">1</span>
+              </div>
+              <h4 className="text-white text-lg font-semibold mb-2">Stay Ahead of Competition</h4>
+              <p className="text-zinc-400 text-sm">
+                85% of businesses will integrate AI by 2025. Don't let your competitors get there first and capture your market share.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">2</span>
+              </div>
+              <h4 className="text-white text-lg font-semibold mb-2">Maximize ROI & Efficiency</h4>
+              <p className="text-zinc-400 text-sm">
+                Our clients see 40-60% operational efficiency gains and 300% ROI within 6 months of AI implementation.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">3</span>
+              </div>
+              <h4 className="text-white text-lg font-semibold mb-2">Avoid Costly Mistakes</h4>
+              <p className="text-zinc-400 text-sm">
+                SimplifyGenAI's proven framework helps you adopt AI the right way, avoiding the 70% failure rate of DIY AI projects.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-zinc-400 mb-8 max-w-3xl mx-auto text-lg">
+            SimplifyGenAI's AI phone agents sound human, speak any language, and work 24/7. We make it simple to integrate 
+            the latest conversational AI technology into your business. Build the perfect employee to handle sales, 
+            scheduling, and all your customer support needs.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
-          >
-            Schedule Free Consultation
-          </motion.button>
         </motion.div>
       </div>
 

@@ -2,6 +2,7 @@
 import { SplineSceneBasic } from "@/components/SplineDemo";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,8 +15,13 @@ const Index = () => {
             SIMPLIFYGENAI
           </h1>
         </div>
-        <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
           <SplineSceneBasic />
+          <div className="mt-8">
+            <LiquidButton className="text-white font-semibold text-lg">
+              Book A Consultation
+            </LiquidButton>
+          </div>
         </div>
         {/* Graceful blur transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>
