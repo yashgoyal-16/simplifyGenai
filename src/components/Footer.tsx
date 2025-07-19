@@ -4,28 +4,20 @@ const Footer = () => {
   return (
     <footer className="relative">
       {/* Main Black Section with Curved Bottom */}
-      <div className="bg-black pt-20 pb-32 px-6 relative">
-        {/* Curved bottom using CSS */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-white" 
-             style={{
-               borderTopLeftRadius: '50px',
-               borderTopRightRadius: '50px'
-             }}>
+      <div className="bg-black pt-20 pb-40 px-6 relative overflow-hidden">
+        {/* Curved bottom using SVG for perfect curve */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1200 100" className="w-full h-auto">
+            <path d="M0,0 Q600,80 1200,0 L1200,100 L0,100 Z" fill="white"/>
+          </svg>
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Massive Brand Text */}
           <div className="flex items-center justify-center">
-            <div className="flex items-center gap-6">
-              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                  <div className="w-5 h-5 border-2 border-white border-r-transparent rounded-full transform rotate-45"></div>
-                </div>
-              </div>
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold text-white tracking-tight leading-none">
-                SimplifyGenAI
-              </h1>
-            </div>
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-bold text-white tracking-tight leading-none text-center">
+              SimplifyGenAI
+            </h1>
           </div>
         </div>
       </div>
