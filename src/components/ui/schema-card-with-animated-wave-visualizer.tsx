@@ -141,8 +141,8 @@ export default function SchemaCard() {
           {/* Voice AI Orb - Test Section */}
           <div className="mt-8 text-center">
             <p className="text-white/70 text-sm mb-4">Test the Voice AI agent on web - click the orb and talk to it</p>
-            <div className="w-32 h-32 mx-auto bg-black/30 rounded-full flex items-center justify-center border border-white/20">
-              <div className="w-24 h-24">
+            <div className="w-32 h-32 mx-auto rounded-full flex items-center justify-center">
+              <div className="w-full h-full">
                 <Orb />
               </div>
             </div>

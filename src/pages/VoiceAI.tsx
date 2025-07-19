@@ -19,11 +19,13 @@ const VoiceAI = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section with Animated Wave Component */}
-      <section className="relative min-h-screen overflow-hidden">
-        <SchemaCard />
+      <section className="relative min-h-screen">
+        <div className="fixed inset-0">
+          <SchemaCard />
+        </div>
         
         {/* Phone Mockup overlay */}
-        <div className="absolute bottom-8 right-8 z-20">
+        <div className="absolute bottom-8 right-8 z-30">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
