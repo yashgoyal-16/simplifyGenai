@@ -1,4 +1,5 @@
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
+import VideoPlayer from "@/components/ui/video-player"
 import Footer from "@/components/Footer"
 
 const demoFrames = [
@@ -135,16 +136,16 @@ const CreativeAI = () => {
             </p>
           </div>
         </div>
-        {/* Graceful blur transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>
+        {/* Enhanced blur transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20"></div>
       </div>
 
       {/* Content Section */}
-      <section className="py-20 px-6 bg-black">
+      <section className="py-20 px-6 bg-background relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-semibold text-primary-foreground mb-8 font-['Inter']">
-              Bring Your <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Vision to Life</span> with AI
+            <h2 className="text-5xl md:text-6xl font-semibold text-foreground mb-8 font-['Inter']">
+              Bring Your <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Vision to Life</span> with AI
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-['Inter']">
               We're one of the world's leading creative AI agencies, crafting premium AI-powered advertisements that drive results. 
@@ -154,7 +155,7 @@ const CreativeAI = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
             <div className="space-y-6">
-              <h3 className="text-3xl font-semibold text-primary-foreground font-['Inter']">B2B Excellence</h3>
+              <h3 className="text-3xl font-semibold text-foreground font-['Inter']">B2B Excellence</h3>
               <p className="text-muted-foreground text-lg leading-relaxed font-['Inter']">
                 Transform your B2B marketing with AI-generated content that speaks to decision-makers. 
                 Our sophisticated approach combines data-driven insights with creative storytelling to 
@@ -162,22 +163,22 @@ const CreativeAI = () => {
               </p>
               <ul className="space-y-3 text-muted-foreground font-['Inter']">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                   Enterprise-grade AI video production
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                   Data-driven creative optimization
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                   Professional voice synthesis & narration
                 </li>
               </ul>
             </div>
 
             <div className="space-y-6">
-              <h3 className="text-3xl font-semibold text-primary-foreground font-['Inter']">D2C Innovation</h3>
+              <h3 className="text-3xl font-semibold text-foreground font-['Inter']">D2C Innovation</h3>
               <p className="text-muted-foreground text-lg leading-relaxed font-['Inter']">
                 Create scroll-stopping content that converts browsers into buyers. Our AI-powered D2C campaigns 
                 leverage psychological triggers and viral marketing principles to maximize engagement and 
@@ -185,15 +186,15 @@ const CreativeAI = () => {
               </p>
               <ul className="space-y-3 text-muted-foreground font-['Inter']">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                   Viral-optimized creative concepts
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                   Platform-specific optimization
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
                   Conversion-focused storytelling
                 </li>
               </ul>
@@ -201,24 +202,77 @@ const CreativeAI = () => {
           </div>
 
           <div className="text-center">
-            <h3 className="text-4xl font-semibold text-primary-foreground mb-6 font-['Inter']">
+            <h3 className="text-4xl font-semibold text-foreground mb-6 font-['Inter']">
               Why Industry Leaders Choose Us
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-xl bg-gradient-to-br from-secondary/20 to-black border border-border">
-                <h4 className="text-xl font-semibold text-primary-foreground mb-3 font-['Inter']">No AI Slop</h4>
+              <div className="p-8 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
+                <h4 className="text-xl font-semibold text-foreground mb-3 font-['Inter']">No AI Slop</h4>
                 <p className="text-muted-foreground font-['Inter']">Every frame is crafted with precision. We maintain Hollywood-level quality standards in every project.</p>
               </div>
               
-              <div className="p-6 rounded-xl bg-gradient-to-br from-accent/20 to-black border border-border">
-                <h4 className="text-xl font-semibold text-primary-foreground mb-3 font-['Inter']">Proven Results</h4>
+              <div className="p-8 rounded-xl bg-card border border-border hover:border-secondary/50 transition-colors">
+                <h4 className="text-xl font-semibold text-foreground mb-3 font-['Inter']">Proven Results</h4>
                 <p className="text-muted-foreground font-['Inter']">Our AI-powered ads consistently outperform traditional creative by 3-5x in engagement and conversion rates.</p>
               </div>
               
-              <div className="p-6 rounded-xl bg-gradient-to-br from-muted/20 to-black border border-border">
-                <h4 className="text-xl font-semibold text-primary-foreground mb-3 font-['Inter']">Rapid Delivery</h4>
+              <div className="p-8 rounded-xl bg-card border border-border hover:border-accent/50 transition-colors">
+                <h4 className="text-xl font-semibold text-foreground mb-3 font-['Inter']">Rapid Delivery</h4>
                 <p className="text-muted-foreground font-['Inter']">From concept to final delivery in days, not weeks. Scale your creative output without compromising quality.</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-20 px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-semibold text-white mb-8 font-['Inter']">
+              Our <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Portfolio</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-['Inter']">
+              Discover our award-winning creative work across different industries and formats
+            </p>
+          </div>
+
+          {/* Portfolio Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Commercials */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">Commercials</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/30333849/13003128_2560_1440_25fps.mp4" />
+            </div>
+
+            {/* Animations */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">Animations</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/8313242/8313242-uhd_2560_1440_25fps.mp4" />
+            </div>
+
+            {/* Trailers */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">Trailers</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/4725894/4725894-uhd_2560_1440_25fps.mp4" />
+            </div>
+
+            {/* B2B */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">B2B</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4" />
+            </div>
+
+            {/* AI Clone */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">AI Clone</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/2278095/2278095-uhd_2560_1440_30fps.mp4" />
+            </div>
+
+            {/* AI Influencer */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-4">AI Influencer</h3>
+              <VideoPlayer src="https://videos.pexels.com/video-files/3843433/3843433-uhd_2560_1440_30fps.mp4" />
             </div>
           </div>
         </div>
