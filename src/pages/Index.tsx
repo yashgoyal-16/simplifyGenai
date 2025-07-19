@@ -19,7 +19,7 @@ const Index = () => {
         
         {/* Mobile background text - at top */}
         <div className="absolute top-8 left-0 right-0 md:hidden flex justify-center px-4">
-          <h1 className="text-[2.5rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
+          <h1 className="text-[3rem] font-semibold text-white/20 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
             SIMPLIFYGENAI
           </h1>
         </div>
