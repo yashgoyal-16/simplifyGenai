@@ -8,7 +8,7 @@ const Footer = () => {
         {/* Curved container */}
         <div className="mx-4 sm:mx-8 bg-black rounded-t-[2rem] sm:rounded-t-[3rem] pt-16 pb-20 px-8">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8rem] font-bold text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight break-words">
               SimplifyGenAI
             </h1>
           </div>
@@ -47,8 +47,8 @@ const Footer = () => {
             </div>
 
             {/* Address */}
-            <div className="text-gray-800 text-sm sm:text-base order-2 sm:order-2">
-              <p>123 Innovation Drive, San Francisco, CA, United States</p>
+            <div className="text-gray-800 text-xs sm:text-sm md:text-base order-2 sm:order-2 px-2">
+              <p className="break-words">123 Innovation Drive, San Francisco, CA, United States</p>
             </div>
 
             {/* Copyright */}
