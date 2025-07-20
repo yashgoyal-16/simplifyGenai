@@ -137,34 +137,6 @@ export function ServicesSection() {
             ))}
           </div>
 
-          {/* Mobile Grid Layout */}
-          <div className="md:hidden grid grid-cols-1 gap-6">
-            {services.map((service) => (
-              <LiquidCard 
-                key={service.id}
-                className="min-h-[280px] bg-white/5 border-white/20 backdrop-blur-md"
-              >
-                <div className="flex flex-col justify-between h-full px-2">
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-3">
-                      {service.name}
-                    </h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                  </div>
-                  <LiquidButton 
-                    variant="ghost" 
-                    size="sm" 
-                    className="self-start text-white bg-white/10 hover:bg-white/20 border border-white/20"
-                  >
-                    {service.cta}
-                    <ArrowRightIcon className="ml-2 h-4 w-4" />
-                  </LiquidButton>
-                </div>
-              </LiquidCard>
-            ))}
-          </div>
         </div>
 
         {/* AI Consultation Section */}
