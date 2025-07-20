@@ -1,9 +1,10 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { GradientHeading } from '@/components/ui/gradient-heading'
 import { GlowCard } from '@/components/ui/spotlight-card'
+import { LiquidCard } from '@/components/ui/liquid-glass-card'
 import { LiquidButton } from '@/components/ui/liquid-glass-button'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
@@ -51,6 +52,20 @@ const services = [
 ]
 
 export function ServicesSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 768;
+      setIsMobile(isTouchDevice || isSmallScreen);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
   return (
     <section 
       className="py-24 bg-black relative overflow-hidden"
@@ -93,30 +108,53 @@ export function ServicesSection() {
                 key={service.id}
                 className={service.className}
               >
-                <GlowCard 
-                  glowColor={service.glowColor}
-                  customSize
-                  className="h-full w-full"
-                >
-                  <div className="flex flex-col justify-between h-full">
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-3">
-                        {service.name}
-                      </h3>
-                      <p className="text-zinc-400 text-sm leading-relaxed">
-                        {service.description}
-                      </p>
+                {isMobile ? (
+                  <LiquidCard className="h-full w-full">
+                    <div className="flex flex-col justify-between h-full p-2">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white mb-3">
+                          {service.name}
+                        </h3>
+                        <p className="text-zinc-400 text-sm leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+                      <LiquidButton 
+                        variant="ghost" 
+                        size="sm" 
+                        className="self-start mt-4 text-white"
+                      >
+                        {service.cta}
+                        <ArrowRightIcon className="ml-2 h-4 w-4" />
+                      </LiquidButton>
                     </div>
-                    <LiquidButton 
-                      variant="ghost" 
-                      size="sm" 
-                      className="self-start mt-4 text-white"
-                    >
-                      {service.cta}
-                      <ArrowRightIcon className="ml-2 h-4 w-4" />
-                    </LiquidButton>
-                  </div>
-                </GlowCard>
+                  </LiquidCard>
+                ) : (
+                  <GlowCard 
+                    glowColor={service.glowColor}
+                    customSize
+                    className="h-full w-full"
+                  >
+                    <div className="flex flex-col justify-between h-full">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white mb-3">
+                          {service.name}
+                        </h3>
+                        <p className="text-zinc-400 text-sm leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+                      <LiquidButton 
+                        variant="ghost" 
+                        size="sm" 
+                        className="self-start mt-4 text-white"
+                      >
+                        {service.cta}
+                        <ArrowRightIcon className="ml-2 h-4 w-4" />
+                      </LiquidButton>
+                    </div>
+                  </GlowCard>
+                )}
               </div>
             ))}
           </div>
