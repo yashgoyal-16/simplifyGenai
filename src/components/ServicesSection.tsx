@@ -102,60 +102,67 @@ export function ServicesSection() {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 auto-rows-[22rem]">
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 auto-rows-[22rem]">
             {services.map((service) => (
               <div
                 key={service.id}
                 className={service.className}
               >
-                {isMobile ? (
-                  <LiquidCard className="h-full w-full">
-                    <div className="flex flex-col justify-between h-full p-2">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-3">
-                          {service.name}
-                        </h3>
-                        <p className="text-zinc-400 text-sm leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                      <LiquidButton 
-                        variant="ghost" 
-                        size="sm" 
-                        className="self-start mt-4 text-white"
-                      >
-                        {service.cta}
-                        <ArrowRightIcon className="ml-2 h-4 w-4" />
-                      </LiquidButton>
+                <GlowCard 
+                  glowColor={service.glowColor}
+                  customSize
+                  className="h-full w-full"
+                >
+                  <div className="flex flex-col justify-between h-full">
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-3">
+                        {service.name}
+                      </h3>
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
                     </div>
-                  </LiquidCard>
-                ) : (
-                  <GlowCard 
-                    glowColor={service.glowColor}
-                    customSize
-                    className="h-full w-full"
-                  >
-                    <div className="flex flex-col justify-between h-full">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-3">
-                          {service.name}
-                        </h3>
-                        <p className="text-zinc-400 text-sm leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                      <LiquidButton 
-                        variant="ghost" 
-                        size="sm" 
-                        className="self-start mt-4 text-white"
-                      >
-                        {service.cta}
-                        <ArrowRightIcon className="ml-2 h-4 w-4" />
-                      </LiquidButton>
-                    </div>
-                  </GlowCard>
-                )}
+                    <LiquidButton 
+                      variant="ghost" 
+                      size="sm" 
+                      className="self-start mt-4 text-white"
+                    >
+                      {service.cta}
+                      <ArrowRightIcon className="ml-2 h-4 w-4" />
+                    </LiquidButton>
+                  </div>
+                </GlowCard>
               </div>
+            ))}
+          </div>
+
+          {/* Mobile Grid Layout */}
+          <div className="md:hidden grid grid-cols-1 gap-6">
+            {services.map((service) => (
+              <LiquidCard 
+                key={service.id}
+                className="min-h-[280px] bg-white/5 border-white/20 backdrop-blur-md"
+              >
+                <div className="flex flex-col justify-between h-full px-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-3">
+                      {service.name}
+                    </h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                  </div>
+                  <LiquidButton 
+                    variant="ghost" 
+                    size="sm" 
+                    className="self-start text-white bg-white/10 hover:bg-white/20 border border-white/20"
+                  >
+                    {service.cta}
+                    <ArrowRightIcon className="ml-2 h-4 w-4" />
+                  </LiquidButton>
+                </div>
+              </LiquidCard>
             ))}
           </div>
         </div>
