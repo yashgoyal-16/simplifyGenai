@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import DemoSection from "@/components/DemoSection";
 
 const Index = () => {
   return (
@@ -39,6 +40,9 @@ const Index = () => {
 
       {/* Services Section */}
       <ServicesSection />
+      
+      {/* Demo Section */}
+      <DemoSection />
       
       {/* CTA Section */}
       <CTASection />
