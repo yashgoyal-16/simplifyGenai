@@ -17,10 +17,165 @@ import {
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
-const VoiceAI = () => {
+// Types for better type safety
+interface WorkflowStep {
+  step: string;
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+interface Feature {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+interface Industry {
+  industry: string;
+  description: string;
+  features: string[];
+}
+
+interface PricingPlan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  popular: boolean;
+}
+
+const VoiceAI: React.FC = () => {
+  // Workflow steps data
+  const workflowSteps: WorkflowStep[] = [
+    {
+      step: "01",
+      icon: Settings,
+      title: "Configure Your Agent",
+      description: "Set up your AI agent's personality, knowledge base, and conversation flows through our intuitive dashboard."
+    },
+    {
+      step: "02", 
+      icon: Phone,
+      title: "Connect Your Systems",
+      description: "Integrate with your existing phone systems, CRM, and business tools with just a few clicks."
+    },
+    {
+      step: "03",
+      icon: Zap,
+      title: "Go Live Instantly",
+      description: "Your AI agent starts handling calls immediately, learning and improving with every interaction."
+    }
+  ];
+
+  // Features data
+  const features: Feature[] = [
+    {
+      icon: Brain,
+      title: "Smart AI Learning",
+      description: "Continuously learns from every conversation to improve responses and accuracy."
+    },
+    {
+      icon: Headphones,
+      title: "Crystal Clear Audio",
+      description: "Advanced noise cancellation and audio processing for perfect call quality."
+    },
+    {
+      icon: BarChart3,
+      title: "Real-time Analytics",
+      description: "Track performance metrics and conversation insights in real-time dashboards."
+    },
+    {
+      icon: Shield,
+      title: "Enterprise Security",
+      description: "Bank-grade encryption and compliance with industry standards and regulations."
+    }
+  ];
+
+  // Industries data
+  const industries: Industry[] = [
+    {
+      industry: "Healthcare",
+      description: "Appointment scheduling, patient support, and medical inquiries",
+      features: ["HIPAA Compliant", "24/7 Patient Support", "Multilingual Care"]
+    },
+    {
+      industry: "E-commerce",
+      description: "Order tracking, customer support, and product recommendations",
+      features: ["Order Management", "Product Support", "Return Processing"]
+    },
+    {
+      industry: "Real Estate",
+      description: "Property inquiries, showing schedules, and lead qualification",
+      features: ["Lead Qualification", "Appointment Booking", "Property Info"]
+    },
+    {
+      industry: "Financial Services",
+      description: "Account inquiries, transaction support, and financial guidance",
+      features: ["Secure Transactions", "Account Management", "Compliance Ready"]
+    },
+    {
+      industry: "Travel & Hospitality",
+      description: "Booking assistance, customer service, and travel support",
+      features: ["Reservation Management", "Travel Support", "Concierge Services"]
+    },
+    {
+      industry: "Education",
+      description: "Student support, enrollment assistance, and course information",
+      features: ["Student Services", "Enrollment Help", "Course Guidance"]
+    }
+  ];
+
+  // Pricing plans data
+  const pricingPlans: PricingPlan[] = [
+    {
+      name: "Starter",
+      price: "$99",
+      period: "/month",
+      description: "Perfect for small businesses",
+      features: [
+        "Up to 500 calls/month",
+        "Basic AI personality",
+        "Email support",
+        "Standard integrations"
+      ],
+      popular: false
+    },
+    {
+      name: "Professional",
+      price: "$299",
+      period: "/month", 
+      description: "Most popular for growing teams",
+      features: [
+        "Up to 2,000 calls/month",
+        "Advanced AI capabilities",
+        "Priority support",
+        "Custom integrations",
+        "Analytics dashboard"
+      ],
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "",
+      description: "For large organizations",
+      features: [
+        "Unlimited calls",
+        "Custom AI training",
+        "Dedicated support",
+        "White-label options",
+        "Custom analytics",
+        "SLA guarantee"
+      ],
+      popular: false
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section with Animated Wave Visualizer */}
+      {/* Hero Section */}
       <VoiceAIHero />
 
       {/* How It Works Section */}
@@ -39,42 +194,26 @@ const VoiceAI = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "01",
-                icon: Settings,
-                title: "Configure Your Agent",
-                description: "Set up your AI agent's personality, knowledge base, and conversation flows through our intuitive dashboard."
-              },
-              {
-                step: "02", 
-                icon: Phone,
-                title: "Connect Your Systems",
-                description: "Integrate with your existing phone systems, CRM, and business tools with just a few clicks."
-              },
-              {
-                step: "03",
-                icon: Zap,
-                title: "Go Live Instantly",
-                description: "Your AI agent starts handling calls immediately, learning and improving with every interaction."
-              }
-            ].map((item, index) => (
-              <div key={index} className="relative">
-                <Card className="p-8 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="text-3xl font-bold text-white">{item.step}</div>
-                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-white" />
+            {workflowSteps.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={`workflow-${index}`} className="relative">
+                  <Card className="p-8 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="text-3xl font-bold text-white">{item.step}</div>
+                      <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
-                </Card>
-                {index < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-white/30 to-transparent"></div>
-                )}
-              </div>
-            ))}
+                    <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
+                    <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                  </Card>
+                  {index < workflowSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-white/30 to-transparent" />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -92,39 +231,21 @@ const VoiceAI = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Brain,
-                title: "Smart AI Learning",
-                description: "Continuously learns from every conversation to improve responses and accuracy."
-              },
-              {
-                icon: Headphones,
-                title: "Crystal Clear Audio",
-                description: "Advanced noise cancellation and audio processing for perfect call quality."
-              },
-              {
-                icon: BarChart3,
-                title: "Real-time Analytics",
-                description: "Track performance metrics and conversation insights in real-time dashboards."
-              },
-              {
-                icon: Shield,
-                title: "Enterprise Security",
-                description: "Bank-grade encryption and compliance with industry standards and regulations."
-              }
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-6 h-6 text-white" />
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={`feature-${index}`}
+                  className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -142,45 +263,14 @@ const VoiceAI = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                industry: "Healthcare",
-                description: "Appointment scheduling, patient support, and medical inquiries",
-                features: ["HIPAA Compliant", "24/7 Patient Support", "Multilingual Care"]
-              },
-              {
-                industry: "E-commerce",
-                description: "Order tracking, customer support, and product recommendations",
-                features: ["Order Management", "Product Support", "Return Processing"]
-              },
-              {
-                industry: "Real Estate",
-                description: "Property inquiries, showing schedules, and lead qualification",
-                features: ["Lead Qualification", "Appointment Booking", "Property Info"]
-              },
-              {
-                industry: "Financial Services",
-                description: "Account inquiries, transaction support, and financial guidance",
-                features: ["Secure Transactions", "Account Management", "Compliance Ready"]
-              },
-              {
-                industry: "Travel & Hospitality",
-                description: "Booking assistance, customer service, and travel support",
-                features: ["Reservation Management", "Travel Support", "Concierge Services"]
-              },
-              {
-                industry: "Education",
-                description: "Student support, enrollment assistance, and course information",
-                features: ["Student Services", "Enrollment Help", "Course Guidance"]
-              }
-            ].map((item, index) => (
-              <div key={index}>
+            {industries.map((item, index) => (
+              <div key={`industry-${index}`}>
                 <Card className="p-6 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                   <h3 className="text-xl font-semibold mb-3 text-white">{item.industry}</h3>
                   <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
                   <div className="space-y-2">
                     {item.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
+                      <div key={`feature-${index}-${featureIndex}`} className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
                         <span className="text-gray-300 text-sm">{feature}</span>
                       </div>
@@ -206,51 +296,8 @@ const VoiceAI = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                name: "Starter",
-                price: "$99",
-                period: "/month",
-                description: "Perfect for small businesses",
-                features: [
-                  "Up to 500 calls/month",
-                  "Basic AI personality",
-                  "Email support",
-                  "Standard integrations"
-                ],
-                popular: false
-              },
-              {
-                name: "Professional",
-                price: "$299",
-                period: "/month", 
-                description: "Most popular for growing teams",
-                features: [
-                  "Up to 2,000 calls/month",
-                  "Advanced AI capabilities",
-                  "Priority support",
-                  "Custom integrations",
-                  "Analytics dashboard"
-                ],
-                popular: true
-              },
-              {
-                name: "Enterprise",
-                price: "Custom",
-                period: "",
-                description: "For large organizations",
-                features: [
-                  "Unlimited calls",
-                  "Custom AI training",
-                  "Dedicated support",
-                  "White-label options",
-                  "Custom analytics",
-                  "SLA guarantee"
-                ],
-                popular: false
-              }
-            ].map((plan, index) => (
-              <div key={index} className="relative">
+            {pricingPlans.map((plan, index) => (
+              <div key={`plan-${index}`} className="relative">
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -270,7 +317,7 @@ const VoiceAI = () => {
                   
                   <div className="space-y-4 mb-8">
                     {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-3">
+                      <div key={`plan-feature-${index}-${featureIndex}`} className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                         <span className="text-gray-300">{feature}</span>
                       </div>
@@ -362,6 +409,7 @@ const VoiceAI = () => {
         </div>
       </section>
 
+      {/* Footer */}
       <StackedCircularFooter />
     </div>
   );
