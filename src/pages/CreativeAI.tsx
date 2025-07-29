@@ -141,11 +141,30 @@ const CreativeAI = () => {
 
   return (
     <div className="bg-black">
+      {/* Hide Vimeo logo with CSS */}
+      <style>{`
+        .vimeo-logo,
+        .vp-logo,
+        .vp-title,
+        .vp-byline,
+        .vp-portrait,
+        [class*="vimeo"],
+        [class*="logo"] {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
+        
+        iframe {
+          border: none !important;
+        }
+      `}</style>
+
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0"
+          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0"
           className="absolute inset-0 w-full h-full object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"

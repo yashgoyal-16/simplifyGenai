@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Expand, X, Star } from "lucide-react";
+import { Play, Expand, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -14,24 +14,22 @@ interface VideoItem {
   thumbnail: string;
   video: string;
   description: string;
-  isGoldenCore?: boolean;
 }
 
 const portfolioVideos: VideoItem[] = [
   {
     id: 1,
     title: "Golden Core",
-    category: "Golden Core",
-    thumbnail: "images/trailer1.png",
+    category: "Trailers",
+    thumbnail: "/images/golden-core-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
-    description: "Golden Core Trailer - Proof of Concept",
-    isGoldenCore: true
+    description: "Golden Core Trailer"
   },
   {
     id: 2,
     title: "Prada",
     category: "Commercials",
-    thumbnail: "images/commercial1.jpg",
+    thumbnail: "/images/prada-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Luxury fashion commercial with AI enhancement"
   },
@@ -39,7 +37,7 @@ const portfolioVideos: VideoItem[] = [
     id: 3,
     title: "Versace",
     category: "Commercials",
-    thumbnail: "images/commercial2.png",
+    thumbnail: "/images/versace-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "High-end fashion commercial with AI styling"
   },
@@ -47,7 +45,7 @@ const portfolioVideos: VideoItem[] = [
     id: 4,
     title: "Lavendar",
     category: "Concept",
-    thumbnail: "images/concept1.png",
+    thumbnail: "/images/lavendar-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Creative concept visualization with AI"
   },
@@ -55,7 +53,7 @@ const portfolioVideos: VideoItem[] = [
     id: 5,
     title: "Heinz",
     category: "Commercials",
-    thumbnail: "images/commercial3.png",
+    thumbnail: "/images/heinz-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Food commercial with AI-generated effects"
   },
@@ -63,7 +61,7 @@ const portfolioVideos: VideoItem[] = [
     id: 6,
     title: "Spark",
     category: "Animation",
-    thumbnail: "images/animation1.png",
+    thumbnail: "/images/spark-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Dynamic animation with AI enhancement"
   },
@@ -71,7 +69,7 @@ const portfolioVideos: VideoItem[] = [
     id: 7,
     title: "The Raboo List",
     category: "Trailers",
-    thumbnail: "images/trailer2.png",
+    thumbnail: "/images/raboo-list-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Movie trailer with AI-generated effects"
   },
@@ -79,7 +77,7 @@ const portfolioVideos: VideoItem[] = [
     id: 8,
     title: "Citroën",
     category: "Commercials",
-    thumbnail: "images/commercial4.png",
+    thumbnail: "/images/citroen-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Automotive commercial with AI scenes"
   },
@@ -87,7 +85,7 @@ const portfolioVideos: VideoItem[] = [
     id: 9,
     title: "C427",
     category: "Music Videos",
-    thumbnail: "images/music1.png",
+    thumbnail: "/images/c427-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "AI-enhanced music video with dynamic visuals"
   },
@@ -95,7 +93,7 @@ const portfolioVideos: VideoItem[] = [
     id: 10,
     title: "Marshmellow",
     category: "Concept",
-    thumbnail: "images/concept2.png",
+    thumbnail: "/images/marshmellow-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422609?h=3515b7ea51&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Creative concept with AI visualization"
   },
@@ -103,7 +101,7 @@ const portfolioVideos: VideoItem[] = [
     id: 11,
     title: "Cartier",
     category: "Commercials",
-    thumbnail: "images/commercial5.png",
+    thumbnail: "/images/cartier-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422688?h=cb1c43d9f3&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Luxury jewelry commercial with AI enhancement"
   },
@@ -111,7 +109,7 @@ const portfolioVideos: VideoItem[] = [
     id: 12,
     title: "Gucci",
     category: "Commercials",
-    thumbnail: "images/commercial6.jpg",
+    thumbnail: "/images/gucci-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422659?h=b52a6f7f5b&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "High-end fashion commercial with AI styling"
   },
@@ -119,7 +117,7 @@ const portfolioVideos: VideoItem[] = [
     id: 13,
     title: "Sleep Token",
     category: "Music Videos",
-    thumbnail: "images/music3.png",
+    thumbnail: "/images/sleep-token-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063422533?h=2692ad82ea&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "AI-enhanced music video with atmospheric visuals"
   },
@@ -127,13 +125,13 @@ const portfolioVideos: VideoItem[] = [
     id: 14,
     title: "Opti Plaza",
     category: "Commercials",
-    thumbnail: "images/commercial7.png",
+    thumbnail: "/images/opti-plaza-thumbnail.jpg",
     video: "https://player.vimeo.com/video/1063461945?h=95bb24498a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Commercial with AI-generated content"
   }
 ];
 
-const categories = ["All Projects", "Golden Core", "Commercials", "Concept", "Animation", "Trailers", "Music Videos"];
+const categories = ["All Projects", "Commercials", "Concept", "Animation", "Trailers", "Music Videos"];
 
 export function PortfolioGrid() {
   const [selectedCategory, setSelectedCategory] = useState("All Projects");
@@ -164,21 +162,13 @@ export function PortfolioGrid() {
               onClick={() => setSelectedCategory(category)}
               variant={selectedCategory === category ? "default" : "outline"}
               className={cn(
-                "px-6 py-3 rounded-full font-['Inter'] transition-all duration-300 relative",
+                "px-6 py-3 rounded-full font-['Inter'] transition-all duration-300",
                 selectedCategory === category
                   ? "bg-primary text-black hover:bg-primary/90"
-                  : "bg-transparent border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500",
-                category === "Golden Core" && "bg-gradient-to-r from-yellow-600 to-yellow-400 text-black hover:from-yellow-700 hover:to-yellow-500"
+                  : "bg-transparent border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500"
               )}
             >
               {category}
-              {category === "Golden Core" && (
-                <div className="flex ml-2 gap-1">
-                  {[...Array(4)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-current" />
-                  ))}
-                </div>
-              )}
             </Button>
           ))}
         </div>
@@ -206,13 +196,6 @@ export function PortfolioGrid() {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300" />
-                
-                {/* Golden Core Badge */}
-                {video.isGoldenCore && (
-                  <div className="absolute top-3 left-3 bg-gradient-to-r from-yellow-600 to-yellow-400 text-black px-3 py-1 rounded-full text-xs font-semibold">
-                    Proof of Concept
-                  </div>
-                )}
                 
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
