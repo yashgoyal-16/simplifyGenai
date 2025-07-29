@@ -20,10 +20,10 @@ interface VideoItem {
 const portfolioVideos: VideoItem[] = [
   {
     id: 1,
-    title: "Golden Core",
+    title: "Tantrasur",
     category: "Golden Core",
-    thumbnail: "images/trailer1.png",
-    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=500",
+    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Golden Core Trailer - Proof of Concept",
     isGoldenCore: true
   },
@@ -31,104 +31,104 @@ const portfolioVideos: VideoItem[] = [
     id: 2,
     title: "Prada",
     category: "Commercials",
-    thumbnail: "images/commercial1.jpg",
-    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500",
+    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Luxury fashion commercial with AI enhancement"
   },
   {
     id: 3,
     title: "Versace",
     category: "Commercials",
-    thumbnail: "images/commercial2.png",
-    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=500",
+    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "High-end fashion commercial with AI styling"
   },
   {
     id: 4,
     title: "Lavendar",
     category: "Concept",
-    thumbnail: "images/concept1.png",
-    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500",
+    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Creative concept visualization with AI"
   },
   {
     id: 5,
     title: "Heinz",
     category: "Commercials",
-    thumbnail: "images/commercial3.png",
-    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500",
+    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Food commercial with AI-generated effects"
   },
   {
     id: 6,
     title: "Spark",
     category: "Animation",
-    thumbnail: "images/animation1.png",
-    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500",
+    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Dynamic animation with AI enhancement"
   },
   {
     id: 7,
     title: "The Raboo List",
     category: "Trailers",
-    thumbnail: "images/trailer2.png",
-    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1489599735734-79b4169c36e2?w=500",
+    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Movie trailer with AI-generated effects"
   },
   {
     id: 8,
     title: "Citroën",
     category: "Commercials",
-    thumbnail: "images/commercial4.png",
-    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1493238792000-8113da705763?w=500",
+    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Automotive commercial with AI scenes"
   },
   {
     id: 9,
     title: "C427",
     category: "Music Videos",
-    thumbnail: "images/music1.png",
-    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500",
+    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "AI-enhanced music video with dynamic visuals"
   },
   {
     id: 10,
     title: "Marshmellow",
     category: "Concept",
-    thumbnail: "images/concept2.png",
-    video: "https://player.vimeo.com/video/1063422609?h=3515b7ea51&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500",
+    video: "https://player.vimeo.com/video/1063422609?h=3515b7ea51&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Creative concept with AI visualization"
   },
   {
     id: 11,
     title: "Cartier",
     category: "Commercials",
-    thumbnail: "images/commercial5.png",
-    video: "https://player.vimeo.com/video/1063422688?h=cb1c43d9f3&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500",
+    video: "https://player.vimeo.com/video/1063422688?h=cb1c43d9f3&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Luxury jewelry commercial with AI enhancement"
   },
   {
     id: 12,
     title: "Gucci",
     category: "Commercials",
-    thumbnail: "images/commercial6.jpg",
-    video: "https://player.vimeo.com/video/1063422659?h=b52a6f7f5b&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500",
+    video: "https://player.vimeo.com/video/1063422659?h=b52a6f7f5b&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "High-end fashion commercial with AI styling"
   },
   {
     id: 13,
     title: "Sleep Token",
     category: "Music Videos",
-    thumbnail: "images/music3.png",
-    video: "https://player.vimeo.com/video/1063422533?h=2692ad82ea&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=500",
+    video: "https://player.vimeo.com/video/1063422533?h=2692ad82ea&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "AI-enhanced music video with atmospheric visuals"
   },
   {
     id: 14,
     title: "Opti Plaza",
     category: "Commercials",
-    thumbnail: "images/commercial7.png",
-    video: "https://player.vimeo.com/video/1063461945?h=95bb24498a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    thumbnail: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500",
+    video: "https://player.vimeo.com/video/1063461945?h=95bb24498a&badge=0&autopause=0&player_id=0&app_id=58479",
     description: "Commercial with AI-generated content"
   }
 ];
