@@ -303,16 +303,8 @@ const VoiceAI: React.FC = () => {
                 className="bg-white text-black hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                Start Free Trial
+                Book an Appointment
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Schedule Demo
               </Button>
             </div>
 
