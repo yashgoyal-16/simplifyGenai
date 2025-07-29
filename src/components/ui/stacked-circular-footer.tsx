@@ -10,13 +10,6 @@ function StackedCircularFooter({ variant = "default" }: StackedCircularFooterPro
     <footer className={variant === "light" ? "bg-white py-12" : "bg-black py-12"}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
-          <div className="mb-12">
-            <h2 className={`text-6xl md:text-8xl font-bold text-center ${
-              variant === "light" ? "text-black" : "text-white"
-            }`}>
-              SIMPLIFYGENAI
-            </h2>
-          </div>
           <nav className="mb-8 flex flex-wrap justify-center gap-6">
             <a href="/" className={`transition-colors ${
               variant === "light" 
@@ -44,7 +37,7 @@ function StackedCircularFooter({ variant = "default" }: StackedCircularFooterPro
                 : "text-white hover:text-white/80"
             }`}>Voice AI</a>
           </nav>
-          <div className="mb-8 flex gap-4">
+          <div className="mb-12 flex gap-4">
             <Button 
               variant="ghost" 
               size="icon" 
@@ -94,12 +87,12 @@ function StackedCircularFooter({ variant = "default" }: StackedCircularFooterPro
               <span className="sr-only">LinkedIn</span>
             </Button>
           </div>
-          <div className="text-center">
-            <p className={`text-sm ${
-              variant === "light" ? "text-black/60" : "text-white/60"
+          <div>
+            <h2 className={`text-6xl md:text-8xl font-bold text-center ${
+              variant === "light" ? "text-black" : "text-white"
             }`}>
-              © 2024 SimplifyGenAI. All rights reserved.
-            </p>
+              SIMPLIFYGENAI
+            </h2>
           </div>
         </div>
       </div>
