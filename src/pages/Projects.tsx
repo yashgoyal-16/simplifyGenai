@@ -509,7 +509,7 @@ const Projects = () => {
         </div>
       </section>
 
-      <StackedCircularFooter />
+      <StackedCircularFooter variant="light" />
     </div>
   );
 };

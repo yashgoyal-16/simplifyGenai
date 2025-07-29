@@ -16,9 +16,10 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  variant?: "default" | "light"
 }
 
-export function NavBar({ items, className }: NavBarProps) {
+export function NavBar({ items, className, variant = "default" }: NavBarProps) {
   const location = useLocation()
   const [activeTab, setActiveTab] = useState("")
   const [isMobile, setIsMobile] = useState(false)
@@ -54,7 +55,12 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto">
+      <div className={cn(
+        "flex items-center gap-3 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto",
+        variant === "light" 
+          ? "bg-black/10 border border-black/20" 
+          : "bg-white/10 border border-white/20"
+      )}>
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -66,8 +72,10 @@ export function NavBar({ items, className }: NavBarProps) {
               onClick={() => handleNavClick(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-white/80 hover:text-white",
-                isActive && "bg-white/20 text-white",
+                variant === "light"
+                  ? "text-black/80 hover:text-black"
+                  : "text-white/80 hover:text-white",
+                isActive && (variant === "light" ? "bg-black/20 text-black" : "bg-white/20 text-white"),
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
@@ -77,7 +85,10 @@ export function NavBar({ items, className }: NavBarProps) {
               {isActive && (
                 <motion.div
                   layoutId="lamp"
-                  className="absolute inset-0 w-full bg-white/10 rounded-full -z-10"
+                  className={cn(
+                    "absolute inset-0 w-full rounded-full -z-10",
+                    variant === "light" ? "bg-black/10" : "bg-white/10"
+                  )}
                   initial={false}
                   transition={{
                     type: "spring",
@@ -85,10 +96,22 @@ export function NavBar({ items, className }: NavBarProps) {
                     damping: 30,
                   }}
                 >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-white/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-white/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-white/20 rounded-full blur-sm top-0 left-2" />
+                  <div className={cn(
+                    "absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-t-full",
+                    variant === "light" ? "bg-black" : "bg-white"
+                  )}>
+                    <div className={cn(
+                      "absolute w-12 h-6 rounded-full blur-md -top-2 -left-2",
+                      variant === "light" ? "bg-black/20" : "bg-white/20"
+                    )} />
+                    <div className={cn(
+                      "absolute w-8 h-6 rounded-full blur-md -top-1",
+                      variant === "light" ? "bg-black/20" : "bg-white/20"
+                    )} />
+                    <div className={cn(
+                      "absolute w-4 h-4 rounded-full blur-sm top-0 left-2",
+                      variant === "light" ? "bg-black/20" : "bg-white/20"
+                    )} />
                   </div>
                 </motion.div>
               )}
