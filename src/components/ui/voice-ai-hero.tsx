@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Phone, Play, CheckCircle } from 'lucide-react';
 import Orb from './orb';
 
 export default function VoiceAIHero() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -13,13 +14,88 @@ export default function VoiceAIHero() {
     console.log("Form submitted:", { name, phoneNumber });
   };
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    let time = 0;
+    const waveData = Array.from({ length: 8 }).map(() => ({
+      value: Math.random() * 0.5 + 0.1,
+      targetValue: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.02 + 0.01
+    }));
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function updateWaveData() {
+      waveData.forEach(data => {
+        if (Math.random() < 0.01) data.targetValue = Math.random() * 0.7 + 0.1;
+        const diff = data.targetValue - data.value;
+        data.value += diff * data.speed;
+      });
+    }
+
+    function draw() {
+      if (!ctx || !canvas) return;
+      
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      waveData.forEach((data, i) => {
+        const freq = data.value * 7;
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x++) {
+          const nx = (x / canvas.width) * 2 - 1;
+          const px = nx + i * 0.04 + freq * 0.03;
+          const py = Math.sin(px * 10 + time) * Math.cos(px * 2) * freq * 0.1 * ((i + 1) / 8);
+          const y = (py + 1) * canvas.height / 2;
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        const intensity = Math.min(1, freq * 0.3);
+        const r = 255;
+        const g = 255;
+        const b = 255;
+        ctx.lineWidth = 1 + i * 0.3;
+        ctx.strokeStyle = `rgba(${r},${g},${b},0.3)`;
+        ctx.shadowColor = `rgba(${r},${g},${b},0.2)`;
+        ctx.shadowBlur = 5;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      });
+    }
+
+    function animate() {
+      time += 0.02;
+      updateWaveData();
+      draw();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animate();
+
+    return () => window.removeEventListener('resize', resizeCanvas);
+  }, []);
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-black">
-      {/* Background Text */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/20 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
-          SIMPLIFYGENAI
-        </h1>
+      {/* Fixed Canvas Background */}
+      <div className="fixed inset-0 w-full h-full">
+        <canvas ref={canvasRef} className="w-full h-full" />
+        {/* SIMPLIFYGENAI Background Text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/20 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
+            SIMPLIFYGENAI
+          </h1>
+        </div>
       </div>
       
       {/* Content Overlay */}
@@ -79,6 +155,17 @@ export default function VoiceAIHero() {
                 <div className="overflow-hidden rounded-2xl flex flex-col">
                   <div className="p-6 flex justify-center relative">
                     <div className="w-full h-48 rounded-xl overflow-hidden relative bg-black/50 backdrop-blur-sm border border-white/20">
+                      {/* Animated grid background */}
+                      <div className="absolute inset-0 opacity-10">
+                        <div 
+                          className="w-full h-full animate-pulse" 
+                          style={{ 
+                            backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)', 
+                            backgroundSize: '15px 15px' 
+                          }} 
+                        />
+                      </div>
+                      
                       {/* Voice AI Visualization */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="flex items-center gap-1">
