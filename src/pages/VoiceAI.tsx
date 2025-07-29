@@ -1,19 +1,13 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   Phone, 
-  Mic, 
   MessageCircle, 
-  Clock, 
-  Globe,
   Zap,
   Shield,
-  Users,
   CheckCircle,
-  Star,
   ArrowRight,
   Brain,
   Headphones,
@@ -24,7 +18,6 @@ import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
 const VoiceAI = () => {
-  console.log("VoiceAI component rendering");
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section with Animated Wave Visualizer */}
@@ -33,13 +26,7 @@ const VoiceAI = () => {
       {/* How It Works Section */}
       <section className="py-20 px-6 bg-gray-900/20">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4 bg-white/10 text-white border-white/20">
               How It Works
             </Badge>
@@ -49,7 +36,7 @@ const VoiceAI = () => {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Get your AI voice agent up and running in minutes, not weeks
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -72,14 +59,7 @@ const VoiceAI = () => {
                 description: "Your AI agent starts handling calls immediately, learning and improving with every interaction."
               }
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
+              <div key={index} className="relative">
                 <Card className="p-8 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="text-3xl font-bold text-white">{item.step}</div>
@@ -91,9 +71,9 @@ const VoiceAI = () => {
                   <p className="text-gray-300 leading-relaxed">{item.description}</p>
                 </Card>
                 {index < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-blue-500 to-transparent"></div>
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-white/30 to-transparent"></div>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -102,20 +82,14 @@ const VoiceAI = () => {
       {/* Key Features Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Advanced AI Capabilities
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Experience the most sophisticated voice AI technology available
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -140,12 +114,8 @@ const VoiceAI = () => {
                 description: "Bank-grade encryption and compliance with industry standards and regulations."
               }
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
                 className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -153,7 +123,7 @@ const VoiceAI = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -162,20 +132,14 @@ const VoiceAI = () => {
       {/* Use Cases & Industries */}
       <section className="py-20 px-6 bg-gray-900/20">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Trusted Across Industries
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               From healthcare to e-commerce, our AI voice agents transform customer experiences
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -210,13 +174,7 @@ const VoiceAI = () => {
                 features: ["Student Services", "Enrollment Help", "Course Guidance"]
               }
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <div key={index}>
                 <Card className="p-6 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                   <h3 className="text-xl font-semibold mb-3 text-white">{item.industry}</h3>
                   <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
@@ -229,7 +187,7 @@ const VoiceAI = () => {
                     ))}
                   </div>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -238,20 +196,14 @@ const VoiceAI = () => {
       {/* Pricing Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Simple, Transparent Pricing
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Choose the plan that fits your business needs
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
@@ -298,14 +250,7 @@ const VoiceAI = () => {
                 popular: false
               }
             ].map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
+              <div key={index} className="relative">
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -338,7 +283,7 @@ const VoiceAI = () => {
                     {plan.name === 'Enterprise' ? 'Contact Sales' : 'Start Free Trial'}
                   </Button>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -346,13 +291,7 @@ const VoiceAI = () => {
 
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gray-900/20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
-        >
+        <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-12 border border-blue-500/20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Ready to Transform Your Business?
@@ -395,7 +334,7 @@ const VoiceAI = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* SEO Content Section */}
