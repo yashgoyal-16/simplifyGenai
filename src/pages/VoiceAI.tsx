@@ -1,12 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { 
   Phone, 
   Mic, 
   MessageCircle, 
   Clock, 
-  Globe
+  Globe,
+  Zap,
+  Shield,
+  Users,
+  CheckCircle,
+  Star,
+  ArrowRight,
+  Brain,
+  Headphones,
+  BarChart3,
+  Settings
 } from "lucide-react";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
@@ -17,7 +29,76 @@ const VoiceAI = () => {
       {/* Hero Section with Animated Wave Visualizer */}
       <VoiceAIHero />
 
-      {/* Features Section */}
+      {/* How It Works Section */}
+      <section className="py-20 px-6 bg-gray-900/20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <Badge variant="secondary" className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
+              How It Works
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Simple Setup, Powerful Results
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Get your AI voice agent up and running in minutes, not weeks
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                icon: Settings,
+                title: "Configure Your Agent",
+                description: "Set up your AI agent's personality, knowledge base, and conversation flows through our intuitive dashboard."
+              },
+              {
+                step: "02", 
+                icon: Phone,
+                title: "Connect Your Systems",
+                description: "Integrate with your existing phone systems, CRM, and business tools with just a few clicks."
+              },
+              {
+                step: "03",
+                icon: Zap,
+                title: "Go Live Instantly",
+                description: "Your AI agent starts handling calls immediately, learning and improving with every interaction."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <Card className="p-8 bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-300 h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="text-3xl font-bold text-blue-400">{item.step}</div>
+                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-blue-400" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                </Card>
+                {index < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-blue-500 to-transparent"></div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -28,32 +109,38 @@ const VoiceAI = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Why Choose Our Voice AI?
+              Advanced AI Capabilities
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience the future of customer interaction with our advanced AI voice technology
+              Experience the most sophisticated voice AI technology available
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: Mic,
-                title: "Human-Like Conversations",
-                description: "Natural speech patterns and emotional intelligence that makes interactions feel genuine and engaging.",
-                color: "text-blue-400"
-              },
-              {
-                icon: Globe,
-                title: "Multilingual Support",
-                description: "Communicate in 50+ languages with perfect accent and cultural understanding for global reach.",
+                icon: Brain,
+                title: "Smart AI Learning",
+                description: "Continuously learns from every conversation to improve responses and accuracy.",
                 color: "text-purple-400"
               },
               {
-                icon: Clock,
-                title: "24/7 Availability",
-                description: "Never miss a call with round-the-clock service that ensures your customers always get assistance.",
+                icon: Headphones,
+                title: "Crystal Clear Audio",
+                description: "Advanced noise cancellation and audio processing for perfect call quality.",
+                color: "text-blue-400"
+              },
+              {
+                icon: BarChart3,
+                title: "Real-time Analytics",
+                description: "Track performance metrics and conversation insights in real-time dashboards.",
                 color: "text-green-400"
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Security",
+                description: "Bank-grade encryption and compliance with industry standards and regulations.",
+                color: "text-yellow-400"
               }
             ].map((feature, index) => (
               <motion.div
@@ -62,21 +149,21 @@ const VoiceAI = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 hover:bg-gray-900/70 transition-all duration-300"
+                className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className={`w-6 h-6 ${feature.color}`} />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
+                <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section className="py-20 px-6 bg-gray-900/30">
+      {/* Use Cases & Industries */}
+      <section className="py-20 px-6 bg-gray-900/20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,65 +173,182 @@ const VoiceAI = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Complete Voice AI Solutions
+              Trusted Across Industries
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              From inbound customer service to outbound sales, we've got you covered
+              From healthcare to e-commerce, our AI voice agents transform customer experiences
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-700/50 rounded-xl p-8"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-blue-400">Inbound Solutions</h3>
-              <ul className="space-y-4 text-gray-300">
-                {[
-                  "24/7 customer support and inquiries",
-                  "Appointment booking and scheduling", 
-                  "Order processing and tracking",
-                  "Technical support and troubleshooting"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                industry: "Healthcare",
+                description: "Appointment scheduling, patient support, and medical inquiries",
+                features: ["HIPAA Compliant", "24/7 Patient Support", "Multilingual Care"]
+              },
+              {
+                industry: "E-commerce",
+                description: "Order tracking, customer support, and product recommendations",
+                features: ["Order Management", "Product Support", "Return Processing"]
+              },
+              {
+                industry: "Real Estate",
+                description: "Property inquiries, showing schedules, and lead qualification",
+                features: ["Lead Qualification", "Appointment Booking", "Property Info"]
+              },
+              {
+                industry: "Financial Services",
+                description: "Account inquiries, transaction support, and financial guidance",
+                features: ["Secure Transactions", "Account Management", "Compliance Ready"]
+              },
+              {
+                industry: "Travel & Hospitality",
+                description: "Booking assistance, customer service, and travel support",
+                features: ["Reservation Management", "Travel Support", "Concierge Services"]
+              },
+              {
+                industry: "Education",
+                description: "Student support, enrollment assistance, and course information",
+                features: ["Student Services", "Enrollment Help", "Course Guidance"]
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-6 bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-300 h-full">
+                  <h3 className="text-xl font-semibold mb-3 text-white">{item.industry}</h3>
+                  <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
+                  <div className="space-y-2">
+                    {item.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        <span className="text-gray-300 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 backdrop-blur-sm border border-purple-700/50 rounded-xl p-8"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-purple-400">Outbound Solutions</h3>
-              <ul className="space-y-4 text-gray-300">
-                {[
-                  "Lead generation and qualification",
-                  "Sales outreach and follow-ups",
-                  "Customer surveys and feedback",
-                  "Appointment reminders and confirmations"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+      {/* Pricing Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Choose the plan that fits your business needs
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                name: "Starter",
+                price: "$99",
+                period: "/month",
+                description: "Perfect for small businesses",
+                features: [
+                  "Up to 500 calls/month",
+                  "Basic AI personality",
+                  "Email support",
+                  "Standard integrations"
+                ],
+                popular: false
+              },
+              {
+                name: "Professional",
+                price: "$299",
+                period: "/month", 
+                description: "Most popular for growing teams",
+                features: [
+                  "Up to 2,000 calls/month",
+                  "Advanced AI capabilities",
+                  "Priority support",
+                  "Custom integrations",
+                  "Analytics dashboard"
+                ],
+                popular: true
+              },
+              {
+                name: "Enterprise",
+                price: "Custom",
+                period: "",
+                description: "For large organizations",
+                features: [
+                  "Unlimited calls",
+                  "Custom AI training",
+                  "Dedicated support",
+                  "White-label options",
+                  "Custom analytics",
+                  "SLA guarantee"
+                ],
+                popular: false
+              }
+            ].map((plan, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                      Most Popular
+                    </Badge>
+                  </div>
+                )}
+                <Card className={`p-8 h-full ${plan.popular ? 'border-blue-500 bg-blue-500/5' : 'border-gray-700 bg-gray-900/50'} hover:border-blue-500/50 transition-all duration-300`}>
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                    <p className="text-gray-300 mb-4">{plan.description}</p>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-4xl font-bold text-white">{plan.price}</span>
+                      <span className="text-gray-400">{plan.period}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                        <span className="text-gray-300">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Button 
+                    className={`w-full ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700' : 'bg-gray-800 hover:bg-gray-700'} text-white`}
+                  >
+                    {plan.name === 'Enterprise' ? 'Contact Sales' : 'Start Free Trial'}
+                  </Button>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-gray-900/20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,28 +356,47 @@ const VoiceAI = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-300 mb-12">
-            Join thousands of businesses already using our Voice AI technology
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              Get Started Today
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg"
-            >
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Talk to Sales
-            </Button>
+          <div className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-12 border border-blue-500/20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Join thousands of businesses already using our Voice AI technology to deliver exceptional customer experiences
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Schedule Demo
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="flex items-center justify-center gap-2 text-gray-400">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-gray-400">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span>14-day free trial</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-gray-400">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span>Setup in 5 minutes</span>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
