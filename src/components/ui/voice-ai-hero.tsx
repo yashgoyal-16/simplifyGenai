@@ -87,8 +87,8 @@ export default function VoiceAIHero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-black">
-      {/* Canvas Background - only for hero section */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* Fixed Canvas Background */}
+      <div className="fixed inset-0 w-full h-full z-0">
         <canvas ref={canvasRef} className="w-full h-full" />
         {/* SIMPLIFYGENAI Background Text */}
         <div className="absolute inset-0 flex items-center justify-center">

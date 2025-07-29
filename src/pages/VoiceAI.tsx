@@ -181,7 +181,7 @@ const VoiceAI: React.FC = () => {
       <VoiceAIHero />
 
       {/* How It Works Section */}
-      <section className="py-20 px-6 bg-gray-900/20">
+      <section className="relative py-20 px-6 bg-gray-900/20 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4 bg-white/10 text-white border-white/20">
@@ -221,7 +221,7 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-20 px-6">
+      <section className="relative py-20 px-6 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -253,7 +253,7 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* Use Cases & Industries */}
-      <section className="py-20 px-6 bg-gray-900/20">
+      <section className="relative py-20 px-6 bg-gray-900/20 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -286,7 +286,7 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-6">
+      <section className="relative py-20 px-6 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -339,7 +339,7 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gray-900/20">
+      <section className="relative py-20 px-6 bg-gray-900/20 z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -387,7 +387,7 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* SEO Content Section */}
-      <section className="py-20 px-6">
+      <section className="relative py-20 px-6 z-10">
         <div className="max-w-4xl mx-auto">
           <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-white">Why Choose SimplifyGenAI Voice Agents?</h2>
