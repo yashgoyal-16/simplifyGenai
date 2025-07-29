@@ -1,8 +1,9 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -18,7 +19,8 @@ interface NavBarProps {
 }
 
 export function NavBar({ items, className }: NavBarProps) {
-  const [activeTab, setActiveTab] = useState(items[0].name)
+  const location = useLocation()
+  const [activeTab, setActiveTab] = useState("")
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -30,6 +32,20 @@ export function NavBar({ items, className }: NavBarProps) {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  useEffect(() => {
+    // Set active tab based on current route
+    const currentItem = items.find(item => item.url === location.pathname)
+    if (currentItem) {
+      setActiveTab(currentItem.name)
+    }
+  }, [location.pathname, items])
+
+  const handleNavClick = (itemName: string) => {
+    setActiveTab(itemName)
+    // Scroll to top when navigating
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <div
@@ -47,7 +63,7 @@ export function NavBar({ items, className }: NavBarProps) {
             <Link
               key={item.name}
               to={item.url}
-              onClick={() => setActiveTab(item.name)}
+              onClick={() => handleNavClick(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                 "text-white/80 hover:text-white",
