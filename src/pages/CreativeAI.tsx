@@ -146,7 +146,7 @@ const CreativeAI = () => {
         <iframe
           ref={iframeRef}
           src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
-          className="absolute inset-0 w-full h-full scale-150 -translate-x-12 -translate-y-12"
+          className="absolute inset-0 w-full h-full object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
