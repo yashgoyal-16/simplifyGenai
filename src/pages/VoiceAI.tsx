@@ -1,10 +1,10 @@
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Phone, Waves } from "lucide-react";
-import Footer from "@/components/Footer";
-import SchemaCard from "@/components/ui/schema-card-with-animated-wave-visualizer";
+import { Phone, Waves, Mic, MessageCircle, Clock, Globe } from "lucide-react";
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 
 const VoiceAI = () => {
   const [name, setName] = useState("");
@@ -12,27 +12,84 @@ const VoiceAI = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", { name, phoneNumber });
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section with Animated Wave Component */}
-      <section className="relative min-h-screen">
-        <div className="fixed inset-0">
-          <SchemaCard />
-        </div>
-        
-        {/* Phone Mockup overlay */}
-        <div className="absolute bottom-8 right-8 z-30">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                AI Voice
+                <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                  Agents
+                </span>
+              </h1>
+              <p className="text-xl text-gray-300 mt-6 max-w-2xl">
+                AI phone agents that sound human, speak any language, and work 24/7. 
+                Transform your customer interactions with intelligent voice technology.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Start Free Trial
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg"
+              >
+                Watch Demo
+              </Button>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="grid grid-cols-3 gap-8 pt-8"
+            >
+              <div>
+                <div className="text-3xl font-bold text-blue-400">99.9%</div>
+                <div className="text-sm text-gray-400">Uptime</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-purple-400">50+</div>
+                <div className="text-sm text-gray-400">Languages</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-green-400">24/7</div>
+                <div className="text-sm text-gray-400">Available</div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Content - Phone Mockup */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex justify-center lg:justify-end"
           >
-            {/* Phone Frame */}
             <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden">
               {/* Notch */}
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl"></div>
@@ -96,155 +153,142 @@ const VoiceAI = () => {
         </div>
       </section>
 
-      {/* Content Sections */}
-      <div className="bg-black text-white">
-        {/* Main Description */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              AI phone agents that sound human, speak any language, and work 24/7
+      {/* Features Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Why Choose Our Voice AI?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-              SimplifyGenAI makes it simple to integrate the latest conversational AI technology into your business. 
-              Build the perfect employee to handle sales, scheduling, and all your customer support needs. 
-              SimplifyGenAI's AI phone agents sound human, can speak any language, and work 24/7.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Experience the future of customer interaction with our advanced AI voice technology
             </p>
           </div>
-        </section>
 
-        {/* Workflow Section */}
-        <section className="py-20 px-6 bg-gray-900/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Book an appointment. Update a CRM. Send a text. All in one workflow.
-              </h2>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-                Pathways are the brain of your business. We integrate into your existing systems, whether it's a scheduler, 
-                ERP, or CRM, so your agents don't just talk, they take action. You map out the conversation and define the 
-                decisions your AI makes. SimplifyGenAI does the rest.
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 hover:bg-gray-900/70 transition-all duration-300">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Mic className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Human-Like Conversations</h3>
+              <p className="text-gray-300">
+                Natural speech patterns and emotional intelligence that makes interactions feel genuine and engaging.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 hover:bg-gray-900/70 transition-all duration-300">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Globe className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Multilingual Support</h3>
+              <p className="text-gray-300">
+                Communicate in 50+ languages with perfect accent and cultural understanding for global reach.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 hover:bg-gray-900/70 transition-all duration-300">
+              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Clock className="w-6 h-6 text-green-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">24/7 Availability</h3>
+              <p className="text-gray-300">
+                Never miss a call with round-the-clock service that ensures your customers always get assistance.
               </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Statistics */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Every month SimplifyGenAI is handling millions of calls across various industries
+      {/* Solutions Section */}
+      <section className="py-20 px-6 bg-gray-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Complete Voice AI Solutions
             </h2>
-            <p className="text-xl text-gray-300 mb-16">
-              Empower your Business with Next-Generation AI Voice Assistant
-            </p>
-            <p className="text-lg text-gray-400">
-              Transform customer interactions and streamline communications with our adaptable and intelligent AI voice 
-              assistant that fits right into your business flow. Experience the future of business communication today.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              From inbound customer service to outbound sales, we've got you covered
             </p>
           </div>
-        </section>
 
-        {/* Features Grid */}
-        <section className="py-20 px-6 bg-gray-900/30">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Setup and Train */}
-              <div className="bg-black/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
-                <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center mb-6">
-                  <Waves className="w-6 h-6 text-gray-300" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Setup and Train on Your Knowledge Base</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We'll integrate the voice bot with your systems and thoroughly train it on your specific knowledge base 
-                  to ensure it understands your business context and delivers accurate, relevant information across various channels.
-                </p>
-              </div>
-
-              {/* Customize */}
-              <div className="bg-black/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
-                <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center mb-6">
-                  <Phone className="w-6 h-6 text-gray-300" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Customize Interaction Flows, Personality, and Role</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Tailor the bot's interaction flows, personality, and roles to perfectly align with your business needs and brand voice. 
-                  Whether you need the bot to act as a customer service agent, sales representative, or support staff, we customize its behavior.
-                </p>
-              </div>
-
-              {/* Test and Deploy */}
-              <div className="bg-black/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 md:col-span-2 lg:col-span-1">
-                <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Test and Deploy</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Before going live, we'll conduct rigorous testing to ensure the bot performs flawlessly across all designated 
-                  platforms and in various scenarios. This includes testing its capabilities on handling both inbound and outbound calls.
-                </p>
-              </div>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-700/50 rounded-xl p-8">
+              <h3 className="text-2xl font-bold mb-6 text-blue-400">Inbound Solutions</h3>
+              <ul className="space-y-4 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>24/7 customer support and inquiries</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Appointment booking and scheduling</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Order processing and tracking</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Technical support and troubleshooting</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 backdrop-blur-sm border border-purple-700/50 rounded-xl p-8">
+              <h3 className="text-2xl font-bold mb-6 text-purple-400">Outbound Solutions</h3>
+              <ul className="space-y-4 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Lead generation and qualification</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Sales outreach and follow-ups</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Customer surveys and feedback</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Appointment reminders and confirmations</span>
+                </li>
+              </ul>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Inbound & Outbound Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Inbound & Outbound Voice AI Solutions</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
-                <h3 className="text-2xl font-bold mb-6 text-blue-400">Inbound Calls</h3>
-                <ul className="space-y-4 text-gray-300">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Handle customer support inquiries 24/7</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Book appointments and manage scheduling</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Answer frequently asked questions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Route calls to appropriate departments</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
-                <h3 className="text-2xl font-bold mb-6 text-green-400">Outbound Calls</h3>
-                <ul className="space-y-4 text-gray-300">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Lead generation and qualification</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Appointment reminders and confirmations</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Follow-up calls and surveys</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Sales outreach and product demos</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+      {/* CTA Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl text-gray-300 mb-12">
+            Join thousands of businesses already using our Voice AI technology
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              Get Started Today
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg"
+            >
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Talk to Sales
+            </Button>
           </div>
-        </section>
-      </div>
-      
-      <Footer />
+        </div>
+      </section>
+
+      <StackedCircularFooter />
     </div>
   );
 };
