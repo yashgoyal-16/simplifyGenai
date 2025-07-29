@@ -2,11 +2,14 @@ import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
 import VideoPlayer from "@/components/ui/video-player"
 import { PortfolioGrid } from "@/components/ui/portfolio-grid"
 import Footer from "@/components/Footer"
+import { Button } from "@/components/ui/button"
+import { Volume2, VolumeX } from "lucide-react"
+import { useState, useRef } from "react"
 
 const demoFrames = [
   {
     id: 1,
-    video: "https://static.cdn-luma.com/files/981e483f71aa764b/Company%20Thing%20Exported.mp4",
+    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -18,7 +21,7 @@ const demoFrames = [
   },
   {
     id: 2,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/WebGL%20Exported%20(1).mp4",
+    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -30,7 +33,7 @@ const demoFrames = [
   },
   {
     id: 3,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Jitter%20Exported%20Poster.mp4",
+    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 8, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -42,7 +45,7 @@ const demoFrames = [
   },
   {
     id: 4,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Exported%20Web%20Video.mp4",
+    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -54,7 +57,7 @@ const demoFrames = [
   },
   {
     id: 5,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Logo%20Exported.mp4",
+    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -66,7 +69,7 @@ const demoFrames = [
   },
   {
     id: 6,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Animation%20Exported%20(4).mp4",
+    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -78,7 +81,7 @@ const demoFrames = [
   },
   {
     id: 7,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Illustration%20Exported%20(1).mp4",
+    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 0, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -90,7 +93,7 @@ const demoFrames = [
   },
   {
     id: 8,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Art%20Direction%20Exported.mp4",
+    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -102,7 +105,7 @@ const demoFrames = [
   },
   {
     id: 9,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Product%20Video.mp4",
+    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     defaultPos: { x: 8, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -115,30 +118,37 @@ const demoFrames = [
 ]
 
 const CreativeAI = () => {
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const toggleAudio = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+    }
+  }
+
   return (
     <div className="bg-black">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
+        <iframe
+          src="https://player.vimeo.com/video/1105305444?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
         />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-6xl md:text-8xl font-semibold mb-4 font-['Inter']">
-              Creative AI
-            </h1>
-            <p className="text-xl md:text-2xl font-['Inter']">
-              The Future of Visual Effects
-            </p>
-          </div>
-        </div>
-        {/* Enhanced blur transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20"></div>
+        
+        {/* Audio Toggle Button */}
+        <Button
+          onClick={toggleAudio}
+          variant="ghost"
+          size="icon"
+          className="absolute bottom-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 z-10"
+        >
+          {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+        </Button>
       </div>
 
       {/* Content Section */}

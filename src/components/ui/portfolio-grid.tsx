@@ -1,8 +1,9 @@
+
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Expand, X } from "lucide-react";
+import { Play, Expand, X, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -13,76 +14,126 @@ interface VideoItem {
   thumbnail: string;
   video: string;
   description: string;
+  isGoldenCore?: boolean;
 }
 
 const portfolioVideos: VideoItem[] = [
   {
     id: 1,
-    title: "Premium Car Commercial",
-    category: "Commercials",
-    thumbnail: "https://images.unsplash.com/photo-1493238792000-8113da705763?w=500",
-    video: "https://videos.pexels.com/video-files/30333849/13003128_2560_1440_25fps.mp4",
-    description: "Luxury automotive commercial with AI-generated scenes"
+    title: "Golden Core",
+    category: "Golden Core",
+    thumbnail: "images/trailer1.png",
+    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Golden Core Trailer - Proof of Concept",
+    isGoldenCore: true
   },
   {
     id: 2,
-    title: "Fantasy Animation",
-    category: "Animation",
-    thumbnail: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500",
-    video: "https://videos.pexels.com/video-files/8313242/8313242-uhd_2560_1440_25fps.mp4",
-    description: "Mystical character animation with AI enhancement"
+    title: "Prada",
+    category: "Commercials",
+    thumbnail: "images/commercial1.jpg",
+    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Luxury fashion commercial with AI enhancement"
   },
   {
     id: 3,
-    title: "Movie Trailer",
-    category: "Trailers",
-    thumbnail: "https://images.unsplash.com/photo-1489599735734-79b4169c36e2?w=500",
-    video: "https://videos.pexels.com/video-files/4725894/4725894-uhd_2560_1440_25fps.mp4",
-    description: "Epic movie trailer with AI-generated effects"
-  },
-  {
-    id: 4,
-    title: "Tech Concept Video",
-    category: "Concept",
-    thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500",
-    video: "https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4",
-    description: "Futuristic technology concept visualization"
-  },
-  {
-    id: 5,
-    title: "Music Video",
-    category: "Music Videos",
-    thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500",
-    video: "https://videos.pexels.com/video-files/2278095/2278095-uhd_2560_1440_30fps.mp4",
-    description: "AI-enhanced music video with dynamic visuals"
-  },
-  {
-    id: 6,
-    title: "Corporate B2B",
-    category: "B2B",
-    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500",
-    video: "https://videos.pexels.com/video-files/3843433/3843433-uhd_2560_1440_30fps.mp4",
-    description: "Professional B2B presentation video"
-  },
-  {
-    id: 7,
-    title: "Fashion Commercial",
+    title: "Versace",
     category: "Commercials",
-    thumbnail: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=500",
-    video: "https://videos.pexels.com/video-files/30333849/13003128_2560_1440_25fps.mp4",
+    thumbnail: "images/commercial2.png",
+    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "High-end fashion commercial with AI styling"
   },
   {
-    id: 8,
-    title: "Product Animation",
+    id: 4,
+    title: "Lavendar",
+    category: "Concept",
+    thumbnail: "images/concept1.png",
+    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Creative concept visualization with AI"
+  },
+  {
+    id: 5,
+    title: "Heinz",
+    category: "Commercials",
+    thumbnail: "images/commercial3.png",
+    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Food commercial with AI-generated effects"
+  },
+  {
+    id: 6,
+    title: "Spark",
     category: "Animation",
-    thumbnail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500",
-    video: "https://videos.pexels.com/video-files/8313242/8313242-uhd_2560_1440_25fps.mp4",
-    description: "3D product animation with AI rendering"
+    thumbnail: "images/animation1.png",
+    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Dynamic animation with AI enhancement"
+  },
+  {
+    id: 7,
+    title: "The Raboo List",
+    category: "Trailers",
+    thumbnail: "images/trailer2.png",
+    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Movie trailer with AI-generated effects"
+  },
+  {
+    id: 8,
+    title: "Citroën",
+    category: "Commercials",
+    thumbnail: "images/commercial4.png",
+    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Automotive commercial with AI scenes"
+  },
+  {
+    id: 9,
+    title: "C427",
+    category: "Music Videos",
+    thumbnail: "images/music1.png",
+    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "AI-enhanced music video with dynamic visuals"
+  },
+  {
+    id: 10,
+    title: "Marshmellow",
+    category: "Concept",
+    thumbnail: "images/concept2.png",
+    video: "https://player.vimeo.com/video/1063422609?h=3515b7ea51&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Creative concept with AI visualization"
+  },
+  {
+    id: 11,
+    title: "Cartier",
+    category: "Commercials",
+    thumbnail: "images/commercial5.png",
+    video: "https://player.vimeo.com/video/1063422688?h=cb1c43d9f3&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Luxury jewelry commercial with AI enhancement"
+  },
+  {
+    id: 12,
+    title: "Gucci",
+    category: "Commercials",
+    thumbnail: "images/commercial6.jpg",
+    video: "https://player.vimeo.com/video/1063422659?h=b52a6f7f5b&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "High-end fashion commercial with AI styling"
+  },
+  {
+    id: 13,
+    title: "Sleep Token",
+    category: "Music Videos",
+    thumbnail: "images/music3.png",
+    video: "https://player.vimeo.com/video/1063422533?h=2692ad82ea&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "AI-enhanced music video with atmospheric visuals"
+  },
+  {
+    id: 14,
+    title: "Opti Plaza",
+    category: "Commercials",
+    thumbnail: "images/commercial7.png",
+    video: "https://player.vimeo.com/video/1063461945?h=95bb24498a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "Commercial with AI-generated content"
   }
 ];
 
-const categories = ["All Projects", "Commercials", "Animation", "Trailers", "Concept", "Music Videos", "B2B"];
+const categories = ["All Projects", "Golden Core", "Commercials", "Concept", "Animation", "Trailers", "Music Videos"];
 
 export function PortfolioGrid() {
   const [selectedCategory, setSelectedCategory] = useState("All Projects");
@@ -98,10 +149,10 @@ export function PortfolioGrid() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-semibold text-white mb-8 font-['Inter']">
-            Our Portfolio
+            Our Creative Harvest
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-['Inter']">
-            Explore our AI-generated content across various categories. Each piece is uniquely crafted using cutting-edge artificial intelligence technology.
+            Explore a selection of our AI-powered projects. From brand stories to cinematic shorts, each piece is a taste of the future, crafted with precision and flair.
           </p>
         </div>
 
@@ -113,13 +164,21 @@ export function PortfolioGrid() {
               onClick={() => setSelectedCategory(category)}
               variant={selectedCategory === category ? "default" : "outline"}
               className={cn(
-                "px-6 py-3 rounded-full font-['Inter'] transition-all duration-300",
+                "px-6 py-3 rounded-full font-['Inter'] transition-all duration-300 relative",
                 selectedCategory === category
                   ? "bg-primary text-black hover:bg-primary/90"
-                  : "bg-transparent border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500"
+                  : "bg-transparent border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500",
+                category === "Golden Core" && "bg-gradient-to-r from-yellow-600 to-yellow-400 text-black hover:from-yellow-700 hover:to-yellow-500"
               )}
             >
               {category}
+              {category === "Golden Core" && (
+                <div className="flex ml-2 gap-1">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-current" />
+                  ))}
+                </div>
+              )}
             </Button>
           ))}
         </div>
@@ -147,6 +206,13 @@ export function PortfolioGrid() {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300" />
+                
+                {/* Golden Core Badge */}
+                {video.isGoldenCore && (
+                  <div className="absolute top-3 left-3 bg-gradient-to-r from-yellow-600 to-yellow-400 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                    Proof of Concept
+                  </div>
+                )}
                 
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -182,11 +248,12 @@ export function PortfolioGrid() {
                 className="relative w-full max-w-6xl aspect-video"
                 onClick={(e) => e.stopPropagation()}
               >
-                <video
-                  className="w-full h-full object-contain rounded-lg"
-                  controls
-                  autoPlay
+                <iframe
                   src={fullscreenVideo.video}
+                  className="w-full h-full object-contain rounded-lg"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
                 />
                 
                 {/* Close Button */}
