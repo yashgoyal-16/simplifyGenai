@@ -3,6 +3,9 @@ import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
 import VideoPlayer from "@/components/ui/video-player"
 import { PortfolioGrid } from "@/components/ui/portfolio-grid"
 import Footer from "@/components/Footer"
+import { Button } from "@/components/ui/button"
+import { Volume2, VolumeX } from "lucide-react"
+import { useState, useRef } from "react"
 
 const demoFrames = [
   {
@@ -116,30 +119,40 @@ const demoFrames = [
 ]
 
 const CreativeAI = () => {
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const toggleAudio = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+    }
+  }
+
   return (
     <div className="bg-black">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
-        <iframe
-          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&controls=0&background=1"
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted={isMuted}
           className="absolute inset-0 w-full h-full object-cover"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          style={{ pointerEvents: 'none' }}
-        />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-6xl md:text-8xl font-semibold mb-4 font-['Inter']">
-              Creative AI
-            </h1>
-            <p className="text-xl md:text-2xl font-['Inter']">
-              The Future of Visual Effects
-            </p>
-          </div>
-        </div>
-        {/* Enhanced blur transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20"></div>
+          playsInline
+        >
+          <source src="https://player.vimeo.com/external/1105305444.hd.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Audio Toggle Button */}
+        <Button
+          onClick={toggleAudio}
+          variant="ghost"
+          size="icon"
+          className="absolute bottom-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 z-10"
+        >
+          {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+        </Button>
       </div>
 
       {/* Content Section */}
