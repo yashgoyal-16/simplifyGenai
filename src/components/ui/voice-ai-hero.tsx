@@ -139,11 +139,11 @@ export default function VoiceAIHero() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/30 px-8 py-6 text-lg">
+                <Button className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-6 text-lg">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Demo
                 </Button>
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg">
+                <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-800 px-8 py-6 text-lg">
                   Learn More
                 </Button>
               </div>
@@ -215,7 +215,7 @@ export default function VoiceAIHero() {
                       />
                       <Button
                         type="submit"
-                        className="w-full h-12 bg-white/20 hover:bg-white/30 text-white border border-white/30 text-base font-medium"
+                        className="w-full h-12 bg-gray-800 hover:bg-gray-700 text-white text-base font-medium"
                       >
                         <Phone className="mr-2 h-4 w-4" />
                         Get AI Demo Call Now

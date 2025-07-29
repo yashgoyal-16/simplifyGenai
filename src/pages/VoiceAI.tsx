@@ -285,58 +285,6 @@ const VoiceAI: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="relative py-20 px-6 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Choose the plan that fits your business needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <div key={`plan-${index}`} className="relative">
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-white/20 text-white border border-white/30">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
-                <Card className={`p-8 h-full ${plan.popular ? 'border-white/40 bg-black/60' : 'border-white/20 bg-black/50'} backdrop-blur-sm hover:border-white/40 transition-all duration-300`}>
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                    <p className="text-gray-300 mb-4">{plan.description}</p>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-4xl font-bold text-white">{plan.price}</span>
-                      <span className="text-gray-400">{plan.period}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <div key={`plan-feature-${index}-${featureIndex}`} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    className={`w-full ${plan.popular ? 'bg-white/20 hover:bg-white/30 text-white border border-white/30' : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'}`}
-                  >
-                    {plan.name === 'Enterprise' ? 'Contact Sales' : 'Start Free Trial'}
-                  </Button>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="relative py-20 px-6 bg-gray-900/20 z-10">
@@ -352,7 +300,7 @@ const VoiceAI: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button 
                 size="lg" 
-                className="bg-white/20 hover:bg-white/30 text-white border border-white/30 px-8 py-6 text-lg font-semibold"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-6 text-lg font-semibold"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Start Free Trial
@@ -361,7 +309,7 @@ const VoiceAI: React.FC = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-6 text-lg font-semibold"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Schedule Demo
@@ -412,7 +360,9 @@ const VoiceAI: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <StackedCircularFooter />
+      <div className="relative z-10">
+        <StackedCircularFooter />
+      </div>
     </div>
   );
 };
