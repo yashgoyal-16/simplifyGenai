@@ -4,7 +4,7 @@ import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import DemoSection from "@/components/DemoSection";
 
 const Index = () => {
@@ -48,7 +48,7 @@ const Index = () => {
       <CTASection />
       
       {/* Footer */}
-      <Footer />
+      <StackedCircularFooter />
     </div>
   );
 };
