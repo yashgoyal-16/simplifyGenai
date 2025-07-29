@@ -6,6 +6,7 @@ import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer"
 import { Button } from "@/components/ui/button"
 import { Volume2, VolumeX } from "lucide-react"
 import { useState, useRef } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const demoFrames = [
   {
@@ -121,6 +122,7 @@ const demoFrames = [
 const CreativeAI = () => {
   const [isMuted, setIsMuted] = useState(true)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const isMobile = useIsMobile()
 
   const toggleAudio = () => {
     if (iframeRef.current) {
@@ -216,7 +218,7 @@ const CreativeAI = () => {
       <div className="relative h-screen w-full overflow-hidden">
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1105362692?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1"
+          src={`https://player.vimeo.com/video/${isMobile ? '1105590036' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
           className="absolute inset-0 w-full h-full object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
