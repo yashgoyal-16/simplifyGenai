@@ -20,7 +20,7 @@ import {
   BarChart3,
   Settings
 } from "lucide-react";
-import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
+import Footer from "@/components/Footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
 const VoiceAI = () => {
@@ -39,7 +39,7 @@ const VoiceAI = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <Badge variant="secondary" className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
+            <Badge variant="secondary" className="mb-4 bg-white/10 text-white border-white/20">
               How It Works
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -79,11 +79,11 @@ const VoiceAI = () => {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <Card className="p-8 bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-300 h-full">
+                <Card className="p-8 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="text-3xl font-bold text-blue-400">{item.step}</div>
-                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-blue-400" />
+                    <div className="text-3xl font-bold text-white">{item.step}</div>
+                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
@@ -149,10 +149,10 @@ const VoiceAI = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group"
+                className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-3 text-white">{feature.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{feature.description}</p>
@@ -220,13 +220,13 @@ const VoiceAI = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-6 bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-300 h-full">
+                <Card className="p-6 bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 h-full">
                   <h3 className="text-xl font-semibold mb-3 text-white">{item.industry}</h3>
                   <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
                   <div className="space-y-2">
                     {item.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
                         <span className="text-gray-300 text-sm">{feature}</span>
                       </div>
                     ))}
@@ -316,7 +316,7 @@ const VoiceAI = () => {
                     </Badge>
                   </div>
                 )}
-                <Card className={`p-8 h-full ${plan.popular ? 'border-blue-500 bg-blue-500/5' : 'border-gray-700 bg-gray-900/50'} hover:border-blue-500/50 transition-all duration-300`}>
+                <Card className={`p-8 h-full ${plan.popular ? 'border-white/40 bg-black/60' : 'border-white/20 bg-black/50'} backdrop-blur-sm hover:border-white/40 transition-all duration-300`}>
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                     <p className="text-gray-300 mb-4">{plan.description}</p>
@@ -401,7 +401,32 @@ const VoiceAI = () => {
         </motion.div>
       </section>
 
-      <StackedCircularFooter />
+      {/* SEO Content Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-8">
+            <h2 className="text-3xl font-bold mb-6 text-white">Why Choose SimplifyGenAI Voice Agents?</h2>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                SimplifyGenAI revolutionizes customer communication with advanced AI voice agents that deliver human-like conversations. 
+                Our cutting-edge technology combines natural language processing, machine learning, and voice synthesis to create 
+                seamless customer experiences that scale with your business.
+              </p>
+              <p>
+                Whether you're handling customer support, sales inquiries, or appointment scheduling, our voice AI agents work 
+                24/7 to ensure no call goes unanswered. With support for 50+ languages and enterprise-grade security, 
+                SimplifyGenAI is trusted by thousands of businesses worldwide.
+              </p>
+              <p>
+                Experience the future of customer communication with AI agents that learn, adapt, and improve with every interaction. 
+                From small startups to large enterprises, SimplifyGenAI provides scalable solutions that grow with your business needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
