@@ -1,4 +1,3 @@
-
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
 import VideoPlayer from "@/components/ui/video-player"
 import { PortfolioGrid } from "@/components/ui/portfolio-grid"
@@ -7,7 +6,7 @@ import Footer from "@/components/Footer"
 const demoFrames = [
   {
     id: 1,
-    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/981e483f71aa764b/Company%20Thing%20Exported.mp4",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -19,7 +18,7 @@ const demoFrames = [
   },
   {
     id: 2,
-    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/WebGL%20Exported%20(1).mp4",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -31,7 +30,7 @@ const demoFrames = [
   },
   {
     id: 3,
-    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Jitter%20Exported%20Poster.mp4",
     defaultPos: { x: 8, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -43,7 +42,7 @@ const demoFrames = [
   },
   {
     id: 4,
-    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Exported%20Web%20Video.mp4",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -55,7 +54,7 @@ const demoFrames = [
   },
   {
     id: 5,
-    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Logo%20Exported.mp4",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -67,7 +66,7 @@ const demoFrames = [
   },
   {
     id: 6,
-    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Animation%20Exported%20(4).mp4",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -79,7 +78,7 @@ const demoFrames = [
   },
   {
     id: 7,
-    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Illustration%20Exported%20(1).mp4",
     defaultPos: { x: 0, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -91,7 +90,7 @@ const demoFrames = [
   },
   {
     id: 8,
-    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Art%20Direction%20Exported.mp4",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -103,7 +102,7 @@ const demoFrames = [
   },
   {
     id: 9,
-    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479",
+    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Product%20Video.mp4",
     defaultPos: { x: 8, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -120,12 +119,12 @@ const CreativeAI = () => {
     <div className="bg-black">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
-        <iframe
-          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&controls=0&background=1"
+        <video
+          autoPlay
+          loop
+          muted
           className="absolute inset-0 w-full h-full object-cover"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          style={{ pointerEvents: 'none' }}
+          src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
