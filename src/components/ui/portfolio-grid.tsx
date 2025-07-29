@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Expand, X } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -19,17 +19,17 @@ interface VideoItem {
 const portfolioVideos: VideoItem[] = [
   {
     id: 1,
-    title: "Golden Core",
+    title: "Tantrasur",
     category: "Trailers",
-    thumbnail: "/images/golden-core-thumbnail.jpg",
+    thumbnail: "/images/trailer1.png",
     video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
-    description: "Golden Core Trailer"
+    description: "Trailer"
   },
   {
     id: 2,
     title: "Prada",
     category: "Commercials",
-    thumbnail: "/images/prada-thumbnail.jpg",
+    thumbnail: "/images/commercial1.jpg",
     video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Luxury fashion commercial with AI enhancement"
   },
@@ -37,7 +37,7 @@ const portfolioVideos: VideoItem[] = [
     id: 3,
     title: "Versace",
     category: "Commercials",
-    thumbnail: "/images/versace-thumbnail.jpg",
+    thumbnail: "/images/commercial2.png",
     video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "High-end fashion commercial with AI styling"
   },
@@ -45,7 +45,7 @@ const portfolioVideos: VideoItem[] = [
     id: 4,
     title: "Lavendar",
     category: "Concept",
-    thumbnail: "/images/lavendar-thumbnail.jpg",
+    thumbnail: "/images/concept1.png",
     video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Creative concept visualization with AI"
   },
@@ -53,7 +53,7 @@ const portfolioVideos: VideoItem[] = [
     id: 5,
     title: "Heinz",
     category: "Commercials",
-    thumbnail: "/images/heinz-thumbnail.jpg",
+    thumbnail: "/images/commercial3.png",
     video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Food commercial with AI-generated effects"
   },
@@ -61,7 +61,7 @@ const portfolioVideos: VideoItem[] = [
     id: 6,
     title: "Spark",
     category: "Animation",
-    thumbnail: "/images/spark-thumbnail.jpg",
+    thumbnail: "/images/animation1.png",
     video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Dynamic animation with AI enhancement"
   },
@@ -69,7 +69,7 @@ const portfolioVideos: VideoItem[] = [
     id: 7,
     title: "The Raboo List",
     category: "Trailers",
-    thumbnail: "/images/raboo-list-thumbnail.jpg",
+    thumbnail: "/images/trailer2.png",
     video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Movie trailer with AI-generated effects"
   },
@@ -77,7 +77,7 @@ const portfolioVideos: VideoItem[] = [
     id: 8,
     title: "Citroën",
     category: "Commercials",
-    thumbnail: "/images/citroen-thumbnail.jpg",
+    thumbnail: "/images/commercial4.png",
     video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Automotive commercial with AI scenes"
   },
@@ -85,7 +85,7 @@ const portfolioVideos: VideoItem[] = [
     id: 9,
     title: "C427",
     category: "Music Videos",
-    thumbnail: "/images/c427-thumbnail.jpg",
+    thumbnail: "/images/music1.png",
     video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "AI-enhanced music video with dynamic visuals"
   },
@@ -93,7 +93,7 @@ const portfolioVideos: VideoItem[] = [
     id: 10,
     title: "Marshmellow",
     category: "Concept",
-    thumbnail: "/images/marshmellow-thumbnail.jpg",
+    thumbnail: "/images/concept2.png",
     video: "https://player.vimeo.com/video/1063422609?h=3515b7ea51&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Creative concept with AI visualization"
   },
@@ -101,7 +101,7 @@ const portfolioVideos: VideoItem[] = [
     id: 11,
     title: "Cartier",
     category: "Commercials",
-    thumbnail: "/images/cartier-thumbnail.jpg",
+    thumbnail: "/images/commercial5.png",
     video: "https://player.vimeo.com/video/1063422688?h=cb1c43d9f3&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Luxury jewelry commercial with AI enhancement"
   },
@@ -109,7 +109,7 @@ const portfolioVideos: VideoItem[] = [
     id: 12,
     title: "Gucci",
     category: "Commercials",
-    thumbnail: "/images/gucci-thumbnail.jpg",
+    thumbnail: "/images/commercial6.jpg",
     video: "https://player.vimeo.com/video/1063422659?h=b52a6f7f5b&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "High-end fashion commercial with AI styling"
   },
@@ -117,7 +117,7 @@ const portfolioVideos: VideoItem[] = [
     id: 13,
     title: "Sleep Token",
     category: "Music Videos",
-    thumbnail: "/images/sleep-token-thumbnail.jpg",
+    thumbnail: "/images/music3.png",
     video: "https://player.vimeo.com/video/1063422533?h=2692ad82ea&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "AI-enhanced music video with atmospheric visuals"
   },
@@ -125,7 +125,7 @@ const portfolioVideos: VideoItem[] = [
     id: 14,
     title: "Opti Plaza",
     category: "Commercials",
-    thumbnail: "/images/opti-plaza-thumbnail.jpg",
+    thumbnail: "/images/commercial7.png",
     video: "https://player.vimeo.com/video/1063461945?h=95bb24498a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Commercial with AI-generated content"
   }
