@@ -1,171 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { 
   Phone, 
   Mic, 
   MessageCircle, 
   Clock, 
-  Globe, 
-  Zap, 
-  Shield, 
-  Users,
-  CheckCircle,
-  Star,
-  ArrowRight,
-  Play
+  Globe
 } from "lucide-react";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
+import SchemaCard from "@/components/ui/schema-card-with-animated-wave-visualizer";
 
 const VoiceAI = () => {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", { name, phoneNumber });
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                AI Voice
-                <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                  Agents
-                </span>
-              </h1>
-              <p className="text-xl text-gray-300 mt-6 max-w-2xl">
-                AI phone agents that sound human, speak any language, and work 24/7. 
-                Transform your customer interactions with intelligent voice technology.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Start Free Trial
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg"
-              >
-                Watch Demo
-              </Button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="grid grid-cols-3 gap-8 pt-8"
-            >
-              <div>
-                <div className="text-3xl font-bold text-blue-400">99.9%</div>
-                <div className="text-sm text-gray-400">Uptime</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-purple-400">50+</div>
-                <div className="text-sm text-gray-400">Languages</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-400">24/7</div>
-                <div className="text-sm text-gray-400">Available</div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Content - Phone Mockup */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative w-80 h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden">
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl"></div>
-              
-              {/* Screen */}
-              <div className="absolute inset-4 bg-gray-100 rounded-[2rem] overflow-hidden">
-                {/* Status Bar */}
-                <div className="flex justify-between items-center p-4 text-black text-sm font-medium">
-                  <span>9:41</span>
-                  <div className="flex items-center gap-1">
-                    <div className="flex gap-1">
-                      <div className="w-1 h-1 bg-black rounded-full"></div>
-                      <div className="w-1 h-1 bg-black rounded-full"></div>
-                      <div className="w-1 h-1 bg-black rounded-full"></div>
-                      <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                    </div>
-                    <div className="w-6 h-3 border border-black rounded-sm">
-                      <div className="w-4 h-1 bg-black rounded-sm m-0.5"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* App Content */}
-                <div className="px-6 py-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-black">Call SimplifyGenAI</h3>
-                      <p className="text-sm text-gray-600">AI will call you!</p>
-                    </div>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <Input
-                      type="text"
-                      placeholder="Enter Your Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="h-12 text-base border-gray-300 focus:border-blue-500"
-                    />
-                    <Input
-                      type="tel"
-                      placeholder="Enter Phone Number"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="h-12 text-base border-gray-300 focus:border-blue-500"
-                    />
-                    <Button
-                      type="submit"
-                      className="w-full h-12 bg-black text-white text-base font-medium hover:bg-gray-800"
-                    >
-                      Let's Talk
-                    </Button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section with Animated Wave Visualizer */}
+      <SchemaCard />
 
       {/* Features Section */}
       <section className="py-20 px-6">
