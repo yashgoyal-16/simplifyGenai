@@ -300,7 +300,7 @@ const VoiceAI: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button 
                 size="lg" 
-                className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-6 text-lg font-semibold"
+                className="bg-white text-black hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Start Free Trial
@@ -309,7 +309,7 @@ const VoiceAI: React.FC = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-6 text-lg font-semibold"
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-semibold"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Schedule Demo
