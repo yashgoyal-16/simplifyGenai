@@ -20,7 +20,7 @@ import {
   BarChart3,
   Settings
 } from "lucide-react";
-import Footer from "@/components/Footer";
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
 const VoiceAI = () => {
@@ -426,7 +426,7 @@ const VoiceAI = () => {
         </div>
       </section>
 
-      <Footer />
+      <StackedCircularFooter />
     </div>
   );
 };

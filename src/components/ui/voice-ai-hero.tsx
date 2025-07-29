@@ -113,10 +113,7 @@ export default function VoiceAIHero() {
                 </div>
                 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
-                  AI Voice Agents That
-                  <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                    Sound Human
-                  </span>
+                  AI Voice Agents That Sound Human
                 </h1>
                 
                 <p className="text-xl text-gray-300 leading-relaxed">
@@ -126,30 +123,6 @@ export default function VoiceAIHero() {
                 </p>
               </div>
 
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    <Users className="w-5 h-5 text-blue-400" />
-                    <span className="text-2xl font-bold text-white">5000+</span>
-                  </div>
-                  <div className="text-sm text-gray-400">Happy Customers</div>
-                </div>
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    <Clock className="w-5 h-5 text-green-400" />
-                    <span className="text-2xl font-bold text-white">99.9%</span>
-                  </div>
-                  <div className="text-sm text-gray-400">Uptime</div>
-                </div>
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    <Globe className="w-5 h-5 text-purple-400" />
-                    <span className="text-2xl font-bold text-white">50+</span>
-                  </div>
-                  <div className="text-sm text-gray-400">Languages</div>
-                </div>
-              </div>
 
               {/* Feature List */}
               <div className="space-y-3">
