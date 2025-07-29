@@ -20,7 +20,7 @@ import {
   BarChart3,
   Settings
 } from "lucide-react";
-import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
+import Footer from "@/components/Footer";
 import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
 const VoiceAI = () => {
@@ -121,26 +121,22 @@ const VoiceAI = () => {
               {
                 icon: Brain,
                 title: "Smart AI Learning",
-                description: "Continuously learns from every conversation to improve responses and accuracy.",
-                color: "text-purple-400"
+                description: "Continuously learns from every conversation to improve responses and accuracy."
               },
               {
                 icon: Headphones,
                 title: "Crystal Clear Audio",
-                description: "Advanced noise cancellation and audio processing for perfect call quality.",
-                color: "text-blue-400"
+                description: "Advanced noise cancellation and audio processing for perfect call quality."
               },
               {
                 icon: BarChart3,
                 title: "Real-time Analytics",
-                description: "Track performance metrics and conversation insights in real-time dashboards.",
-                color: "text-green-400"
+                description: "Track performance metrics and conversation insights in real-time dashboards."
               },
               {
                 icon: Shield,
                 title: "Enterprise Security",
-                description: "Bank-grade encryption and compliance with industry standards and regulations.",
-                color: "text-yellow-400"
+                description: "Bank-grade encryption and compliance with industry standards and regulations."
               }
             ].map((feature, index) => (
               <motion.div
@@ -426,7 +422,7 @@ const VoiceAI = () => {
         </div>
       </section>
 
-      <StackedCircularFooter />
+      <Footer />
     </div>
   );
 };
