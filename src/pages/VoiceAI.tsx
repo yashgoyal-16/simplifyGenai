@@ -173,6 +173,8 @@ const VoiceAI: React.FC = () => {
     }
   ];
 
+  console.log("VoiceAI component is rendering, button should be visible");
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
