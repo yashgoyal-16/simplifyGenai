@@ -177,8 +177,11 @@ const VoiceAI: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <VoiceAIHero />
+      {/* Hero Section - Temporarily commented for debugging */}
+      {/* <VoiceAIHero /> */}
+      <div className="h-20 bg-red-500 text-white flex items-center justify-center">
+        TEST - If you see this, the page is rendering properly
+      </div>
 
       {/* How It Works Section */}
       <section className="py-20 px-6 bg-gray-900/20">
