@@ -215,7 +215,7 @@ const CreativeAI = () => {
       `}</style>
 
       {/* Hero Section */}
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-screen w-full overflow-hidden -mt-20 sm:mt-0">
         <iframe
           ref={iframeRef}
           src={`https://player.vimeo.com/video/${isMobile ? '1105590036' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}

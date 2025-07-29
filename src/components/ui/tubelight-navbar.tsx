@@ -11,6 +11,7 @@ interface NavItem {
   name: string
   url: string
   icon: LucideIcon
+  special?: boolean
 }
 
 interface NavBarProps {
@@ -51,7 +52,7 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none px-4 sm:px-0",
+        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none px-6 sm:px-0",
         className,
       )}
     >
@@ -72,10 +73,12 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               onClick={() => handleNavClick(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors",
-                variant === "light"
-                  ? "text-black/80 hover:text-black"
-                  : "text-white/80 hover:text-white",
-                isActive && (variant === "light" ? "bg-black/20 text-black" : "bg-white/20 text-white"),
+                item.special 
+                  ? "bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent animate-pulse font-bold shadow-lg" 
+                  : variant === "light"
+                    ? "text-black/80 hover:text-black"
+                    : "text-white/80 hover:text-white",
+                isActive && !item.special && (variant === "light" ? "bg-black/20 text-black" : "bg-white/20 text-white"),
               )}
             >
               <span className="hidden md:inline">{item.name}</span>

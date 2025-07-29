@@ -9,8 +9,8 @@ export function NavBarDemo() {
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
     { name: 'About', url: '/about', icon: User },
+    { name: 'Creative AI', url: '/creative-ai', icon: Zap, special: true },
     { name: 'Automation', url: '/projects', icon: Briefcase },
-    { name: 'Creative AI', url: '/creative-ai', icon: Zap },
     { name: 'Voice AI', url: '/voice-ai', icon: Phone }
   ]
 
