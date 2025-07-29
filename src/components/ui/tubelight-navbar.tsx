@@ -74,7 +74,7 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors",
                 item.special 
-                  ? "bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent animate-pulse font-bold shadow-lg" 
+                  ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
                   : variant === "light"
                     ? "text-black/80 hover:text-black"
                     : "text-white/80 hover:text-white",
