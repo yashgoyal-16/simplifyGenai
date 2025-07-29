@@ -1,3 +1,4 @@
+
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
 import VideoPlayer from "@/components/ui/video-player"
 import { PortfolioGrid } from "@/components/ui/portfolio-grid"
@@ -9,7 +10,7 @@ import { useState, useRef } from "react"
 const demoFrames = [
   {
     id: 1,
-    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1064203189?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -21,7 +22,7 @@ const demoFrames = [
   },
   {
     id: 2,
-    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422698?h=7c3c708deb&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -33,7 +34,7 @@ const demoFrames = [
   },
   {
     id: 3,
-    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422717?h=73bc29f156&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 8, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -45,7 +46,7 @@ const demoFrames = [
   },
   {
     id: 4,
-    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422651?h=74c0c58fe4&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -57,7 +58,7 @@ const demoFrames = [
   },
   {
     id: 5,
-    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422742?h=dc0e0c7394&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -69,7 +70,7 @@ const demoFrames = [
   },
   {
     id: 6,
-    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -81,7 +82,7 @@ const demoFrames = [
   },
   {
     id: 7,
-    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 0, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -93,7 +94,7 @@ const demoFrames = [
   },
   {
     id: 8,
-    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -105,7 +106,7 @@ const demoFrames = [
   },
   {
     id: 9,
-    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479",
     defaultPos: { x: 8, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -132,13 +133,16 @@ const CreativeAI = () => {
     <div className="bg-black">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
-        <iframe
-          src="https://player.vimeo.com/video/1105305444?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted={isMuted}
           className="absolute inset-0 w-full h-full object-cover"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
+          playsInline
+        >
+          <source src="https://player.vimeo.com/external/1105305444.hd.mp4" type="video/mp4" />
+        </video>
         
         {/* Audio Toggle Button */}
         <Button
