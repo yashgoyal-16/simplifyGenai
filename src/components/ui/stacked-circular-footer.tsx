@@ -9,7 +9,7 @@ function StackedCircularFooter() {
         <div className="flex flex-col items-center">
           <div className="mb-12">
             <h2 className="text-6xl md:text-8xl font-bold text-white text-center">
-              SimplifygenAI
+              SIMPLIFYGENAI
             </h2>
           </div>
           <nav className="mb-8 flex flex-wrap justify-center gap-6">
