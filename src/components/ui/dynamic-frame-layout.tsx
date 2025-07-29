@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -46,21 +45,14 @@ function FrameComponent({
   showFrame,
   isHovered,
 }: FrameComponentProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (iframeRef.current) {
-      const iframe = iframeRef.current
-      const currentSrc = iframe.src
-      
+    if (videoRef.current) {
       if (isHovered) {
-        // Enable autoplay on hover
-        if (!currentSrc.includes('autoplay=1')) {
-          iframe.src = currentSrc + '&autoplay=1'
-        }
+        videoRef.current.play()
       } else {
-        // Disable autoplay when not hovering
-        iframe.src = currentSrc.replace('&autoplay=1', '')
+        videoRef.current.pause()
       }
     }
   }, [isHovered])
@@ -95,13 +87,14 @@ function FrameComponent({
               transition: "transform 0.3s ease-in-out",
             }}
           >
-            <iframe
-              ref={iframeRef}
+            <video
+              ref={videoRef}
               src={video}
               className="w-full h-full object-cover"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
+              loop
+              muted
+              playsInline
+              preload="metadata"
               style={{
                 pointerEvents: 'none'
               }}
