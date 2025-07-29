@@ -145,11 +145,15 @@ const CreativeAI = () => {
       <div className="relative h-screen w-full overflow-hidden">
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
+          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0"
           className="absolute inset-0 w-full h-full object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
+          style={{
+            pointerEvents: 'none',
+            filter: 'none'
+          }}
         />
         
         {/* Audio Toggle Button */}
