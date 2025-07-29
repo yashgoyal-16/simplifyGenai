@@ -88,7 +88,7 @@ function StackedCircularFooter({ variant = "default" }: StackedCircularFooterPro
             </Button>
           </div>
           <div>
-            <h2 className={`text-6xl md:text-8xl font-bold text-center ${
+            <h2 className={`text-4xl sm:text-6xl md:text-8xl font-bold text-center ${
               variant === "light" ? "text-black" : "text-white"
             }`}>
               SIMPLIFYGENAI
