@@ -9,7 +9,6 @@ import { NavBarDemo } from "./components/NavBarDemo";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Resume from "./pages/Resume";
 import CreativeAI from "./pages/CreativeAI";
 import VoiceAI from "./pages/VoiceAI";
 import NotFound from "./pages/NotFound";
@@ -100,7 +99,6 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/creative-ai" element={<CreativeAI />} />
             <Route path="/voice-ai" element={<VoiceAI />} />
-            <Route path="/resume" element={<Resume />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
