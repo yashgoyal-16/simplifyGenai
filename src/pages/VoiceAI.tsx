@@ -9,13 +9,13 @@ import {
   Globe
 } from "lucide-react";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
-import SchemaCard from "@/components/ui/schema-card-with-animated-wave-visualizer";
+import VoiceAIHero from "@/components/ui/voice-ai-hero";
 
 const VoiceAI = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section with Animated Wave Visualizer */}
-      <SchemaCard />
+      <VoiceAIHero />
 
       {/* Features Section */}
       <section className="py-20 px-6">
