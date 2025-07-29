@@ -1,3 +1,4 @@
+
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
 import VideoPlayer from "@/components/ui/video-player"
 import { PortfolioGrid } from "@/components/ui/portfolio-grid"
@@ -119,11 +120,21 @@ const demoFrames = [
 
 const CreativeAI = () => {
   const [isMuted, setIsMuted] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const toggleAudio = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
+    if (iframeRef.current) {
+      const iframe = iframeRef.current
+      const currentSrc = iframe.src
+      
+      if (isMuted) {
+        // Enable audio by removing muted=1
+        iframe.src = currentSrc.replace('muted=1', 'muted=0')
+      } else {
+        // Mute audio by adding muted=1
+        iframe.src = currentSrc.replace('muted=0', 'muted=1')
+      }
+      
       setIsMuted(!isMuted)
     }
   }
@@ -133,8 +144,9 @@ const CreativeAI = () => {
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         <iframe
-          src="https://player.vimeo.com/video/1105305444?h=1f0c862566&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
-          className="absolute inset-0 w-full h-full object-cover"
+          ref={iframeRef}
+          src="https://player.vimeo.com/video/1105305444?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
+          className="absolute inset-0 w-full h-full scale-150 -translate-x-12 -translate-y-12"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
