@@ -11,7 +11,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 const demoFrames = [
   {
     id: 1,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//AI%20Avatars.mp4",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -23,7 +23,7 @@ const demoFrames = [
   },
   {
     id: 2,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//AI%20brand.mp4",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -35,7 +35,7 @@ const demoFrames = [
   },
   {
     id: 3,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//AI%20Influncer.mp4",
     defaultPos: { x: 8, y: 0, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -47,7 +47,7 @@ const demoFrames = [
   },
   {
     id: 4,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//Ai%20Movie%20Trailer.mp4",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -59,7 +59,7 @@ const demoFrames = [
   },
   {
     id: 5,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//B2B%20Concepts.mp4",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -71,7 +71,7 @@ const demoFrames = [
   },
   {
     id: 6,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//B2B.mp4",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -83,7 +83,7 @@ const demoFrames = [
   },
   {
     id: 7,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//Concepts.mp4",
     defaultPos: { x: 0, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
@@ -95,20 +95,8 @@ const demoFrames = [
   },
   {
     id: 8,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//D2C.mp4",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
-    corner: "",
-    edgeHorizontal: "",
-    edgeVertical: "",
-    mediaSize: 1,
-    borderThickness: 0,
-    borderSize: 100,
-    isHovered: false,
-  },
-  {
-    id: 9,
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-    defaultPos: { x: 8, y: 8, w: 4, h: 4 },
     corner: "",
     edgeHorizontal: "",
     edgeVertical: "",
