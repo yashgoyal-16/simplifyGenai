@@ -218,7 +218,7 @@ const CreativeAI = () => {
       <div className="relative h-screen w-full overflow-hidden -mt-20 sm:mt-0">
         <iframe
           ref={iframeRef}
-          src={`https://player.vimeo.com/video/${isMobile ? '1105590036' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
+          src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
           className="absolute inset-0 w-full h-full object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
