@@ -12,113 +12,117 @@ declare global {
   }
 }
 
-// Custom hook for VAPI control using script tag approach
+// Custom hook for VAPI control
 function useVapi() {
   const [isVapiActive, setIsVapiActive] = useState(false);
   const [vapiLoaded, setVapiLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Initialize VAPI script
-    const assistant = "a15933e8-0d8f-4a48-ba1f-a8536d650219";
-    const apiKey = "6a212e12-6fec-49ff-88dd-893d0336d991";
-    const buttonConfig = {
-      position: "bottom-right",
-      offset: "40px",
-      width: "50px", 
-      height: "50px",
-      idle: {
-        color: {
-          50: "#eff6ff",
-          100: "#dbeafe", 
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554"
-        }
-      },
-      loading: {
-        color: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe", 
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554"
-        }
-      },
-      active: {
-        color: {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          300: "#86efac", 
-          400: "#4ade80",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
-          950: "#052e16"
-        }
-      }
-    };
-
-    if (!window.vapiInstance) {
-      const script = document.createElement('script');
-      script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-      script.defer = true;
-      script.async = true;
-      script.onload = function () {
-        if (window.vapiSDK) {
-          window.vapiInstance = window.vapiSDK.run({
-            apiKey: apiKey,
-            assistant: assistant,
-            config: buttonConfig,
-          });
-          setVapiLoaded(true);
-        }
-      };
-      document.head.appendChild(script);
-    } else {
+    // Check if VAPI is already loaded
+    if (window.vapiInstance) {
       setVapiLoaded(true);
-    }
-  }, []);
-
-  const toggleVapi = () => {
-    if (!vapiLoaded || !window.vapiInstance) {
-      console.log('VAPI not loaded yet');
       return;
     }
 
-    if (isVapiActive) {
-      // End call
-      window.vapiInstance.stop();
-      setIsVapiActive(false);
-    } else {
-      // Start call
-      window.vapiInstance.start();
-      setIsVapiActive(true);
+    const assistant = "a15933e8-0d8f-4a48-ba1f-a8536d650219";
+    const apiKey = "6a212e12-6fec-49ff-88dd-893d0336d991";
+    
+    // Create script element
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    script.defer = true;
+    script.async = true;
+    
+    script.onload = function () {
+      console.log('VAPI script loaded');
+      if (window.vapiSDK) {
+        try {
+          window.vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey,
+            assistant: assistant,
+            config: {
+              position: "bottom-right",
+              offset: "40px",
+              width: "50px",
+              height: "50px"
+            }
+          });
+          console.log('VAPI instance created:', window.vapiInstance);
+          setVapiLoaded(true);
+        } catch (err) {
+          console.error('Error creating VAPI instance:', err);
+          setError('Failed to initialize voice AI');
+        }
+      } else {
+        console.error('VAPI SDK not found');
+        setError('Voice AI SDK not available');
+      }
+    };
+
+    script.onerror = function() {
+      console.error('Failed to load VAPI script');
+      setError('Failed to load voice AI script');
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup
+      const existingScript = document.querySelector('script[src*="VapiAI"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
+  const toggleVapi = async () => {
+    if (!vapiLoaded || !window.vapiInstance) {
+      console.log('VAPI not loaded yet, loaded:', vapiLoaded, 'instance:', window.vapiInstance);
+      setError('Voice AI not ready yet');
+      return;
+    }
+
+    try {
+      if (isVapiActive) {
+        console.log('Stopping VAPI call');
+        // Try different possible method names for stopping
+        if (typeof window.vapiInstance.stop === 'function') {
+          await window.vapiInstance.stop();
+        } else if (typeof window.vapiInstance.endCall === 'function') {
+          await window.vapiInstance.endCall();
+        } else if (typeof window.vapiInstance.end === 'function') {
+          await window.vapiInstance.end();
+        }
+        setIsVapiActive(false);
+        setError(null);
+      } else {
+        console.log('Starting VAPI call');
+        // Try different possible method names for starting
+        if (typeof window.vapiInstance.start === 'function') {
+          await window.vapiInstance.start();
+        } else if (typeof window.vapiInstance.startCall === 'function') {
+          await window.vapiInstance.startCall();
+        } else if (typeof window.vapiInstance.call === 'function') {
+          await window.vapiInstance.call();
+        }
+        setIsVapiActive(true);
+        setError(null);
+      }
+    } catch (err) {
+      console.error('Error toggling VAPI:', err);
+      setError('Failed to ' + (isVapiActive ? 'stop' : 'start') + ' voice AI');
     }
   };
 
-  return { isVapiActive, toggleVapi, vapiLoaded };
+  return { isVapiActive, toggleVapi, vapiLoaded, error };
 }
 
 export default function VoiceAIHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const { isVapiActive, toggleVapi, vapiLoaded } = useVapi();
+  const { isVapiActive, toggleVapi, vapiLoaded, error } = useVapi();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -355,7 +359,9 @@ export default function VoiceAIHero() {
                     )}
                   </div>
                   <p className="text-white/50 text-xs mt-2">
-                    {!vapiLoaded ? "Loading Voice AI..." : 
+                    {error ? (
+                      <span className="text-red-400">{error}</span>
+                    ) : !vapiLoaded ? "Loading Voice AI..." : 
                      isVapiActive ? "Voice AI Active - Click to stop" : "Click to start Voice AI"}
                   </p>
                 </div>
