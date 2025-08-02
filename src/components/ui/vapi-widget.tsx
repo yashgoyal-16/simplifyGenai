@@ -16,55 +16,86 @@ const VapiWidget: React.FC<VapiWidgetProps> = ({
   const [vapi, setVapi] = useState<Vapi | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
 
   useEffect(() => {
-    const vapiInstance = new Vapi(apiKey);
-    setVapi(vapiInstance);
+    try {
+      const vapiInstance = new Vapi(apiKey);
+      setVapi(vapiInstance);
 
-    // Event listeners
-    vapiInstance.on('call-start', () => {
-      console.log('Call started');
-      setIsConnected(true);
-    });
+      // Event listeners
+      vapiInstance.on('call-start', () => {
+        console.log('Call started');
+        setIsConnected(true);
+        setIsLoading(false);
+        setError(null);
+      });
 
-    vapiInstance.on('call-end', () => {
-      console.log('Call ended');
-      setIsConnected(false);
-      setIsSpeaking(false);
-    });
+      vapiInstance.on('call-end', () => {
+        console.log('Call ended');
+        setIsConnected(false);
+        setIsSpeaking(false);
+        setIsLoading(false);
+      });
 
-    vapiInstance.on('speech-start', () => {
-      console.log('Assistant started speaking');
-      setIsSpeaking(true);
-    });
+      vapiInstance.on('speech-start', () => {
+        console.log('Assistant started speaking');
+        setIsSpeaking(true);
+      });
 
-    vapiInstance.on('speech-end', () => {
-      console.log('Assistant stopped speaking');
-      setIsSpeaking(false);
-    });
+      vapiInstance.on('speech-end', () => {
+        console.log('Assistant stopped speaking');
+        setIsSpeaking(false);
+      });
 
-    vapiInstance.on('message', (message) => {
-      if (message.type === 'transcript') {
-        setTranscript(prev => [...prev, {
-          role: message.role,
-          text: message.transcript
-        }]);
-      }
-    });
+      vapiInstance.on('message', (message) => {
+        console.log('Received message:', message);
+        if (message.type === 'transcript') {
+          setTranscript(prev => [...prev, {
+            role: message.role,
+            text: message.transcript
+          }]);
+        }
+      });
 
-    vapiInstance.on('error', (error) => {
-      console.error('Vapi error:', error);
-    });
+      vapiInstance.on('error', (error) => {
+        console.error('Vapi error:', error);
+        setError(error.message || 'An error occurred');
+        setIsLoading(false);
+        setIsConnected(false);
+      });
 
-    return () => {
-      vapiInstance?.stop();
-    };
+      return () => {
+        vapiInstance?.stop();
+      };
+    } catch (err) {
+      console.error('Failed to initialize Vapi:', err);
+      setError('Failed to initialize voice assistant');
+    }
   }, [apiKey]);
 
-  const startCall = () => {
-    if (vapi) {
-      vapi.start(assistantId);
+  const startCall = async () => {
+    if (!vapi) {
+      setError('Voice assistant not initialized');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      // Request microphone permission first
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach(track => track.stop()); // Stop the stream as VAPI will handle it
+      
+      console.log('Starting call with assistant:', assistantId);
+      await vapi.start(assistantId);
+    } catch (err: any) {
+      console.error('Failed to start call:', err);
+      setError(err.message || 'Failed to start voice call');
+      setIsLoading(false);
     }
   };
 
@@ -76,13 +107,31 @@ const VapiWidget: React.FC<VapiWidgetProps> = ({
 
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
+      {error && (
+        <div className="mb-4 bg-red-500 text-white px-4 py-2 rounded-lg text-sm max-w-80">
+          {error}
+        </div>
+      )}
+      
       {!isConnected ? (
         <button
           onClick={startCall}
-          className="group bg-white text-black hover:bg-gray-100 border-none rounded-full px-6 py-4 text-base font-semibold cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1 flex items-center gap-3"
+          disabled={isLoading}
+          className={`group bg-white text-black hover:bg-gray-100 border-none rounded-full px-6 py-4 text-base font-semibold cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1 flex items-center gap-3 ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
-          <Mic className="w-5 h-5" />
-          Talk to AI Assistant
+          {isLoading ? (
+            <>
+              <div className="w-5 h-5 border-2 border-gray-300 border-t-black rounded-full animate-spin"></div>
+              Connecting...
+            </>
+          ) : (
+            <>
+              <Mic className="w-5 h-5" />
+              Talk to AI Assistant
+            </>
+          )}
         </button>
       ) : (
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 w-80 shadow-2xl border border-white/20">
