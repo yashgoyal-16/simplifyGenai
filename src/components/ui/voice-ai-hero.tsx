@@ -4,47 +4,121 @@ import { Input } from '@/components/ui/input';
 import { Phone, Play, CheckCircle } from 'lucide-react';
 import Orb from './orb';
 
-// Declare vapi-widget types for TypeScript
+// Declare VAPI types for TypeScript
 declare global {
   interface Window {
-    vapiWidget?: any;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'vapi-widget': any;
-    }
+    vapiSDK?: any;
+    vapiInstance?: any;
   }
 }
 
-// Custom hook for VAPI widget control
-function useVapiWidget() {
+// Custom hook for VAPI control using script tag approach
+function useVapi() {
   const [isVapiActive, setIsVapiActive] = useState(false);
+  const [vapiLoaded, setVapiLoaded] = useState(false);
+
+  useEffect(() => {
+    // Initialize VAPI script
+    const assistant = "a15933e8-0d8f-4a48-ba1f-a8536d650219";
+    const apiKey = "6a212e12-6fec-49ff-88dd-893d0336d991";
+    const buttonConfig = {
+      position: "bottom-right",
+      offset: "40px",
+      width: "50px", 
+      height: "50px",
+      idle: {
+        color: {
+          50: "#eff6ff",
+          100: "#dbeafe", 
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+          700: "#1d4ed8",
+          800: "#1e40af",
+          900: "#1e3a8a",
+          950: "#172554"
+        }
+      },
+      loading: {
+        color: {
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe", 
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+          700: "#1d4ed8",
+          800: "#1e40af",
+          900: "#1e3a8a",
+          950: "#172554"
+        }
+      },
+      active: {
+        color: {
+          50: "#f0fdf4",
+          100: "#dcfce7",
+          200: "#bbf7d0",
+          300: "#86efac", 
+          400: "#4ade80",
+          500: "#22c55e",
+          600: "#16a34a",
+          700: "#15803d",
+          800: "#166534",
+          900: "#14532d",
+          950: "#052e16"
+        }
+      }
+    };
+
+    if (!window.vapiInstance) {
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+      script.defer = true;
+      script.async = true;
+      script.onload = function () {
+        if (window.vapiSDK) {
+          window.vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey,
+            assistant: assistant,
+            config: buttonConfig,
+          });
+          setVapiLoaded(true);
+        }
+      };
+      document.head.appendChild(script);
+    } else {
+      setVapiLoaded(true);
+    }
+  }, []);
 
   const toggleVapi = () => {
-    const widget = document.querySelector('vapi-widget') as any;
-    if (widget) {
-      if (isVapiActive) {
-        // End call
-        widget.style.display = 'none';
-        widget.endCall?.();
-        setIsVapiActive(false);
-      } else {
-        // Start call
-        widget.style.display = 'block';
-        widget.startCall?.();
-        setIsVapiActive(true);
-      }
+    if (!vapiLoaded || !window.vapiInstance) {
+      console.log('VAPI not loaded yet');
+      return;
+    }
+
+    if (isVapiActive) {
+      // End call
+      window.vapiInstance.stop();
+      setIsVapiActive(false);
+    } else {
+      // Start call
+      window.vapiInstance.start();
+      setIsVapiActive(true);
     }
   };
 
-  return { isVapiActive, toggleVapi };
+  return { isVapiActive, toggleVapi, vapiLoaded };
 }
 
 export default function VoiceAIHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const { isVapiActive, toggleVapi } = useVapiWidget();
+  const { isVapiActive, toggleVapi, vapiLoaded } = useVapi();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -281,7 +355,8 @@ export default function VoiceAIHero() {
                     )}
                   </div>
                   <p className="text-white/50 text-xs mt-2">
-                    {isVapiActive ? "Voice AI Active - Click to stop" : "Click to start Voice AI"}
+                    {!vapiLoaded ? "Loading Voice AI..." : 
+                     isVapiActive ? "Voice AI Active - Click to stop" : "Click to start Voice AI"}
                   </p>
                 </div>
               </div>
@@ -290,32 +365,6 @@ export default function VoiceAIHero() {
         </div>
       </div>
 
-      {/* Hidden VAPI Widget */}
-      <vapi-widget
-        style={{ display: 'none' }}
-        public-key="6a212e12-6fec-49ff-88dd-893d0336d991"
-        assistant-id="a15933e8-0d8f-4a48-ba1f-a8536d650219"
-        mode="voice"
-        theme="dark"
-        base-bg-color="#000000"
-        accent-color="#14B8A6"
-        cta-button-color="#000000"
-        cta-button-text-color="#ffffff"
-        border-radius="large"
-        size="tiny"
-        position="bottom-right"
-        title=""
-        start-button-text="Start"
-        end-button-text="End Call"
-        cta-title="Want to know about SimplifyGenAI?"
-        chat-first-message="Hey, How can I help you today?"
-        chat-placeholder="Type your message..."
-        voice-show-transcript="true"
-        consent-required="true"
-        consent-title=""
-        consent-content=""
-        consent-storage-key="vapi_widget_consent"
-      />
     </section>
   );
 }
