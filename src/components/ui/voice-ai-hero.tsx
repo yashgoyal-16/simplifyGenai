@@ -4,10 +4,47 @@ import { Input } from '@/components/ui/input';
 import { Phone, Play, CheckCircle } from 'lucide-react';
 import Orb from './orb';
 
+// Declare vapi-widget types for TypeScript
+declare global {
+  interface Window {
+    vapiWidget?: any;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'vapi-widget': any;
+    }
+  }
+}
+
+// Custom hook for VAPI widget control
+function useVapiWidget() {
+  const [isVapiActive, setIsVapiActive] = useState(false);
+
+  const toggleVapi = () => {
+    const widget = document.querySelector('vapi-widget') as any;
+    if (widget) {
+      if (isVapiActive) {
+        // End call
+        widget.style.display = 'none';
+        widget.endCall?.();
+        setIsVapiActive(false);
+      } else {
+        // Start call
+        widget.style.display = 'block';
+        widget.startCall?.();
+        setIsVapiActive(true);
+      }
+    }
+  };
+
+  return { isVapiActive, toggleVapi };
+}
+
 export default function VoiceAIHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const { isVapiActive, toggleVapi } = useVapiWidget();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -228,17 +265,57 @@ export default function VoiceAIHero() {
                 {/* Voice AI Orb - Test Section */}
                 <div className="mt-8 text-center">
                   <p className="text-white/70 text-sm mb-4">Or test the Voice AI agent on web</p>
-                  <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center">
+                  <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center relative">
                     <div className="w-full h-full">
                       <Orb />
                     </div>
+                    {/* Invisible button covering the entire orb */}
+                    <button
+                      onClick={toggleVapi}
+                      className="absolute inset-0 w-full h-full bg-transparent cursor-pointer z-10"
+                      aria-label={isVapiActive ? "Stop Voice AI" : "Start Voice AI"}
+                    />
+                    {/* Status indicator */}
+                    {isVapiActive && (
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse border-2 border-black" />
+                    )}
                   </div>
+                  <p className="text-white/50 text-xs mt-2">
+                    {isVapiActive ? "Voice AI Active - Click to stop" : "Click to start Voice AI"}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Hidden VAPI Widget */}
+      <vapi-widget
+        style={{ display: 'none' }}
+        public-key="6a212e12-6fec-49ff-88dd-893d0336d991"
+        assistant-id="a15933e8-0d8f-4a48-ba1f-a8536d650219"
+        mode="voice"
+        theme="dark"
+        base-bg-color="#000000"
+        accent-color="#14B8A6"
+        cta-button-color="#000000"
+        cta-button-text-color="#ffffff"
+        border-radius="large"
+        size="tiny"
+        position="bottom-right"
+        title=""
+        start-button-text="Start"
+        end-button-text="End Call"
+        cta-title="Want to know about SimplifyGenAI?"
+        chat-first-message="Hey, How can I help you today?"
+        chat-placeholder="Type your message..."
+        voice-show-transcript="true"
+        consent-required="true"
+        consent-title=""
+        consent-content=""
+        consent-storage-key="vapi_widget_consent"
+      />
     </section>
   );
 }
