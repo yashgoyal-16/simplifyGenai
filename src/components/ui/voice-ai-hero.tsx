@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Phone, Play, CheckCircle } from 'lucide-react';
 import Orb from './orb';
+import VapiWidget from './vapi-widget';
 
 export default function VoiceAIHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -239,6 +240,12 @@ export default function VoiceAIHero() {
           </div>
         </div>
       </div>
+      
+      {/* VAPI Voice Widget */}
+      <VapiWidget 
+        apiKey="6a212e12-6fec-49ff-88dd-893d0336d991"
+        assistantId="a15933e8-0d8f-4a48-ba1f-a8536d650219"
+      />
     </section>
   );
 }
