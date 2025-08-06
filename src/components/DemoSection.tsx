@@ -6,7 +6,7 @@ const services = [
     title: "Creative AI",
     description: "Cutting-edge creative AI solutions including image generation and content creation.",
     image: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/1.svg",
-    avatar: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/4.jpg",
+    avatar: "https://drive.google.com/file/d/1cVT2-H70Wyioue6RrdoFav559qh9nl2E/view?usp=sharing",
     cta: "Explore",
     gradient: "from-purple-500 via-pink-500 to-blue-500"
   },
