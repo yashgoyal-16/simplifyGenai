@@ -55,30 +55,35 @@ export default function DemoSection() {
               <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-10 blur-2xl animate-pulse rounded-xl`} 
                    style={{ animationDelay: `${index * 500}ms` }}></div>
               
-              <LiquidCard className="w-full p-2 relative z-10">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="h-[420px] w-full rounded-sm object-cover"
-                  />
-                  <img
-                    src={service.avatar}
-                    alt={service.title}
-                    className="absolute top-36 left-1/2 z-10 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-md border-4 object-cover shadow-xl transition-all duration-500 hover:scale-105"
-                  />
-                   
-                  <div className="absolute bottom-0 left-0 w-full rounded-b-md bg-gradient-to-t from-black/80 to-transparent p-8">
-                    <div>
-                      <h1 className="text-2xl text-white">{service.title}</h1>
-                      <p className="text-sm text-white/80">
-                        {service.description}
-                      </p>
-                      <Button className="mt-3">{service.cta}</Button>
-                    </div>
-                  </div>
-                </div>
-              </LiquidCard>
+           <LiquidCard className="w-full p-2 relative z-10">
+  <div className="relative overflow-hidden">
+    <img
+      src={service.image}
+      alt={service.title}
+      className="h-[420px] w-full rounded-sm object-cover"
+    />
+
+    {/* Centered avatar */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <img
+        src={service.avatar}
+        alt={service.title}
+        className="h-[200px] w-[200px] rounded-md border-4 object-cover shadow-xl transition-all duration-500 hover:scale-105"
+      />
+    </div>
+
+    <div className="absolute bottom-0 left-0 w-full rounded-b-md bg-gradient-to-t from-black/80 to-transparent p-8">
+      <div>
+        <h1 className="text-2xl text-white">{service.title}</h1>
+        <p className="text-sm text-white/80">
+          {service.description}
+        </p>
+        <Button className="mt-3">{service.cta}</Button>
+      </div>
+    </div>
+  </div>
+</LiquidCard>
+
             </div>
           ))}
         </div>
