@@ -23,14 +23,17 @@ export function SplineSceneBasic() {
   };
 
   const handleClick = () => {
-    console.log('Clicked, current callState:', callState, 'isActive:', isActive);
-    if (isActive) {
-      console.log('Ending call...');
-      endCall();
-    } else if (callState === 'idle') {
+    console.log('Clicked scene, current callState:', callState, 'isActive:', isActive);
+    if (callState === 'idle') {
       console.log('Starting call on click...');
       startCall();
     }
+  };
+
+  const handleEndCall = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering scene click
+    console.log('End call button clicked');
+    endCall();
   };
 
   return (
@@ -50,7 +53,7 @@ export function SplineSceneBasic() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span>Voice Active</span>
                 <button 
-                  onClick={handleClick}
+                  onClick={handleEndCall}
                   className="ml-2 text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
                 >
                   End Call
