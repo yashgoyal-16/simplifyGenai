@@ -5,7 +5,7 @@ import { useRetellAI } from "@/hooks/useRetellAI";
 import { useState } from "react";
  
 export function SplineSceneBasic() {
-  const { callState, startCall, endCall, isActive, isConnecting, error } = useRetellAI('agent_18f1d15e1e24f0d85d56ff446a');
+  const { callState, startCall, endCall, isActive, isConnecting, error } = useRetellAI('agent_40993a6c2c34df3cabba81e8bc');
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
