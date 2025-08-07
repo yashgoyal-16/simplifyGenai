@@ -22,7 +22,8 @@ export const useRetellAI = (agentId: string) => {
       });
 
       if (supabaseError) {
-        throw new Error(`Supabase error: ${supabaseError.message}`);
+        console.error('Supabase function error:', supabaseError);
+        throw new Error(`Edge function error: ${supabaseError.message}. Make sure the create-retell-call function is deployed.`);
       }
 
       if (!data?.call_id || !data?.access_token) {
