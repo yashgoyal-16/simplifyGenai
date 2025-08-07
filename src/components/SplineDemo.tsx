@@ -9,20 +9,26 @@ export function SplineSceneBasic() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
+    console.log('Mouse entered, current callState:', callState);
     setIsHovered(true);
     if (callState === 'idle') {
+      console.log('Starting call on hover...');
       startCall();
     }
   };
 
   const handleMouseLeave = () => {
+    console.log('Mouse left');
     setIsHovered(false);
   };
 
   const handleClick = () => {
+    console.log('Clicked, current callState:', callState, 'isActive:', isActive);
     if (isActive) {
+      console.log('Ending call...');
       endCall();
     } else if (callState === 'idle') {
+      console.log('Starting call on click...');
       startCall();
     }
   };

@@ -11,6 +11,7 @@ export const useRetellAI = (agentId: string) => {
 
   const startCall = useCallback(async () => {
     try {
+      console.log('useRetellAI: Starting call process...');
       setCallState('connecting');
       setError(null);
 
