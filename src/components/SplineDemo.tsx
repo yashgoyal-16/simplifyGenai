@@ -11,10 +11,6 @@ export function SplineSceneBasic() {
   const handleMouseEnter = () => {
     console.log('Mouse entered, current callState:', callState);
     setIsHovered(true);
-    if (callState === 'idle') {
-      console.log('Starting call on hover...');
-      startCall();
-    }
   };
 
   const handleMouseLeave = () => {
@@ -71,11 +67,11 @@ export function SplineSceneBasic() {
         </div>
       )}
 
-      {/* Hover Instruction */}
+      {/* Click Instruction */}
       {callState === 'idle' && isHovered && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 bg-background/80 backdrop-blur-sm border rounded-lg px-4 py-2">
           <div className="text-sm text-center">
-            🎤 Hover to start voice conversation
+            🎤 Click to start voice conversation
           </div>
         </div>
       )}
