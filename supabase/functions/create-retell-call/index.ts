@@ -22,7 +22,7 @@ serve(async (req) => {
     
     console.log('Creating web call for agent:', agentId);
 
-    const response = await fetch('https://api.retellai.com/create-web-call', {
+    const response = await fetch('https://api.retellai.com/v2/create-web-call', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${retellApiKey}`,
