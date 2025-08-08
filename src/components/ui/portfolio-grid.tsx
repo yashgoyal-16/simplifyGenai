@@ -42,6 +42,15 @@ const portfolioVideos: VideoItem[] = [
     description: "High-end fashion commercial with AI styling"
   },
   {
+    id: 3,
+    title: "Hero Homes",
+    category: "Commercials",
+    thumbnail: "/simplegenai/thumbnail.jpg",
+    video: "https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website/Hero%20Homes%20(happy%20Now%20instrumental).mp4",
+    description: "High-end Homes commercial with AI styling"
+  },
+  
+  {
     id: 4,
     title: "Lavendar",
     category: "Concept",
@@ -58,12 +67,60 @@ const portfolioVideos: VideoItem[] = [
     description: "Food commercial with AI-generated effects"
   },
   {
+    id: 5,
+    title: "Simply Lemonade",
+    category: "Commercials",
+    thumbnail: "/simplegenai/01.mp4.00_00_05_12.Still001 copy.jpg",
+    video: "https://player.vimeo.com/video/1108367262?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+    description: "Food commercial with AI-generated effects"
+  },
+  // {
+  //   id: 5,
+  //   title: "Scone",
+  //   category: "Commercials",
+  //   thumbnail: "/images/commercial3.png",
+  //   video: "https://player.vimeo.com/video/1108367045?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  //   description: "Food commercial with AI-generated effects"
+  // },
+  // {
+  //   id: 5,
+  //   title: "Gates Foundation",
+  //   category: "Commercials",
+  //   thumbnail: "/images/commercial3.png",
+  //   video: "https://player.vimeo.com/video/1108367002?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  //   description: "Food commercial with AI-generated effects"
+  // },
+  {
     id: 6,
     title: "Spark",
     category: "Animation",
     thumbnail: "/images/animation1.png",
     video: "https://player.vimeo.com/video/1063422496?h=5b0f70c878&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Dynamic animation with AI enhancement"
+  },
+  {
+    id: 6,
+    title: "Mirai",
+    category: "Animation",
+    thumbnail: "/simplegenai/mirai.jpg",
+    video: "https://player.vimeo.com/video/1108366833?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+    description: "Mirai is an AI assistant that answers inbound calls and captures leads seamlessly, 24/7."
+  },
+  {
+    id: 6,
+    title: "Coffee",
+    category: "Animation",
+    thumbnail: "/simplegenai/06.mp4.01_00_08_09.Still001.jpg",
+    video: "https://player.vimeo.com/video/1108367209?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+    description: "Food commercial with AI-generated effects"
+  },
+  {
+    id: 6,
+    title: "Unsent",
+    category: "Animation",
+    thumbnail: "/simplegenai/Unsent_upscaled 1920_1080p.mp4.00_00_13_26.Still001.jpg",
+    video: "https://player.vimeo.com/video/1108367169?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+    description: "Unsent — the message he never sent, and the love he never forgot."
   },
   {
     id: 7,
@@ -73,6 +130,14 @@ const portfolioVideos: VideoItem[] = [
     video: "https://player.vimeo.com/video/1063461864?h=a14dccb926&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Movie trailer with AI-generated effects"
   },
+  // {
+  //   id: 7,
+  //   title: "Izee Sparking Juice",
+  //   category: "Commercials",
+  //   thumbnail: "/images/trailer2.png",
+  //   video: "https://player.vimeo.com/video/1108366897?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  //   description: "Food commercial with AI-generated effects"
+  // },
   {
     id: 8,
     title: "Citroën",
@@ -81,14 +146,14 @@ const portfolioVideos: VideoItem[] = [
     video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Automotive commercial with AI scenes"
   },
-  {
-    id: 9,
-    title: "C427",
-    category: "Music Videos",
-    thumbnail: "/images/music1.png",
-    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
-    description: "AI-enhanced music video with dynamic visuals"
-  },
+  // {
+  //   id: 9,
+  //   title: "C427",
+  //   category: "Music Videos",
+  //   thumbnail: "/images/music1.png",
+  //   video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+  //   description: "AI-enhanced music video with dynamic visuals"
+  // },
   {
     id: 10,
     title: "Marshmellow",
