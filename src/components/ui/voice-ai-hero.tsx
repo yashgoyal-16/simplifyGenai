@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Phone, Play, CheckCircle, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import Orb from './orb';
 
 export default function VoiceAIHero() {
@@ -17,28 +18,27 @@ export default function VoiceAIHero() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://simplifygenai.app.n8n.cloud/webhook-test/37d2ffa1-abc6-4066-bba5-6303cfba924b', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'no-cors', // Handle CORS for external webhook
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('webhook-proxy', {
+        body: {
           name,
           phoneNumber,
-          timestamp: new Date().toISOString(),
-          source: 'voice-ai-demo-form'
-        }),
+        },
       });
 
-      // With no-cors mode, we can't check response.ok
-      // Assume success if no error was thrown
-      toast({
-        title: "Demo Call Scheduled!",
-        description: "You'll receive a call from our AI agent within 30 seconds.",
-      });
-      setName("");
-      setPhoneNumber("");
+      if (error) {
+        throw error;
+      }
+
+      if (data.success) {
+        toast({
+          title: "Demo Call Scheduled!",
+          description: "You'll receive a call from our AI agent within 30 seconds.",
+        });
+        setName("");
+        setPhoneNumber("");
+      } else {
+        throw new Error(data.error || 'Failed to schedule demo call');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
