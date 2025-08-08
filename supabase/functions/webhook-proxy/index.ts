@@ -22,7 +22,7 @@ serve(async (req) => {
 
     // Forward the data to your n8n webhook
     const webhookResponse = await fetch(
-      'https://simplifygenai.app.n8n.cloud/webhook-test/37d2ffa1-abc6-4066-bba5-6303cfba924b',
+      'https://simplifygenai.app.n8n.cloud/webhook/37d2ffa1-abc6-4066-bba5-6303cfba924b',
       {
         method: 'POST',
         headers: {
