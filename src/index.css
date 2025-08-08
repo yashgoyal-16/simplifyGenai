@@ -133,8 +133,59 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(79,70,229,0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(79,70,229,0.6);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes mic-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes voice-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-mic-bounce {
+  animation: mic-bounce 1.5s ease-in-out infinite;
+}
+
+.animate-voice-ripple {
+  animation: voice-ripple 1.5s ease-out infinite;
+}
+
+.voice-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+.ai-glow {
+  box-shadow: 0 0 40px rgba(79,70,229,0.4), inset 0 0 20px rgba(79,70,229,0.1);
 }
 
 .card-border {
