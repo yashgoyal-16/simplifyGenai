@@ -58,7 +58,7 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
 
     return (
       <motion.div
-        className="relative h-14 w-24 overflow-hidden md:h-24 md:w-48"
+        className="relative h-24 w-40 overflow-hidden md:h-32 md:w-56 lg:h-40 lg:w-64" // Much larger container
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -96,7 +96,8 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
               },
             }}
           >
-            <CurrentLogo className="h-20 w-20 max-h-[80%] max-w-[80%] object-contain md:h-32 md:w-32" />
+            {/* Much larger logo sizes */}
+            <CurrentLogo className="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 max-h-[90%] max-w-[90%] object-contain" />
           </motion.div>
         </AnimatePresence>
       </motion.div>
@@ -128,7 +129,7 @@ export function LogoCarousel({ columnCount = 2, logos }: LogoCarouselProps) {
   }, [logos, columnCount])
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-6 md:space-x-8 lg:space-x-12"> {/* More spacing between columns */}
       {logoSets.map((logos, index) => (
         <LogoColumn
           key={index}
