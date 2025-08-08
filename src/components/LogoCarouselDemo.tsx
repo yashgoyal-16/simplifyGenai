@@ -1,161 +1,78 @@
 "use client";
 
-import React, { type SVGProps } from "react";
+import React from "react";
 import { GradientHeading } from "@/components/ui/gradient-heading";
 import { LogoCarousel } from "@/components/ui/logo-carousel";
 
-function LonelyPlanetIcon(props: SVGProps<SVGSVGElement>) {
+// Logo components using actual images
+function LonelyPlanetLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        Lonely Planet
-      </text>
-    </svg>
+    <img 
+      src="/logos/lonely-planet-logo.png" 
+      alt="Lonely Planet" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
-function SkyscannerIcon(props: SVGProps<SVGSVGElement>) {
+function SkyscannerLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        Skyscanner
-      </text>
-    </svg>
+    <img 
+      src="/logos/skyscanner-logo.png" 
+      alt="Skyscanner" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
-function HarperCollinsIcon(props: SVGProps<SVGSVGElement>) {
+function HarperCollinsLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        HarperCollins
-      </text>
-    </svg>
+    <img 
+      src="/logos/harpercollins-logo.png" 
+      alt="HarperCollins" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
-function EliLillyIcon(props: SVGProps<SVGSVGElement>) {
+function EliLillyLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        Eli Lilly
-      </text>
-    </svg>
+    <img 
+      src="/logos/eli-lilly-logo.svg" 
+      alt="Eli Lilly" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
-function JioStarIcon(props: SVGProps<SVGSVGElement>) {
+function JioLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        JioStar
-      </text>
-    </svg>
+    <img 
+      src="/logos/jio-logo.png" 
+      alt="Jio" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
-function PrathamIcon(props: SVGProps<SVGSVGElement>) {
+function PrathamLogo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 50"
-      width="200"
-      height="50"
-      {...props}
-    >
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontSize="18"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Arial, sans-serif"
-      >
-        Pratham
-      </text>
-    </svg>
+    <img 
+      src="/logos/pratham-logo.png" 
+      alt="Pratham" 
+      className="h-12 w-auto object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+    />
   );
 }
 
 // Array with logos
 const allLogos = [
-  { name: "Lonely Planet", id: 1, img: LonelyPlanetIcon },
-  { name: "Skyscanner", id: 2, img: SkyscannerIcon },
-  { name: "HarperCollins", id: 3, img: HarperCollinsIcon },
-  { name: "Eli Lilly", id: 4, img: EliLillyIcon },
-  { name: "JioStar", id: 5, img: JioStarIcon },
-  { name: "Pratham", id: 6, img: PrathamIcon },
+  { name: "Lonely Planet", id: 1, img: LonelyPlanetLogo },
+  { name: "Skyscanner", id: 2, img: SkyscannerLogo },
+  { name: "HarperCollins", id: 3, img: HarperCollinsLogo },
+  { name: "Eli Lilly", id: 4, img: EliLillyLogo },
+  { name: "Jio", id: 5, img: JioLogo },
+  { name: "Pratham", id: 6, img: PrathamLogo },
 ];
 
 export function LogoCarouselDemo() {
