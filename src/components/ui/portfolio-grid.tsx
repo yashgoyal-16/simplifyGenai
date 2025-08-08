@@ -146,14 +146,14 @@ const portfolioVideos: VideoItem[] = [
     video: "https://player.vimeo.com/video/1063422733?h=1962df242e&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
     description: "Automotive commercial with AI scenes"
   },
-  // {
-  //   id: 9,
-  //   title: "C427",
-  //   category: "Music Videos",
-  //   thumbnail: "/images/music1.png",
-  //   video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
-  //   description: "AI-enhanced music video with dynamic visuals"
-  // },
+  {
+    id: 9,
+    title: "C427",
+    category: "Music Videos",
+    thumbnail: "/simplegenai/c427.png",
+    video: "https://player.vimeo.com/video/1063422585?h=49ac5fb07a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0",
+    description: "AI-enhanced music video with dynamic visuals"
+  },
   {
     id: 10,
     title: "Marshmellow",
