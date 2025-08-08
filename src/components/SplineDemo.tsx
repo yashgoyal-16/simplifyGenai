@@ -48,24 +48,6 @@ export function SplineSceneBasic() {
       "relative mx-auto transition-all duration-500",
       isMobile ? "w-full max-w-sm aspect-square" : "w-full max-w-4xl aspect-[4/3]"
     )}>
-      {/* Main Instructions - Always visible when idle */}
-      {callState === 'idle' && (
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex flex-col items-center space-y-2 bg-background/90 backdrop-blur-sm border rounded-xl px-6 py-4 shadow-lg">
-            <div className="flex items-center space-x-2">
-              <div className="animate-mic-bounce">
-                <Mic className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-foreground">
-                {isMobile ? "Tap to Talk" : "Click to Start Voice Chat"}
-              </span>
-            </div>
-            <div className="text-xs text-muted-foreground text-center">
-              Interact with the AI assistant
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Voice Call Status Overlay */}
       {(isActive || isConnecting) && (
@@ -137,15 +119,6 @@ export function SplineSceneBasic() {
         )}
       </div>
 
-      {/* Hover instruction for desktop */}
-      {!isMobile && callState === 'idle' && isHovered && (
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10 bg-background/80 backdrop-blur-sm border rounded-lg px-4 py-2 shadow-md">
-          <div className="text-sm text-center flex items-center gap-2">
-            <Mic className="w-4 h-4 text-primary" />
-            <span>Click anywhere to start conversation</span>
-          </div>
-        </div>
-      )}
 
       {/* Spline Scene Container */}
       <div 
@@ -158,7 +131,7 @@ export function SplineSceneBasic() {
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleSceneClick}
+        
       >
         <SplineScene 
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
