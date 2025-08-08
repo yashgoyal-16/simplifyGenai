@@ -1,17 +1,55 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Phone, Play, CheckCircle } from 'lucide-react';
+import { Phone, Play, CheckCircle, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import Orb from './orb';
 
 export default function VoiceAIHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { name, phoneNumber });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://simplifygenai.app.n8n.cloud/webhook-test/37d2ffa1-abc6-4066-bba5-6303cfba924b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          phoneNumber,
+          timestamp: new Date().toISOString(),
+          source: 'voice-ai-demo-form'
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Demo Call Scheduled!",
+          description: "You'll receive a call from our AI agent within 30 seconds.",
+        });
+        setName("");
+        setPhoneNumber("");
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission Failed",
+        description: "Please check your information and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -212,10 +250,20 @@ export default function VoiceAIHero() {
                       />
                       <Button
                         type="submit"
-                        className="w-full h-12 bg-white text-black hover:bg-gray-100 text-base font-medium"
+                        disabled={isSubmitting}
+                        className="w-full h-12 bg-white text-black hover:bg-gray-100 text-base font-medium disabled:opacity-50"
                       >
-                        <Phone className="mr-2 h-4 w-4" />
-                        Get AI Demo Call Now
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Scheduling Call...
+                          </>
+                        ) : (
+                          <>
+                            <Phone className="mr-2 h-4 w-4" />
+                            Get AI Demo Call Now
+                          </>
+                        )}
                       </Button>
                     </form>
                     
