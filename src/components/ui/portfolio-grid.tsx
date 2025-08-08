@@ -70,7 +70,7 @@ const portfolioVideos: VideoItem[] = [
     id: 5,
     title: "Simply Lemonade",
     category: "Commercials",
-    thumbnail: "/simplegenai/01.mp4.00_00_05_12.Still001 copy.jpg",
+    thumbnail: "/simplegenai/lemonade.jpg",
     video: "https://player.vimeo.com/video/1108367262?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
     description: "Food commercial with AI-generated effects"
   },
@@ -118,7 +118,7 @@ const portfolioVideos: VideoItem[] = [
     id: 6,
     title: "Unsent",
     category: "Animation",
-    thumbnail: "/simplegenai/Unsent_upscaled 1920_1080p.mp4.00_00_13_26.Still001.jpg",
+    thumbnail: "/simplegenai/unsent.jpg",
     video: "https://player.vimeo.com/video/1108367169?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
     description: "Unsent — the message he never sent, and the love he never forgot."
   },
