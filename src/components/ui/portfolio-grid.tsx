@@ -101,7 +101,7 @@ const portfolioVideos: VideoItem[] = [
   {
     id: 6,
     title: "Mirai",
-    category: "commercials",
+    category: "Commercials",
     thumbnail: "/simplegenai/mirai.jpg",
     video: "https://player.vimeo.com/video/1108366833?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
     description: "Mirai is an AI assistant that answers inbound calls and captures leads seamlessly, 24/7."
@@ -109,7 +109,7 @@ const portfolioVideos: VideoItem[] = [
   {
     id: 6,
     title: "Coffee",
-    category: "commercials",
+    category: "Commercials",
     thumbnail: "/simplegenai/06.mp4.01_00_08_09.Still001.jpg",
     video: "https://player.vimeo.com/video/1108367209?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
     description: "Food commercial with AI-generated effects"
