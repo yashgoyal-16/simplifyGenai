@@ -5,16 +5,16 @@ const services = [
   {
     title: "Creative AI",
     description: "Cutting-edge creative AI solutions including image generation and content creation.",
-    image: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/1.svg",
-    avatar: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/4.svg",
+    image: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/IMG_6830.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9JTUdfNjgzMC5QTkciLCJpYXQiOjE3NTQ4NDEyNDgsImV4cCI6NDkwODQ0MTI0OH0.mTn3YDQP3sbjse_uI7h_miXzczFTs_MJ6f0qGOoo27I",
+    avatar: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/Creative%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9DcmVhdGl2ZSAoMikucG5nIiwiaWF0IjoxNzU0ODQxMjE4LCJleHAiOjQ5MDg0NDEyMTh9.Z2OlzVYWB9qkpaxXMVHVPPp71AagUXnzmtLRPPpoy20",
     cta: "Explore",
     gradient: "from-purple-500 via-pink-500 to-blue-500"
   },
   {
     title: "Voice AI",
     description: "Advanced voice AI technologies including conversational interfaces and speech recognition.",
-    image: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/1.svg",
-    avatar: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/4.jpg",
+    image: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/Voice%20AI%20Grad%20(1).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9Wb2ljZSBBSSBHcmFkICgxKS5wbmciLCJpYXQiOjE3NTQ4NDA4NzEsImV4cCI6NDkwODQ0MDg3MX0.AVVNXnWJl-cboISNC2Gr8TClZmqf3RwKh4KBszrCsOc",
+    avatar: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/Voice%20AI%20(1).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9Wb2ljZSBBSSAoMSkucG5nIiwiaWF0IjoxNzU0ODQwODQyLCJleHAiOjQ5MDg0NDA4NDJ9.a28oAXAD6SVx9L23qGxmHjy_jC-RqTt55D2A4d2dG5Q",
     cta: "Listen",
     gradient: "from-green-500 via-teal-500 to-blue-500"
   },
@@ -29,8 +29,8 @@ const services = [
   {
     title: "AI Automation",
     description: "Streamline operations with intelligent automation using Make, GoHighLevel, and n8n.",
-    image: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/1.svg",
-    avatar: "https://raw.githubusercontent.com/dalim-in/dalim/refs/heads/main/apps/ui/public/images/4.jpg",
+    image: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/Extra%20Grad%2002.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9FeHRyYSBHcmFkIDAyLnBuZyIsImlhdCI6MTc1NDg0MDY5MiwiZXhwIjo0OTA4NDQwNjkyfQ.EmvVvH-ADmp-YKJXTBpqRuwHZPWI7la9KnUz9BTnGxI",
+    avatar: "https://aybvvjxzepenfyzrhdrk.supabase.co/storage/v1/object/sign/simplegenai/Automation.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81MzIyMmY5NC0wZWJiLTQyMjgtOTNkMi1jYzRjNDJkYWY0MzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzaW1wbGVnZW5haS9BdXRvbWF0aW9uLnBuZyIsImlhdCI6MTc1NDg0MDM5NSwiZXhwIjo0OTA4NDQwMzk1fQ.5o2zykgXGV65haTgY3Wf71Z-PmISqWuSg8jx1xuz5yI",
     cta: "Automate",
     gradient: "from-cyan-500 via-blue-500 to-purple-500"
   }
@@ -65,7 +65,7 @@ export default function DemoSection() {
                   <img
                     src={service.avatar}
                     alt={service.title}
-                    className="absolute top-36 left-1/2 z-10 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-md border-4 object-cover shadow-xl transition-all duration-500 hover:scale-105"
+                    className="absolute top-56 left-1/2 z-10  w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-md  object-cover  transition-all duration-500 hover:scale-105"
                   />
                    
                   <div className="absolute bottom-0 left-0 w-full rounded-b-md bg-gradient-to-t from-black/80 to-transparent p-8">
