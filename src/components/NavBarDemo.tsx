@@ -1,4 +1,4 @@
-import { Home, User, Briefcase, Phone, Zap } from 'lucide-react'
+import { Home, User, Briefcase, Phone, Zap, PhoneCall } from 'lucide-react'
 import { NavBar } from "@/components/ui/tubelight-navbar"
 import { useLocation } from 'react-router-dom'
 
@@ -10,8 +10,8 @@ export function NavBarDemo() {
     { name: 'Home', url: '/', icon: Home },
     { name: 'About', url: '/about', icon: User },
     { name: 'Creative AI', url: '/creative-ai', icon: Zap, special: true },
-    { name: 'Automation', url: '/projects', icon: Briefcase },
-    { name: 'Voice AI', url: '/voice-ai', icon: Phone }
+    { name: 'Call', url: '/voice-ai', icon: PhoneCall, callButton: true },
+    { name: 'Automation', url: '/projects', icon: Briefcase }
   ]
 
   return <NavBar items={navItems} variant={isAutomationPage ? "light" : "default"} />
