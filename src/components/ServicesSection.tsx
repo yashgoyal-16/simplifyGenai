@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { GradientHeading } from '@/components/ui/gradient-heading'
 import { GlowCard } from '@/components/ui/spotlight-card'
@@ -15,39 +16,35 @@ const services = [
     description: 'Strategic AI integration guidance for enterprise businesses. We help Fortune 500 companies implement generative AI solutions that drive real ROI.',
     glowColor: 'blue' as const,
     className: 'lg:col-span-2 lg:row-span-1',
-    cta: 'Learn More'
+    cta: 'Learn More',
+    link: '/about'
   },
   {
     id: 'creative-ai',
-    name: 'Creative AI Services',
+    name: 'Creative',
     description: 'Cutting-edge creative AI solutions including image generation, content creation, and brand automation.',
     glowColor: 'purple' as const,
     className: 'lg:col-span-1 lg:row-span-2',
-    cta: 'Explore'
+    cta: 'Explore',
+    link: '/creative-ai'
   },
   {
     id: 'voice-ai',
-    name: 'Voice AI Solutions',
+    name: 'Voice AI',
     description: 'Advanced voice AI technologies including conversational interfaces, voice synthesis, and speech recognition.',
     glowColor: 'green' as const,
     className: 'lg:col-span-1 lg:row-span-2',
-    cta: 'Listen'
-  },
-  {
-    id: 'ai-mvp',
-    name: 'AI MVP Development',
-    description: 'Rapid AI prototype development using cutting-edge tools like Cursor and Lovable. Get to market faster.',
-    glowColor: 'orange' as const,
-    className: 'lg:col-span-1 lg:row-span-1',
-    cta: 'Build'
+    cta: 'Call',
+    link: '/voice-ai'
   },
   {
     id: 'ai-automation',
-    name: 'AI Automation',
+    name: 'Automation',
     description: 'Streamline operations with intelligent automation using Make, GoHighLevel, and n8n.',
     glowColor: 'red' as const,
     className: 'lg:col-span-2 lg:row-span-1',
-    cta: 'Automate'
+    cta: 'Automate',
+    link: '/projects'
   }
 ]
 
@@ -123,14 +120,16 @@ export function ServicesSection() {
                         {service.description}
                       </p>
                     </div>
-                    <LiquidButton 
-                      variant="ghost" 
-                      size="sm" 
-                      className="self-start mt-4 text-white"
-                    >
-                      {service.cta}
-                      <ArrowRightIcon className="ml-2 h-4 w-4" />
-                    </LiquidButton>
+                    <Link to={service.link}>
+                      <LiquidButton 
+                        variant="ghost" 
+                        size="sm" 
+                        className="self-start mt-4 text-white"
+                      >
+                        {service.cta}
+                        <ArrowRightIcon className="ml-2 h-4 w-4" />
+                      </LiquidButton>
+                    </Link>
                   </div>
                 </GlowCard>
               </div>
