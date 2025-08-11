@@ -232,10 +232,10 @@ export function LogoCarouselDemo() {
       <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-8">
         <div className="text-center">
           <GradientHeading variant="secondary" size="lg">
-            Trusted by leading companies
+            We Don’t Follow AI.
           </GradientHeading>
           <GradientHeading size="xxl" className="text-white">
-            Join the best
+             We  Breathe It.
           </GradientHeading>
         </div>
 

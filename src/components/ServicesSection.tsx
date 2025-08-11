@@ -87,9 +87,7 @@ export function ServicesSection() {
             </GradientHeading>
           </div>
           <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mx-auto">
-            Founded by Gurleen and Daksh, SimplifyGenAI delivers enterprise-grade AI consulting 
-            and development services. We specialize in generative AI integration, creative solutions, 
-            and intelligent automation for Fortune 500 companies.
+        An AI-first lens, a human-in-the-loop heartbeat. We hunt for the leaking points in your funnel and ops, then build—from tiny automations to full stacks of AI—until the leaks are gone.
           </p>
         </LazySection>
 
