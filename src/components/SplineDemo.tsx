@@ -179,22 +179,22 @@ export function SplineSceneBasic() {
               <Button
                 size="lg"
                 className={cn(
-                  "rounded-full bg-white/95 backdrop-blur-md border-4 border-cyan-400",
-                  "text-cyan-600 shadow-2xl hover:shadow-cyan-400/50 hover:bg-white",
+                  "rounded-full bg-gradient-to-br from-slate-100 to-slate-200 backdrop-blur-md border-4 border-blue-400",
+                  "text-slate-700 shadow-2xl hover:shadow-blue-400/50 hover:from-white hover:to-slate-100",
                   "transition-all duration-500 hover:scale-110",
                   "animate-pulse-glow font-semibold",
-                  // Precise 68px size as specified (60px on mobile)
-                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[68px] h-[68px] p-0 text-xl"
+                  // Precise 72px size for better visibility (60px on mobile)
+                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[72px] h-[72px] p-0 text-xl"
                 )}
                 onClick={handleStartCall}
               >
                 <div className="flex flex-col items-center gap-0.5">
                   <Hand className={cn(
-                    "drop-shadow-lg text-cyan-600",
+                    "drop-shadow-lg text-slate-600",
                     isMobile ? "w-5 h-5" : "w-6 h-6"
                   )} />
                   <span className={cn(
-                    "font-bold text-cyan-600 drop-shadow-lg leading-tight",
+                    "font-bold text-slate-600 drop-shadow-lg leading-tight",
                     isMobile ? "text-[10px]" : "text-xs"
                   )}>
                     Tap to Talk
@@ -204,7 +204,7 @@ export function SplineSceneBasic() {
               
               {/* Pulsing Ring Animation */}
               <div className={cn(
-                "absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-ping",
+                "absolute inset-0 rounded-full border-2 border-blue-400/50 animate-ping",
                 "pointer-events-none"
               )} />
             </div>
