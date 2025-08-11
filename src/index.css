@@ -244,12 +244,3 @@ html, body {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
 }
-
-/* Apply rainbow hover to all interactive elements site-wide */
-button:not(.no-rainbow),
-.nav-link,
-.card:hover,
-a.rainbow-hover,
-.liquid-button:hover {
-  @apply rainbow-hover;
-}
