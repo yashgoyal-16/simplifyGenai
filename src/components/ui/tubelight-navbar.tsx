@@ -72,7 +72,7 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               to={item.url}
               onClick={() => handleNavClick(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors nav-link",
                 item.special 
                   ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
                   : variant === "light"

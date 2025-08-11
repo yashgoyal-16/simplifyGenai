@@ -15,15 +15,15 @@ export function SplineSceneBasic() {
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const isMobile = useIsMobile();
 
-  // Robot animation sequence
+  // Robot animation sequence - Enhanced timing
   useEffect(() => {
     // Start with robot in close-up view
     const animationTimer = setTimeout(() => {
       setIsAnimationComplete(true);
-      // Show button after animation completes
+      // Show button after 5 seconds total (2.5s animation + 2.5s wait)
       const buttonTimer = setTimeout(() => {
         setShowButton(true);
-      }, 500); // Delay button appearance
+      }, 2500); // Extended delay for 5 seconds total
       return () => clearTimeout(buttonTimer);
     }, 2500); // 2.5 second animation
 
@@ -150,14 +150,17 @@ export function SplineSceneBasic() {
         onMouseLeave={handleMouseLeave}
         onClick={handleSceneClick}
       >
-        {/* Robot Animation Container */}
+        {/* Robot Animation Container with Talking Animation */}
         <div 
           className={cn(
             "w-full h-full transition-all duration-[2500ms] ease-out",
             // Start with close-up view (scaled and positioned)
             !isAnimationComplete && "scale-[2.5] translate-y-8",
             // End with full view
-            isAnimationComplete && "scale-100 translate-y-0"
+            isAnimationComplete && "scale-100 translate-y-0",
+            // Robot talking animation when call is active
+            isActive && "robot-talking",
+            isConnecting && "robot-speaking-pause"
           )}
         >
           <SplineScene 
@@ -177,12 +180,14 @@ export function SplineSceneBasic() {
               <Button
                 size="lg"
                 className={cn(
-                  "rounded-full bg-white/95 backdrop-blur-md border-4 border-cyan-400",
-                  "text-cyan-600 shadow-2xl hover:shadow-cyan-400/50 hover:bg-white",
-                  "transition-all duration-500 hover:scale-110",
-                  "animate-pulse-glow font-semibold",
-                  // Precise 68px size as specified (60px on mobile)
-                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[68px] h-[68px] p-0 text-xl"
+                  "rounded-full bg-gradient-to-br from-[#e2dddf] to-[#b0acb0] backdrop-blur-md border-3 border-[#00d4ff]",
+                  "text-[#2f404d] shadow-2xl hover:shadow-[#00d4ff]/50",
+                  "transition-all duration-500 hover:scale-110 hover:from-white hover:to-[#e2dddf]",
+                  "font-semibold",
+                  // Enhanced size - 72px (60px on mobile) with robot-matching colors
+                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[72px] h-[72px] p-0 text-xl",
+                  // Active state styling
+                  isActive && "bg-gradient-to-br from-[#00d4ff] to-[#3d898d] text-white animate-pulse-active"
                 )}
                 onClick={handleStartCall}
               >
@@ -200,10 +205,10 @@ export function SplineSceneBasic() {
                 </div>
               </Button>
               
-              {/* Pulsing Ring Animation */}
+              {/* Enhanced Pulsing Ring Animation with Robot Colors */}
               <div className={cn(
-                "absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-ping",
-                "pointer-events-none"
+                "absolute inset-0 rounded-full border-2 border-[#00d4ff]/50 animate-ping",
+                "pointer-events-none shadow-[0_0_20px_rgba(0,212,255,0.3)]"
               )} />
             </div>
           </div>
