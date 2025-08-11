@@ -267,3 +267,7 @@ html, body {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
 }
+
+.robot-container {
+  min-height: 54vh;
+}
