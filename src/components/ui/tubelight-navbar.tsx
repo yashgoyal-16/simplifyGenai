@@ -12,7 +12,6 @@ interface NavItem {
   url: string
   icon: LucideIcon
   special?: boolean
-  callButton?: boolean
 }
 
 interface NavBarProps {
@@ -75,13 +74,11 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors",
                 item.special 
-                  ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10"
-                  : item.callButton
-                    ? "text-green-400 font-bold shadow-md ring-1 ring-green-400/30 bg-green-400/10 hover:bg-green-400/20"
-                    : variant === "light"
-                      ? "text-black/80 hover:text-black"
-                      : "text-white/80 hover:text-white",
-                isActive && !item.special && !item.callButton && (variant === "light" ? "bg-black/20 text-black" : "bg-white/20 text-white"),
+                  ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
+                  : variant === "light"
+                    ? "text-black/80 hover:text-black"
+                    : "text-white/80 hover:text-white",
+                isActive && !item.special && (variant === "light" ? "bg-black/20 text-black" : "bg-white/20 text-white"),
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
