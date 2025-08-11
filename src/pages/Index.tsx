@@ -27,17 +27,7 @@ const Index = () => {
           </h1>
         </div>
         
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-4">
-          {/* Hero Text Content */}
-          <div className="text-center mb-8 max-w-4xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Creative taste × Engineering rigour—shipped by <span className="text-blue-400">Gurleen & Daksh</span>.
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              An AI-first lens, a human-in-the-loop heartbeat. We hunt for the leaking points in your funnel and ops, then build—from tiny automations to full stacks of AI—until the leaks are gone.
-            </p>
-          </div>
-          
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full">
           <SplineSceneBasic />
         </div>
         {/* Graceful blur transition */}
