@@ -100,27 +100,12 @@ export function SplineSceneBasic() {
         </div>
       )}
 
-      {/* Control Buttons */}
-      <div className={cn(
-        "absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-3",
-        isMobile ? "flex-col items-center" : "flex-row"
-      )}>
-        {callState === 'idle' && (
-          <Button
-            onClick={handleStartCall}
-            size={isMobile ? "lg" : "default"}
-            className={cn(
-              "voice-gradient text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300",
-              "hover:scale-105 animate-pulse-glow",
-              isMobile ? "w-16 h-16 rounded-full p-0" : "px-6"
-            )}
-          >
-            <Phone className={cn(isMobile ? "w-6 h-6" : "w-4 h-4 mr-2")} />
-            {!isMobile && "Start Call"}
-          </Button>
-        )}
-
-        {(isActive || isConnecting) && (
+      {/* Control Buttons - Only show End Call when active */}
+      {(isActive || isConnecting) && (
+        <div className={cn(
+          "absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20",
+          isMobile ? "flex flex-col items-center" : "flex flex-row"
+        )}>
           <Button
             onClick={handleEndCall}
             variant="destructive"
@@ -133,8 +118,8 @@ export function SplineSceneBasic() {
             <PhoneOff className={cn(isMobile ? "w-6 h-6" : "w-4 h-4 mr-2")} />
             {!isMobile && "End Call"}
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
 
       {/* Spline Scene Container */}

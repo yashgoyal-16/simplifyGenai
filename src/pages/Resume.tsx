@@ -19,13 +19,68 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section with Animated Wave Component */}
-      <section className="relative min-h-screen">
-        <div className="absolute inset-0">
-          <SchemaCard />
+      {/* Hero Section */}
+      <section className="relative min-h-screen bg-black flex items-center justify-center">
+        {/* Background gradient similar to other pages */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black/20"></div>
+        
+        {/* Content Container */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <motion.h1 
+              className="text-6xl md:text-7xl lg:text-8xl font-extralight mb-8 tracking-tight text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Resume Builder
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              Create professional resumes with AI-powered assistance
+            </motion.p>
+
+            {/* Form */}
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="max-w-md mx-auto space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <Input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="bg-black/30 border-gray-700 text-white placeholder-gray-400"
+                required
+              />
+              <Input
+                type="tel"
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className="bg-black/30 border-gray-700 text-white placeholder-gray-400"
+                required
+              />
+              <Button 
+                type="submit" 
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                <Phone className="mr-2 h-4 w-4" />
+                Generate Resume
+              </Button>
+            </motion.form>
+          </div>
         </div>
         
-        {/* Phone Mockup overlay */}
+        {/* Additional content that was moved */}
         <div className="absolute bottom-8 right-8 z-30">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
