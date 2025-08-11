@@ -125,7 +125,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
       {/* Case Study Modal */}
       <AnimatePresence>
         {selectedCase !== null && (
@@ -214,7 +214,7 @@ const Projects = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black/20"></div>
           <motion.div 
             className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
             animate={{ 
@@ -255,7 +255,7 @@ const Projects = () => {
               className="mb-8"
             >
               <h1 className="text-7xl md:text-8xl lg:text-9xl font-extralight mb-6 tracking-tight">
-                <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent">
                   Automation
                 </span>
               </h1>
@@ -263,13 +263,13 @@ const Projects = () => {
             </motion.div>
             
             <motion.p 
-              className="text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto mb-12 leading-relaxed font-light"
+              className="text-2xl md:text-3xl text-gray-400 max-w-4xl mx-auto mb-12 leading-relaxed font-light"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             >
               We build intelligent automation that thinks, learns, and evolves—transforming 
-              <span className="text-foreground font-medium"> complex business processes </span>
+              <span className="text-white font-medium"> complex business processes </span>
               into seamless digital experiences.
             </motion.p>
 
@@ -303,7 +303,7 @@ const Projects = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -318,8 +318,8 @@ const Projects = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
                   <stat.icon className="h-8 w-8 text-primary" />
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                <div className="text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -327,7 +327,7 @@ const Projects = () => {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-32 bg-background">
+      <section className="py-32 bg-black">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-20"
@@ -336,8 +336,8 @@ const Projects = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-6 text-foreground">What We Automate</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-5xl md:text-6xl font-light mb-6 text-white">What We Automate</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               From intelligent AI agents to complex system integrations, we create automation solutions that adapt and scale with your business needs.
             </p>
           </motion.div>
@@ -353,21 +353,21 @@ const Projects = () => {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Card className="h-full p-8 bg-card/30 backdrop-blur-sm border-border hover:bg-card/50 transition-all duration-500 hover:shadow-xl">
+                <Card className="h-full p-8 bg-black/30 backdrop-blur-sm border-gray-800 hover:bg-black/50 transition-all duration-500 hover:shadow-xl">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
                       <capability.icon className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-semibold text-foreground">{capability.title}</h3>
+                    <h3 className="text-2xl font-semibold text-white">{capability.title}</h3>
                   </div>
                   
-                  <p className="text-muted-foreground leading-relaxed mb-6">{capability.description}</p>
+                  <p className="text-gray-400 leading-relaxed mb-6">{capability.description}</p>
                   
                   <div className="space-y-3">
                     {capability.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+                        <span className="text-sm text-gray-400">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -379,7 +379,7 @@ const Projects = () => {
       </section>
 
       {/* Case Studies Section */}
-      <section className="py-32 bg-muted/20">
+      <section className="py-32 bg-black/20">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-20"
@@ -388,8 +388,8 @@ const Projects = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-6 text-foreground">Success Stories</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-5xl md:text-6xl font-light mb-6 text-white">Success Stories</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Real transformations, measurable results. See how intelligent automation has revolutionized operations for industry leaders.
             </p>
           </motion.div>
@@ -406,30 +406,30 @@ const Projects = () => {
                 className="group cursor-pointer"
                 onClick={() => setSelectedCase(index)}
               >
-                <Card className="h-full overflow-hidden bg-card/20 backdrop-blur-sm border-border hover:bg-card/40 transition-all duration-500 hover:shadow-2xl">
+                <Card className="h-full overflow-hidden bg-black/20 backdrop-blur-sm border-gray-800 hover:bg-black/40 transition-all duration-500 hover:shadow-2xl">
                   {/* Card Header */}
                   <div className="p-8 pb-6">
                     <div className="flex items-start justify-between mb-6">
                       <div className={`p-3 rounded-xl bg-gradient-to-r ${getColorClasses(study.color)} shadow-lg`}>
                         {React.createElement(study.icon, { className: "h-6 w-6 text-white" })}
                       </div>
-                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all duration-300" />
+                      <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                     
                     <div className="mb-6">
-                      <h3 className="text-2xl font-bold text-foreground mb-2">{study.company}</h3>
-                      <p className="text-sm text-muted-foreground/80 mb-3">{study.industry}</p>
-                      <h4 className="text-lg font-semibold text-foreground mb-3">{study.title}</h4>
-                      <p className="text-muted-foreground leading-relaxed">{study.description}</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{study.company}</h3>
+                      <p className="text-sm text-gray-400/80 mb-3">{study.industry}</p>
+                      <h4 className="text-lg font-semibold text-white mb-3">{study.title}</h4>
+                      <p className="text-gray-400 leading-relaxed">{study.description}</p>
                     </div>
                   </div>
 
                   {/* Metrics */}
                   <div className="px-8 pb-6">
-                    <div className="bg-muted/30 rounded-xl p-4 text-center">
+                    <div className="bg-black/30 rounded-xl p-4 text-center">
                       <div className="text-3xl font-bold text-primary mb-1">{study.metrics.primary}</div>
-                      <div className="text-sm text-muted-foreground mb-1">{study.metrics.secondary}</div>
-                      <div className="text-xs text-muted-foreground/60">{study.metrics.tertiary}</div>
+                      <div className="text-sm text-gray-400 mb-1">{study.metrics.secondary}</div>
+                      <div className="text-xs text-gray-400/60">{study.metrics.tertiary}</div>
                     </div>
                   </div>
 
@@ -443,7 +443,7 @@ const Projects = () => {
       </section>
 
       {/* Technology Stack */}
-      <section className="py-32 bg-background">
+      <section className="py-32 bg-black">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center mb-20"
@@ -452,8 +452,8 @@ const Projects = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-6 text-foreground">Technology Stack</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-5xl md:text-6xl font-light mb-6 text-white">Technology Stack</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Powered by cutting-edge technologies and platforms that ensure reliability, scalability, and intelligent automation.
             </p>
           </motion.div>
@@ -469,10 +469,10 @@ const Projects = () => {
                 whileHover={{ scale: 1.05 }}
                 className="group"
               >
-                <Card className="p-6 text-center bg-card/20 backdrop-blur-sm border-border hover:bg-card/40 transition-all duration-300">
+                <Card className="p-6 text-center bg-black/20 backdrop-blur-sm border-gray-800 hover:bg-black/40 transition-all duration-300">
                   <tech.icon className="h-8 w-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="font-semibold text-foreground mb-1">{tech.name}</h3>
-                  <p className="text-sm text-muted-foreground">{tech.category}</p>
+                  <h3 className="font-semibold text-white mb-1">{tech.name}</h3>
+                  <p className="text-sm text-gray-400">{tech.category}</p>
                 </Card>
               </motion.div>
             ))}
@@ -481,7 +481,7 @@ const Projects = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 relative overflow-hidden bg-gradient-to-r from-muted/30 to-muted/10">
+      <section className="py-32 relative overflow-hidden bg-gradient-to-r from-black/30 to-black/10">
         <div className="absolute inset-0 bg-grid-white/5"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -491,8 +491,8 @@ const Projects = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-8 text-foreground">Ready to Automate?</h2>
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
+            <h2 className="text-5xl md:text-6xl font-light mb-8 text-white">Ready to Automate?</h2>
+            <p className="text-xl text-gray-400 mb-12 leading-relaxed">
               Transform your business operations with intelligent automation. Let's build solutions that think, learn, and scale with your ambitions.
             </p>
             
@@ -501,7 +501,7 @@ const Projects = () => {
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="border-border hover:bg-muted/50 px-8 py-4 text-lg rounded-full">
+              <Button size="lg" variant="outline" className="border-gray-800 hover:bg-black/50 text-white px-8 py-4 text-lg rounded-full">
                 Schedule Consultation
               </Button>
             </div>
@@ -509,7 +509,7 @@ const Projects = () => {
         </div>
       </section>
 
-      <StackedCircularFooter variant="light" />
+      <StackedCircularFooter />
     </div>
   );
 };

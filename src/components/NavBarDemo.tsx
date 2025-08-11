@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 
 export function NavBarDemo() {
   const location = useLocation()
-  const isAutomationPage = location.pathname === '/projects'
   
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
@@ -14,5 +13,5 @@ export function NavBarDemo() {
     { name: 'Automation', url: '/projects', icon: Briefcase }
   ]
 
-  return <NavBar items={navItems} variant={isAutomationPage ? "light" : "default"} />
+  return <NavBar items={navItems} variant="default" />
 }
