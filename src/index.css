@@ -26,6 +26,24 @@ html, body {
   max-width: 100vw;
 }
 
+/* Rainbow hover effects site-wide */
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.rainbow-hover {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+  background-size: 300% 300%;
+  transition: all 0.3s ease;
+}
+
+.rainbow-hover:hover {
+  animation: rainbow-shift 0.5s ease;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -225,4 +243,13 @@ html, body {
 .glass {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
+}
+
+/* Apply rainbow hover to all interactive elements site-wide */
+button:not(.no-rainbow),
+.nav-link,
+.card:hover,
+a.rainbow-hover,
+.liquid-button:hover {
+  @apply rainbow-hover;
 }

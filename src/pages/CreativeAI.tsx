@@ -217,15 +217,20 @@ const CreativeAI = () => {
           }}
         />
         
-        {/* Audio Toggle Button */}
+      {/* Audio Toggle Button */}
         <Button
           onClick={toggleAudio}
           variant="ghost"
           size="icon"
-          className="absolute bottom-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 z-10"
+          className="absolute bottom-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/30 z-10 rainbow-hover"
         >
           {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
         </Button>
+      </div>
+
+      {/* Portfolio Section - moved to top position after hero */}
+      <div className="py-20">
+        <PortfolioGrid />
       </div>
 
       {/* Content Section with improved spacing */}
@@ -313,10 +318,6 @@ const CreativeAI = () => {
         </div>
       </section>
 
-      {/* Portfolio Section with improved spacing */}
-      <div className="py-20">
-        <PortfolioGrid />
-      </div>
 
       {/* Dynamic Frame Layout Section with improved spacing */}
       <section className="h-screen bg-black mt-20">

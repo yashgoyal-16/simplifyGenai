@@ -177,22 +177,22 @@ export function SplineSceneBasic() {
               <Button
                 size="lg"
                 className={cn(
-                  "rounded-full bg-white/10 backdrop-blur-md border border-white/20",
-                  "text-white shadow-2xl hover:shadow-white/20 hover:bg-white/20",
+                  "rounded-full bg-white/95 backdrop-blur-md border-4 border-cyan-400",
+                  "text-cyan-600 shadow-2xl hover:shadow-cyan-400/50 hover:bg-white",
                   "transition-all duration-500 hover:scale-110",
-                  "animate-pulse-glow",
-                  // Smaller, more proportional size
-                  isMobile ? "w-14 h-14 p-0" : "w-16 h-16 p-0"
+                  "animate-pulse-glow font-semibold",
+                  // Precise 68px size as specified (60px on mobile)
+                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[68px] h-[68px] p-0 text-xl"
                 )}
                 onClick={handleStartCall}
               >
                 <div className="flex flex-col items-center gap-0.5">
                   <Hand className={cn(
-                    "drop-shadow-lg",
+                    "drop-shadow-lg text-cyan-600",
                     isMobile ? "w-5 h-5" : "w-6 h-6"
                   )} />
                   <span className={cn(
-                    "font-semibold text-white/90 drop-shadow-lg leading-tight",
+                    "font-bold text-cyan-600 drop-shadow-lg leading-tight",
                     isMobile ? "text-[10px]" : "text-xs"
                   )}>
                     Tap to Talk
@@ -202,7 +202,7 @@ export function SplineSceneBasic() {
               
               {/* Pulsing Ring Animation */}
               <div className={cn(
-                "absolute inset-0 rounded-full border-2 border-white/30 animate-ping",
+                "absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-ping",
                 "pointer-events-none"
               )} />
             </div>
