@@ -202,6 +202,25 @@ html, body {
   }
 }
 
+@keyframes robot-talking {
+  0%, 100% { 
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
+  }
+  25% { 
+    transform: scale(1.015);
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+  }
+  50% { 
+    transform: scale(1.008);
+    filter: brightness(1.02) drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+  }
+  75% { 
+    transform: scale(1.015);
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -216,6 +235,10 @@ html, body {
 
 .animate-voice-ripple {
   animation: voice-ripple 1.5s ease-out infinite;
+}
+
+.animate-robot-talking {
+  animation: robot-talking 1.5s ease-in-out infinite;
 }
 
 .voice-gradient {

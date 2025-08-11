@@ -20,10 +20,10 @@ export function SplineSceneBasic() {
     // Start with robot in close-up view
     const animationTimer = setTimeout(() => {
       setIsAnimationComplete(true);
-      // Show button after animation completes
+      // Show button after full 5 seconds (2.5s animation + 2.5s wait)
       const buttonTimer = setTimeout(() => {
         setShowButton(true);
-      }, 500); // Delay button appearance
+      }, 2500); // Additional 2.5 second delay after animation
       return () => clearTimeout(buttonTimer);
     }, 2500); // 2.5 second animation
 
@@ -157,7 +157,9 @@ export function SplineSceneBasic() {
             // Start with close-up view (scaled and positioned)
             !isAnimationComplete && "scale-[2.5] translate-y-8",
             // End with full view
-            isAnimationComplete && "scale-100 translate-y-0"
+            isAnimationComplete && "scale-100 translate-y-0",
+            // Robot talking animation when call is active
+            isActive && "animate-robot-talking"
           )}
         >
           <SplineScene 
