@@ -4,7 +4,7 @@ import { SplineScene } from "@/components/ui/splite";
 import { useRetellAI } from "@/hooks/useRetellAI";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
-import { Mic, MicOff, Phone, PhoneOff } from "lucide-react";
+import { Mic, MicOff, Phone, PhoneOff, Hand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -123,7 +123,7 @@ export function SplineSceneBasic() {
       {/* Spline Scene Container */}
       <div 
         className={cn(
-          "w-full h-full cursor-pointer transition-all duration-300 rounded-2xl overflow-hidden",
+          "w-full h-full cursor-pointer transition-all duration-300 rounded-2xl overflow-hidden relative",
           "hover:scale-[1.02] hover:shadow-2xl",
           isActive && "ai-glow scale-[1.02]",
           isConnecting && "animate-pulse-glow",
@@ -137,6 +137,47 @@ export function SplineSceneBasic() {
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
           className="w-full h-full"
         />
+        
+        {/* Tap to Talk Button - Positioned on Robot's Chest */}
+        {callState === 'idle' && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className={cn(
+              "relative pointer-events-auto",
+              isMobile ? "translate-y-4" : "translate-y-8"
+            )}>
+              <Button
+                size="lg"
+                className={cn(
+                  "rounded-full bg-white/10 backdrop-blur-md border border-white/20",
+                  "text-white shadow-2xl hover:shadow-white/20 hover:bg-white/20",
+                  "transition-all duration-500 hover:scale-110",
+                  "animate-pulse-glow",
+                  isMobile ? "w-20 h-20 p-0" : "w-24 h-24 p-0"
+                )}
+                onClick={handleStartCall}
+              >
+                <div className="flex flex-col items-center gap-1">
+                  <Hand className={cn(
+                    "drop-shadow-lg",
+                    isMobile ? "w-8 h-8" : "w-10 h-10"
+                  )} />
+                  <span className={cn(
+                    "font-semibold text-white/90 drop-shadow-lg",
+                    isMobile ? "text-xs" : "text-sm"
+                  )}>
+                    Tap to Talk
+                  </span>
+                </div>
+              </Button>
+              
+              {/* Pulsing Ring Animation */}
+              <div className={cn(
+                "absolute inset-0 rounded-full border-2 border-white/30 animate-ping",
+                "pointer-events-none"
+              )} />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Voice Activity Indicator */}
