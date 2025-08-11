@@ -62,7 +62,7 @@ export function SplineSceneBasic() {
 
   return (
     <div className={cn(
-      "relative mx-auto transition-all duration-500",
+      "robot-container relative mx-auto transition-all duration-500",
       isMobile ? "w-full max-w-sm aspect-square" : "w-full max-w-4xl aspect-[4/3]"
     )}>
 
