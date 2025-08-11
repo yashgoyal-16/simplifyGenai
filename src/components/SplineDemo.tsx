@@ -3,7 +3,7 @@
 import { SplineScene } from "@/components/ui/splite";
 import { useRetellAI } from "@/hooks/useRetellAI";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mic, MicOff, Phone, PhoneOff, Hand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,24 @@ import { cn } from "@/lib/utils";
 export function SplineSceneBasic() {
   const { callState, startCall, endCall, isActive, isConnecting, error } = useRetellAI('agent_40993a6c2c34df3cabba81e8bc');
   const [isHovered, setIsHovered] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const isMobile = useIsMobile();
+
+  // Robot animation sequence
+  useEffect(() => {
+    // Start with robot in close-up view
+    const animationTimer = setTimeout(() => {
+      setIsAnimationComplete(true);
+      // Show button after animation completes
+      const buttonTimer = setTimeout(() => {
+        setShowButton(true);
+      }, 500); // Delay button appearance
+      return () => clearTimeout(buttonTimer);
+    }, 2500); // 2.5 second animation
+
+    return () => clearTimeout(animationTimer);
+  }, []);
 
   const handleMouseEnter = () => {
     console.log('Mouse entered, current callState:', callState);
@@ -131,19 +148,31 @@ export function SplineSceneBasic() {
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        
+        onClick={handleSceneClick}
       >
-        <SplineScene 
-          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="w-full h-full"
-        />
+        {/* Robot Animation Container */}
+        <div 
+          className={cn(
+            "w-full h-full transition-all duration-[2500ms] ease-out",
+            // Start with close-up view (scaled and positioned)
+            !isAnimationComplete && "scale-[2.5] translate-y-8",
+            // End with full view
+            isAnimationComplete && "scale-100 translate-y-0"
+          )}
+        >
+          <SplineScene 
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full"
+          />
+        </div>
         
         {/* Tap to Talk Button - Positioned on Robot's Chest */}
-        {callState === 'idle' && (
+        {callState === 'idle' && showButton && isAnimationComplete && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className={cn(
-              "relative pointer-events-auto",
-              isMobile ? "translate-y-4" : "translate-y-8"
+              "relative pointer-events-auto transition-all duration-700 ease-out",
+              isMobile ? "translate-y-6" : "translate-y-12",
+              showButton ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}>
               <Button
                 size="lg"
@@ -152,18 +181,19 @@ export function SplineSceneBasic() {
                   "text-white shadow-2xl hover:shadow-white/20 hover:bg-white/20",
                   "transition-all duration-500 hover:scale-110",
                   "animate-pulse-glow",
-                  isMobile ? "w-20 h-20 p-0" : "w-24 h-24 p-0"
+                  // Smaller, more proportional size
+                  isMobile ? "w-14 h-14 p-0" : "w-16 h-16 p-0"
                 )}
                 onClick={handleStartCall}
               >
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-0.5">
                   <Hand className={cn(
                     "drop-shadow-lg",
-                    isMobile ? "w-8 h-8" : "w-10 h-10"
+                    isMobile ? "w-5 h-5" : "w-6 h-6"
                   )} />
                   <span className={cn(
-                    "font-semibold text-white/90 drop-shadow-lg",
-                    isMobile ? "text-xs" : "text-sm"
+                    "font-semibold text-white/90 drop-shadow-lg leading-tight",
+                    isMobile ? "text-[10px]" : "text-xs"
                   )}>
                     Tap to Talk
                   </span>

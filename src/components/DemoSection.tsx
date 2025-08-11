@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { LiquidCard } from "@/components/ui/liquid-glass-card"
+import { LazySection } from "@/components/ui/lazy-section"
+import { LazyImage } from "@/components/ui/lazy-image"
 
 const services = [
   {
@@ -48,21 +50,21 @@ export default function DemoSection() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="space-y-8">
+        <LazySection fadeIn slideUp className="space-y-8">
           {services.map((service, index) => (
-            <div key={index} className="relative">
+            <LazySection key={index} fadeIn slideUp className="relative">
               {/* Animated gradient background behind each card */}
               <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-10 blur-2xl animate-pulse rounded-xl`} 
                    style={{ animationDelay: `${index * 500}ms` }}></div>
               
               <LiquidCard className="w-full p-2 relative z-10">
                 <div className="relative overflow-hidden">
-                  <img
+                  <LazyImage
                     src={service.image}
                     alt={service.title}
                     className="h-[420px] w-full rounded-sm object-cover"
                   />
-                  <img
+                  <LazyImage
                     src={service.avatar}
                     alt={service.title}
                     className="absolute top-56 left-1/2 z-10  w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-md  object-cover  transition-all duration-500 hover:scale-105"
@@ -79,9 +81,9 @@ export default function DemoSection() {
                   </div>
                 </div>
               </LiquidCard>
-            </div>
+            </LazySection>
           ))}
-        </div>
+        </LazySection>
       </div>
     </section>
   )

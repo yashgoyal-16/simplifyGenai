@@ -1,6 +1,7 @@
 import React from 'react'
 import { LiquidButton } from '@/components/ui/liquid-glass-button'
 import { GradientHeading } from '@/components/ui/gradient-heading'
+import { LazySection } from '@/components/ui/lazy-section'
 
 const CTASection = () => {
   return (
@@ -9,7 +10,7 @@ const CTASection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
+        <LazySection fadeIn slideUp className="text-center max-w-4xl mx-auto">
           <GradientHeading 
             size="xl" 
             variant="light" 
@@ -34,7 +35,7 @@ const CTASection = () => {
           <p className="text-zinc-500 text-sm mt-4">
             No commitment • 30-minute strategy session • Custom AI roadmap included
           </p>
-        </div>
+        </LazySection>
       </div>
     </section>
   )

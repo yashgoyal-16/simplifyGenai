@@ -8,6 +8,7 @@ import { GlowCard } from '@/components/ui/spotlight-card'
 import { LiquidCard } from '@/components/ui/liquid-glass-card'
 import { LiquidButton } from '@/components/ui/liquid-glass-button'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
+import { LazySection } from '@/components/ui/lazy-section'
 
 const services = [
   {
@@ -73,13 +74,7 @@ export function ServicesSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <LazySection fadeIn slideUp className="text-center mb-16">
           <div className="flex justify-center items-center gap-8 mb-8">
             <span className="text-zinc-400 text-sm font-medium tracking-wider">CREATIVE SOLUTIONS</span>
             <GradientHeading 
@@ -96,9 +91,9 @@ export function ServicesSection() {
             and development services. We specialize in generative AI integration, creative solutions, 
             and intelligent automation for Fortune 500 companies.
           </p>
-        </motion.div>
+        </LazySection>
 
-        <div className="max-w-6xl mx-auto">
+        <LazySection fadeIn slideUp className="max-w-6xl mx-auto">
           {/* Desktop Grid Layout */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 auto-rows-[22rem]">
             {services.map((service) => (
@@ -136,10 +131,10 @@ export function ServicesSection() {
             ))}
           </div>
 
-        </div>
+        </LazySection>
 
         {/* AI Consultation Section */}
-        <div className="text-center mt-16">
+        <LazySection fadeIn slideUp className="text-center mt-16">
           <GradientHeading 
             size="sm" 
             variant="light" 
@@ -186,7 +181,7 @@ export function ServicesSection() {
             the latest conversational AI technology into your business. Build the perfect employee to handle sales, 
             scheduling, and all your customer support needs.
           </p>
-        </div>
+        </LazySection>
       </div>
 
       {/* Structured Data for SEO */}

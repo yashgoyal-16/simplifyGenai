@@ -6,6 +6,7 @@ import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import CTASection from "@/components/CTASection";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import DemoSection from "@/components/DemoSection";
+import { LazySection } from "@/components/ui/lazy-section";
 
 const Index = () => {
   return (
@@ -34,29 +35,29 @@ const Index = () => {
       </div>
       
       {/* Companies Section */}
-      <div className="w-full bg-black overflow-x-hidden">
+      <LazySection className="w-full bg-black overflow-x-hidden">
         <LogoCarouselDemo />
-      </div>
+      </LazySection>
 
       {/* Services Section */}
-      <div className="w-full overflow-x-hidden">
+      <LazySection className="w-full overflow-x-hidden">
         <ServicesSection />
-      </div>
+      </LazySection>
       
       {/* Demo Section */}
-      <div className="w-full overflow-x-hidden">
+      <LazySection className="w-full overflow-x-hidden">
         <DemoSection />
-      </div>
+      </LazySection>
       
       {/* CTA Section */}
-      <div className="w-full overflow-x-hidden">
+      <LazySection className="w-full overflow-x-hidden">
         <CTASection />
-      </div>
+      </LazySection>
       
       {/* Footer */}
-      <div className="w-full overflow-x-hidden">
+      <LazySection className="w-full overflow-x-hidden">
         <StackedCircularFooter />
-      </div>
+      </LazySection>
     </div>
   );
 };
