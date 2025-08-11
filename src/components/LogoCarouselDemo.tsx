@@ -228,7 +228,7 @@ const allLogos = [
 
 export function LogoCarouselDemo() {
   return (
-    <div className="space-y-8 py-24">
+    <div className="space-y-8 pb-24">
       <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-8">
         <div className="text-center">
           <GradientHeading variant="secondary" size="lg">
