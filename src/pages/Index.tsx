@@ -70,11 +70,32 @@ const Index = () => {
                 <span className="text-accent">AI</span>
               </h1>
               
-              {/* AI Symbol - Enhanced accessibility */}
-              <div className="flex justify-center mt-3" role="img" aria-label="AI Technology Symbol">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"></div>
-                <div className="w-2 h-2 bg-primary rounded-full mx-2 -mt-0.75 animate-pulse"></div>
-                <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-accent rounded-full"></div>
+              {/* AI Symbol - Sophisticated breathing animation */}
+              <div className="flex justify-center items-center mt-4 relative" role="img" aria-label="AI Technology Symbol">
+                {/* Background floating particles */}
+                <div className="absolute -left-8 -top-2 w-1 h-1 bg-primary/30 rounded-full ai-float"></div>
+                <div className="absolute -right-6 -bottom-1 w-1.5 h-1.5 bg-accent/25 rounded-full ai-float-reverse"></div>
+                <div className="absolute left-16 top-1 w-0.5 h-0.5 bg-primary/40 rounded-full ai-float" style={{ animationDelay: '2s' }}></div>
+                
+                {/* Main AI symbol */}
+                <div className="flex items-center justify-center relative">
+                  {/* Left breathing line */}
+                  <div className="w-14 h-0.5 bg-gradient-to-r from-primary via-primary to-accent rounded-full ai-breathing ai-line-glow"></div>
+                  
+                  {/* Central core with sophisticated pulse */}
+                  <div className="relative mx-3 -mt-0.5">
+                    <div className="w-3 h-3 bg-primary rounded-full ai-core-pulse"></div>
+                    {/* Inner glow core */}
+                    <div className="absolute inset-0.5 w-2 h-2 bg-accent/60 rounded-full ai-core-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  </div>
+                  
+                  {/* Right breathing line */}
+                  <div className="w-14 h-0.5 bg-gradient-to-l from-accent via-primary to-primary rounded-full ai-breathing ai-line-glow" style={{ animationDelay: '1s' }}></div>
+                </div>
+                
+                {/* Additional floating elements for depth */}
+                <div className="absolute -right-10 top-3 w-0.5 h-0.5 bg-accent/35 rounded-full ai-float-reverse" style={{ animationDelay: '4s' }}></div>
+                <div className="absolute -left-12 -bottom-2 w-1 h-1 bg-primary/20 rounded-full ai-float" style={{ animationDelay: '1.5s' }}></div>
               </div>
             </div>
             

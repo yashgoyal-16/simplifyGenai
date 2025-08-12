@@ -239,6 +239,111 @@ body {
   }
 }
 
+/* ==========================================================================
+   AI Symbol Animations - Sophisticated breathing & glow effects
+   ========================================================================== */
+
+@keyframes aiBreathing {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: scaleX(1.15) scaleY(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scaleX(1.3) scaleY(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: scaleX(1.15) scaleY(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes aiCorePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+    box-shadow: 
+      0 0 0 0 hsl(var(--color-primary) / 0.4),
+      0 0 8px hsl(var(--color-primary) / 0.2);
+  }
+  25% {
+    transform: scale(1.1);
+    opacity: 0.95;
+    box-shadow: 
+      0 0 0 4px hsl(var(--color-primary) / 0.2),
+      0 0 12px hsl(var(--color-primary) / 0.3);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 
+      0 0 0 8px hsl(var(--color-primary) / 0.1),
+      0 0 16px hsl(var(--color-primary) / 0.4),
+      0 0 24px hsl(var(--color-accent) / 0.2);
+  }
+  75% {
+    transform: scale(1.1);
+    opacity: 0.95;
+    box-shadow: 
+      0 0 0 4px hsl(var(--color-primary) / 0.2),
+      0 0 12px hsl(var(--color-primary) / 0.3);
+  }
+}
+
+@keyframes aiLineGlow {
+  0%, 100% {
+    filter: blur(0px) drop-shadow(0 0 2px hsl(var(--color-primary) / 0.3));
+    opacity: 0.8;
+  }
+  25% {
+    filter: blur(0.5px) drop-shadow(0 0 4px hsl(var(--color-primary) / 0.4));
+    opacity: 0.9;
+  }
+  50% {
+    filter: blur(1px) drop-shadow(0 0 8px hsl(var(--color-primary) / 0.5)) 
+            drop-shadow(0 0 12px hsl(var(--color-accent) / 0.3));
+    opacity: 1;
+  }
+  75% {
+    filter: blur(0.5px) drop-shadow(0 0 4px hsl(var(--color-primary) / 0.4));
+    opacity: 0.9;
+  }
+}
+
+@keyframes aiFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translateY(-8px) rotate(120deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translateY(4px) rotate(240deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes aiFloatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  33% {
+    transform: translateY(6px) rotate(-90deg);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translateY(-4px) rotate(-180deg);
+    opacity: 0.3;
+  }
+}
+
 /* Animation utility classes */
 .animate-fade-in {
   animation: fadeIn var(--transition-normal) ease-out;
@@ -246,6 +351,29 @@ body {
 
 .animate-slide-up {
   animation: slideUp var(--transition-normal) ease-out;
+}
+
+/* AI Symbol Animation Classes */
+.ai-breathing {
+  animation: aiBreathing 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.ai-core-pulse {
+  animation: aiCorePulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.ai-line-glow {
+  animation: aiLineGlow 4s ease-in-out infinite;
+}
+
+.ai-float {
+  animation: aiFloat 6s ease-in-out infinite;
+}
+
+.ai-float-reverse {
+  animation: aiFloatReverse 8s ease-in-out infinite;
 }
 
 /* ==========================================================================
