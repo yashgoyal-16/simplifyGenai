@@ -63,13 +63,19 @@ export function SplineSceneBasic() {
   return (
     <div className={cn(
       "robot-container relative mx-auto transition-all duration-500",
-      isMobile ? "w-full max-w-sm aspect-square" : "w-full max-w-4xl aspect-[4/3]"
+      isMobile ? "w-full max-w-xs aspect-square px-4" : "w-full max-w-4xl aspect-[4/3]"
     )}>
 
       {/* Voice Call Status Overlay */}
       {(isActive || isConnecting) && (
-        <div className="absolute top-4 right-4 z-20 bg-background/90 backdrop-blur-sm border rounded-lg px-4 py-3 shadow-lg">
-          <div className="flex items-center gap-3 text-sm">
+        <div className={cn(
+          "absolute z-20 bg-background/90 backdrop-blur-sm border rounded-lg shadow-lg",
+          isMobile ? "top-2 right-2 px-3 py-2" : "top-4 right-4 px-4 py-3"
+        )}>
+          <div className={cn(
+            "flex items-center gap-3",
+            isMobile ? "text-xs" : "text-sm"
+          )}>
             {isConnecting && (
               <>
                 <div className="relative">
@@ -94,28 +100,31 @@ export function SplineSceneBasic() {
 
       {/* Error Display */}
       {error && (
-        <div className="absolute top-4 left-4 z-20 bg-destructive/90 text-destructive-foreground px-4 py-2 rounded-lg text-sm shadow-lg max-w-xs">
+        <div className={cn(
+          "absolute z-20 bg-destructive/90 text-destructive-foreground rounded-lg shadow-lg max-w-xs",
+          isMobile ? "top-2 left-2 px-3 py-2 text-xs" : "top-4 left-4 px-4 py-2 text-sm"
+        )}>
           <div className="font-medium">Connection Error</div>
-          <div className="text-xs opacity-90">{error}</div>
+          <div className={cn("opacity-90", isMobile ? "text-[10px]" : "text-xs")}>{error}</div>
         </div>
       )}
 
       {/* Control Buttons - Only show End Call when active */}
       {(isActive || isConnecting) && (
         <div className={cn(
-          "absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20",
-          isMobile ? "flex flex-col items-center" : "flex flex-row"
+          "absolute left-1/2 transform -translate-x-1/2 z-20",
+          isMobile ? "bottom-2 flex flex-col items-center" : "bottom-4 flex flex-row"
         )}>
           <Button
             onClick={handleEndCall}
             variant="destructive"
             size={isMobile ? "lg" : "default"}
             className={cn(
-              "shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105",
-              isMobile ? "w-16 h-16 rounded-full p-0" : "px-6"
+              "shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 touch-manipulation",
+              isMobile ? "w-14 h-14 rounded-full p-0 min-w-[56px] min-h-[56px]" : "px-6"
             )}
           >
-            <PhoneOff className={cn(isMobile ? "w-6 h-6" : "w-4 h-4 mr-2")} />
+            <PhoneOff className={cn(isMobile ? "w-5 h-5" : "w-4 h-4 mr-2")} />
             {!isMobile && "End Call"}
           </Button>
         </div>
@@ -158,7 +167,7 @@ export function SplineSceneBasic() {
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className={cn(
               "relative pointer-events-auto transition-all duration-700 ease-out",
-              isMobile ? "translate-y-6" : "translate-y-12",
+              isMobile ? "translate-y-4" : "translate-y-12",
               showButton ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}>
               <Button
@@ -166,21 +175,21 @@ export function SplineSceneBasic() {
                 className={cn(
                   "rounded-full bg-gradient-to-br from-slate-100 to-slate-200 backdrop-blur-md border-4 border-blue-400",
                   "text-slate-700 shadow-2xl hover:shadow-blue-400/50 hover:from-white hover:to-slate-100",
-                  "transition-all duration-500 hover:scale-110",
+                  "transition-all duration-500 hover:scale-110 touch-manipulation",
                   "animate-pulse-glow font-semibold",
-                  // Precise 72px size for better visibility (60px on mobile)
-                  isMobile ? "w-[60px] h-[60px] p-0 text-lg" : "w-[72px] h-[72px] p-0 text-xl"
+                  // Better mobile sizing with minimum touch target
+                  isMobile ? "w-[56px] h-[56px] p-0 text-sm min-w-[56px] min-h-[56px]" : "w-[72px] h-[72px] p-0 text-xl"
                 )}
                 onClick={handleStartCall}
               >
                 <div className="flex flex-col items-center gap-0.5">
                   <Hand className={cn(
                     "drop-shadow-lg text-slate-600",
-                    isMobile ? "w-5 h-5" : "w-6 h-6"
+                    isMobile ? "w-4 h-4" : "w-6 h-6"
                   )} />
                   <span className={cn(
                     "font-bold text-slate-600 drop-shadow-lg leading-tight",
-                    isMobile ? "text-[10px]" : "text-xs"
+                    isMobile ? "text-[9px]" : "text-xs"
                   )}>
                     Tap to Talk
                   </span>
@@ -199,10 +208,19 @@ export function SplineSceneBasic() {
 
       {/* Voice Activity Indicator */}
       {isActive && (
-        <div className="absolute bottom-4 right-4 z-10">
-          <div className="flex items-center space-x-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 rounded-full px-3 py-2">
+        <div className={cn(
+          "absolute z-10",
+          isMobile ? "bottom-2 right-2" : "bottom-4 right-4"
+        )}>
+          <div className={cn(
+            "flex items-center space-x-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 rounded-full",
+            isMobile ? "px-2 py-1" : "px-3 py-2"
+          )}>
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs text-green-700 dark:text-green-300 font-medium">Listening</span>
+            <span className={cn(
+              "text-green-700 dark:text-green-300 font-medium",
+              isMobile ? "text-[10px]" : "text-xs"
+            )}>Listening</span>
           </div>
         </div>
       )}

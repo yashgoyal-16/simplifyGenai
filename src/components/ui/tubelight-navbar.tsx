@@ -52,12 +52,12 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none px-6 sm:px-0",
+        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-4 sm:mb-6 sm:pt-6 pointer-events-none px-4 sm:px-0",
         className,
       )}
     >
       <div className={cn(
-        "flex items-center gap-3 backdrop-blur-lg py-2 px-2 sm:py-1 sm:px-1 rounded-full shadow-lg pointer-events-auto",
+        "flex items-center gap-1 sm:gap-3 backdrop-blur-lg py-2 px-2 sm:py-1 sm:px-1 rounded-full shadow-lg pointer-events-auto",
         variant === "light" 
           ? "bg-black/10 border border-black/20" 
           : "bg-white/10 border border-white/20"
@@ -72,7 +72,8 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               to={item.url}
               onClick={() => handleNavClick(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-3 sm:py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold rounded-full transition-colors touch-manipulation",
+                "px-3 py-3 sm:px-6 sm:py-2 min-w-[44px] min-h-[44px] flex items-center justify-center",
                 item.special 
                   ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
                   : variant === "light"
@@ -83,7 +84,7 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
             >
               <span className="hidden md:inline">{item.name}</span>
               <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
+                <Icon size={20} strokeWidth={2.5} />
               </span>
               {isActive && (
                 <motion.div

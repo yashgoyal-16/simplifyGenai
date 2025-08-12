@@ -5,7 +5,7 @@ import { PortfolioGrid } from "@/components/ui/portfolio-grid"
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer"
 import { Button } from "@/components/ui/button"
 import { Volume2, VolumeX } from "lucide-react"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const demoFrames = [
@@ -111,6 +111,59 @@ const CreativeAI = () => {
   const [isMuted, setIsMuted] = useState(true)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const isMobile = useIsMobile()
+
+  useEffect(() => {
+    // Add page-specific structured data for Creative AI services
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI Video Generator & Creative AI Services",
+      "description": "Professional AI video generator for business, automated video generation, and AI video marketing tools. Enterprise AI video creation services.",
+      "provider": {
+        "@type": "Organization",
+        "name": "SimplifyGenAI",
+        "url": "https://simplifygenai.com"
+      },
+      "serviceType": [
+        "AI Video Generator",
+        "Automated Video Generation", 
+        "AI Video Creation",
+        "Professional AI Video Production",
+        "AI Video Marketing Tools",
+        "Custom AI Video Production"
+      ],
+      "keywords": "ai video generator, ai video creation, artificial intelligence video, automated video generation, ai video marketing tools, professional ai video production, best ai video generator 2025",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      }
+    }
+
+    let script = document.querySelector('#creative-ai-structured-data') as HTMLScriptElement
+    if (!script) {
+      script = document.createElement('script')
+      script.id = 'creative-ai-structured-data'
+      script.type = 'application/ld+json'
+      document.head.appendChild(script)
+    }
+    script.textContent = JSON.stringify(structuredData)
+
+    // Update page title and meta description for this specific page
+    document.title = "Professional AI Video Generator for Business | Creative AI Services - SimplifyGenAI"
+    
+    let metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Best AI video generator 2025 for professional business videos. Automated video generation, AI video creation, and custom AI video production services. Transform your marketing with AI.')
+    }
+
+    return () => {
+      const scriptElement = document.querySelector('#creative-ai-structured-data')
+      if (scriptElement) {
+        scriptElement.remove()
+      }
+    }
+  }, [])
 
   const toggleAudio = () => {
     if (iframeRef.current) {
@@ -237,81 +290,81 @@ const CreativeAI = () => {
       <section className="py-32 px-6 bg-black relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-semibold text-white mb-8 font-['Inter']">
-              Bring Your <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Vision to Life</span> with AI
-            </h2>
+            <h1 className="text-5xl md:text-6xl font-semibold text-white mb-8 font-['Inter']">
+              Professional <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">AI Video Generator</span> for Business
+            </h1>
             <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-['Inter']">
-              We're one of the world's leading creative AI agencies, crafting premium AI-powered advertisements that drive results. 
-              We don't create AI slop – we create cinematic masterpieces that captivate audiences and convert viewers into customers.
+              We're the leading AI video creation agency, delivering best-in-class AI video generator solutions for enterprise clients. 
+              Our automated video generation platform creates professional AI videos that drive conversions and maximize ROI for businesses worldwide.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
             <div className="space-y-8">
-              <h3 className="text-3xl font-semibold text-white font-['Inter']">B2B Excellence</h3>
+              <h2 className="text-3xl font-semibold text-white font-['Inter']">AI Video Generator for B2B Marketing</h2>
               <p className="text-gray-400 text-lg leading-relaxed font-['Inter']">
-                Transform your B2B marketing with AI-generated content that speaks to decision-makers. 
-                Our sophisticated approach combines data-driven insights with creative storytelling to 
-                deliver campaigns that generate qualified leads and drive enterprise sales.
+                Transform your B2B marketing with our professional AI video creation platform. Our enterprise 
+                AI video generator combines advanced artificial intelligence video technology with business-focused 
+                storytelling to deliver campaigns that generate qualified leads and drive enterprise sales.
               </p>
               <ul className="space-y-4 text-gray-400 font-['Inter']">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-4"></div>
-                  Enterprise-grade AI video production
+                  Enterprise AI video production software
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-4"></div>
-                  Data-driven creative optimization
+                  Automated video generation with data insights
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
-                  Professional voice synthesis & narration
+                  AI-powered video creator with voice synthesis
                 </li>
               </ul>
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-3xl font-semibold text-white font-['Inter']">D2C Innovation</h3>
+              <h2 className="text-3xl font-semibold text-white font-['Inter']">Best AI Video Generator 2025 for D2C</h2>
               <p className="text-gray-400 text-lg leading-relaxed font-['Inter']">
-                Create scroll-stopping content that converts browsers into buyers. Our AI-powered D2C campaigns 
-                leverage psychological triggers and viral marketing principles to maximize engagement and 
-                drive direct-to-consumer sales across all platforms.
+                Create viral content with our cutting-edge AI video maker designed for direct-to-consumer brands. 
+                Our text to video AI technology and generative AI video platform leverage psychological triggers 
+                to maximize engagement and drive conversions across all social media platforms.
               </p>
               <ul className="space-y-4 text-gray-400 font-['Inter']">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-4"></div>
-                  Viral-optimized creative concepts
+                  AI video generator for social media optimization
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-4"></div>
-                  Platform-specific optimization
+                  AI video marketing tools for maximum reach
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
-                  Conversion-focused storytelling
+                  Custom AI video production for brand storytelling
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="text-center">
-            <h3 className="text-4xl font-semibold text-white mb-12 font-['Inter']">
-              Why Industry Leaders Choose Us
-            </h3>
+            <h2 className="text-4xl font-semibold text-white mb-12 font-['Inter']">
+              Why Choose Our Professional AI Video Generator
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h4 className="text-xl font-semibold text-white mb-4 font-['Inter']">No AI Slop</h4>
-                <p className="text-gray-400 font-['Inter']">Every frame is crafted with precision. We maintain Hollywood-level quality standards in every project.</p>
+                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Professional AI Video Creation</h3>
+                <p className="text-gray-400 font-['Inter']">Our AI video generator delivers cinema-quality results. We maintain the highest standards in artificial intelligence video production for enterprise clients.</p>
               </div>
               
               <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-secondary/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h4 className="text-xl font-semibold text-white mb-4 font-['Inter']">Proven Results</h4>
-                <p className="text-gray-400 font-['Inter']">Our AI-powered ads consistently outperform traditional creative by 3-5x in engagement and conversion rates.</p>
+                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Proven AI Video Marketing Results</h3>
+                <p className="text-gray-400 font-['Inter']">Our AI-powered video creator consistently delivers 3-5x higher engagement rates compared to traditional video production methods.</p>
               </div>
               
               <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-accent/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h4 className="text-xl font-semibold text-white mb-4 font-['Inter']">Rapid Delivery</h4>
-                <p className="text-gray-400 font-['Inter']">From concept to final delivery in days, not weeks. Scale your creative output without compromising quality.</p>
+                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Automated Video Generation at Scale</h3>
+                <p className="text-gray-400 font-['Inter']">From concept to final delivery in days using our automated video generation platform. Scale your video production without compromising quality.</p>
               </div>
             </div>
           </div>

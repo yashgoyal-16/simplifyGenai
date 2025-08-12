@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -47,6 +47,60 @@ interface PricingPlan {
 }
 
 const VoiceAI: React.FC = () => {
+  useEffect(() => {
+    // Add page-specific structured data for Voice AI services
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Service", 
+      "name": "Voice AI Solutions & Custom Voice AI Development",
+      "description": "Professional voice AI generator, conversational AI, and custom voice AI solutions. Enterprise voice AI development services and voice recognition AI technology.",
+      "provider": {
+        "@type": "Organization",
+        "name": "SimplifyGenAI",
+        "url": "https://simplifygenai.com"
+      },
+      "serviceType": [
+        "Voice AI Generator",
+        "Conversational AI",
+        "Custom Voice AI Solutions",
+        "Voice AI Development", 
+        "Enterprise Voice AI",
+        "Voice Recognition AI",
+        "Voice AI Assistant Development",
+        "Speech AI Technology"
+      ],
+      "keywords": "voice ai generator, conversational ai, custom voice ai solutions, voice ai development, enterprise voice ai, voice recognition ai, voice ai assistant development, speech ai",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      }
+    }
+
+    let script = document.querySelector('#voice-ai-structured-data') as HTMLScriptElement
+    if (!script) {
+      script = document.createElement('script')
+      script.id = 'voice-ai-structured-data'
+      script.type = 'application/ld+json'
+      document.head.appendChild(script)
+    }
+    script.textContent = JSON.stringify(structuredData)
+
+    // Update page title and meta description for Voice AI page
+    document.title = "Voice AI Generator & Custom Voice AI Solutions | Enterprise Voice AI Development - SimplifyGenAI"
+    
+    let metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Professional voice AI generator and custom voice AI solutions. Enterprise conversational AI development, voice recognition AI, and voice AI assistant development services.')
+    }
+
+    return () => {
+      const scriptElement = document.querySelector('#voice-ai-structured-data')
+      if (scriptElement) {
+        scriptElement.remove()
+      }
+    }
+  }, [])
   // Workflow steps data
   const workflowSteps: WorkflowStep[] = [
     {
@@ -187,11 +241,11 @@ const VoiceAI: React.FC = () => {
             <Badge variant="secondary" className="mb-4 bg-white/10 text-white border-white/20">
               How It Works
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Simple Setup, Powerful Results
-            </h2>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Voice AI Solutions - Simple Setup, Powerful Results
+            </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Get your AI voice agent up and running in minutes, not weeks
+              Get your custom voice AI assistant and conversational AI system up and running in minutes with our enterprise voice AI development platform
             </p>
           </div>
 
@@ -225,10 +279,10 @@ const VoiceAI: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Advanced AI Capabilities
+              Advanced Voice AI Technology & Speech AI Capabilities
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience the most sophisticated voice AI technology available
+              Experience the most sophisticated voice AI software and conversational AI technology for enterprise voice AI development
             </p>
           </div>
 
@@ -257,10 +311,10 @@ const VoiceAI: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Trusted Across Industries
+              Enterprise Voice AI Solutions Trusted Across Industries
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              From healthcare to e-commerce, our AI voice agents transform customer experiences
+              From healthcare to e-commerce, our custom voice AI solutions and voice recognition AI technology transform customer experiences globally
             </p>
           </div>
 
@@ -291,10 +345,10 @@ const VoiceAI: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Ready to Transform Your Business?
+              Ready to Transform Your Business with Voice AI?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Join thousands of businesses already using our Voice AI technology to deliver exceptional customer experiences
+              Join thousands of businesses using our voice AI generator and conversational AI technology to deliver exceptional customer experiences through custom voice AI solutions
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -330,21 +384,24 @@ const VoiceAI: React.FC = () => {
       <section className="relative py-20 px-6 z-10">
         <div className="max-w-4xl mx-auto">
           <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl p-8">
-            <h2 className="text-3xl font-bold mb-6 text-white">Why Choose SimplifyGenAI Voice Agents?</h2>
+            <h2 className="text-3xl font-bold mb-6 text-white">Leading Voice AI Generator & Custom Voice AI Solutions</h2>
             <div className="space-y-4 text-gray-300">
               <p>
-                SimplifyGenAI revolutionizes customer communication with advanced AI voice agents that deliver human-like conversations. 
-                Our cutting-edge technology combines natural language processing, machine learning, and voice synthesis to create 
-                seamless customer experiences that scale with your business.
+                SimplifyGenAI revolutionizes business communication with our advanced voice AI generator and conversational AI platform. 
+                Our enterprise voice AI development services combine cutting-edge speech AI technology, natural language processing, 
+                and voice synthesis to create custom voice AI solutions that deliver human-like conversations at scale.
               </p>
               <p>
-                Whether you're handling customer support, sales inquiries, or appointment scheduling, our voice AI agents work 
-                24/7 to ensure no call goes unanswered. With support for 50+ languages and enterprise-grade security, 
-                SimplifyGenAI is trusted by thousands of businesses worldwide.
+                Whether you need voice AI assistant development for customer support, voice recognition AI for sales inquiries, 
+                or voice AI software for appointment scheduling, our conversational AI technology works 24/7 to ensure seamless 
+                customer experiences. With support for 50+ languages and enterprise-grade security, our voice AI solutions 
+                are trusted by thousands of businesses worldwide for voice ai development and implementation.
               </p>
               <p>
-                Experience the future of customer communication with AI agents that learn, adapt, and improve with every interaction. 
-                From small startups to large enterprises, SimplifyGenAI provides scalable solutions that grow with your business needs.
+                Experience the future of business communication with our voice AI technology that learns, adapts, and improves 
+                with every interaction. From small startups to large enterprises, SimplifyGenAI provides scalable voice ai solutions 
+                and enterprise voice AI consulting services that grow with your business needs. Our custom voice AI development 
+                platform enables businesses to implement sophisticated voice AI assistants that transform customer experiences.
               </p>
             </div>
           </div>

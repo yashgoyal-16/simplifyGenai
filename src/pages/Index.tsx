@@ -20,14 +20,14 @@ const Index = () => {
           </h1>
         </div>
         
-        {/* Mobile background text - at top */}
-        <div className="absolute top-8 left-0 right-0 md:hidden flex justify-center px-4">
-          <h1 className="text-[3rem] font-semibold text-white/20 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
+        {/* Mobile background text - at top with better scaling */}
+        <div className="absolute top-4 left-0 right-0 md:hidden flex justify-center px-2">
+          <h1 className="text-[2rem] xs:text-[2.5rem] font-semibold text-white/15 select-none pointer-events-none z-0 font-['Inter'] text-center leading-tight">
             SIMPLIFYGENAI
           </h1>
         </div>
         
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full pt-16 md:pt-0 pb-20 md:pb-0">
           <SplineSceneBasic />
         </div>
         {/* Graceful blur transition */}

@@ -12,3 +12,22 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Important pages for SEO
+Allow: /creative-ai
+Allow: /voice-ai  
+Allow: /about
+Allow: /projects
+
+# Block unnecessary crawling
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+
+# Sitemap location
+Sitemap: https://simplifygenai.com/sitemap.xml
+
+# Crawl delay for better server performance
+Crawl-delay: 1

@@ -17,33 +17,43 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Set SEO meta tags
-    document.title = "SimplifyGenAI - Enterprise AI Consulting & Development Services";
+    // Set SEO meta tags with target keywords
+    document.title = "AI Video Generator & Voice AI Solutions | SimplifyGenAI - Best AI Video Creator 2025";
     
-    // Create or update meta description
+    // Mobile viewport optimization
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.setAttribute('name', 'viewport');
+      document.head.appendChild(viewportMeta);
+    }
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+    
+    // Create or update meta description with target keywords
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'SimplifyGenAI provides enterprise AI consulting, creative AI services, voice AI solutions, and AI automation. Founded by Gurleen and Daksh, we help businesses integrate generative AI for competitive advantage.');
+    metaDescription.setAttribute('content', 'Professional AI video generator for business & custom voice AI solutions. Enterprise AI consulting services for video creation, conversational AI, and automated video generation. Transform your business with cutting-edge AI technology.');
 
-    // Add keywords meta tag
+    // Add keywords meta tag with comprehensive keyword list
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (!metaKeywords) {
       metaKeywords = document.createElement('meta');
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'AI consulting, generative AI, enterprise AI, creative AI, voice AI, AI automation, LLMO, GEO optimization, AI MVP development');
+    metaKeywords.setAttribute('content', 'ai video generator, ai voice generator, ai consulting services, artificial intelligence video, voice ai development, ai consultant, ai video creation, conversational ai, ai video maker, voice ai solutions, ai consulting, generative ai video, custom voice ai, ai video marketing tools, enterprise ai consulting, automated video generation, ai-powered video creator, text to video ai, professional ai video creation, custom ai video production, voice ai assistant, speech ai, voice ai software, ai implementation consulting, best ai video generator 2025, ai video generator for social media, enterprise voice ai, ai voice assistant development, ai digital transformation, custom ai solutions');
 
-    // Add Open Graph tags
+    // Add Open Graph tags with target keywords
     const ogTags = [
-      { property: 'og:title', content: 'SimplifyGenAI - Enterprise AI Consulting Services' },
-      { property: 'og:description', content: 'Transform your business with cutting-edge AI solutions. Expert consulting, development, and automation services.' },
+      { property: 'og:title', content: 'AI Video Generator & Voice AI Solutions | SimplifyGenAI' },
+      { property: 'og:description', content: 'Professional AI video generator for business & custom voice AI solutions. Enterprise AI consulting for automated video generation & conversational AI development.' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'SimplifyGenAI' }
+      { property: 'og:site_name', content: 'SimplifyGenAI' },
+      { property: 'og:locale', content: 'en_US' }
     ];
 
     ogTags.forEach(tag => {
@@ -69,20 +79,27 @@ const App = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "SimplifyGenAI",
-      "description": "Enterprise AI consulting and development services",
+      "description": "Leading AI video generator and voice AI solutions provider. Professional AI consulting for automated video creation, conversational AI, and custom voice AI development.",
       "url": window.location.origin,
       "founder": [
         { "@type": "Person", "name": "Gurleen" },
         { "@type": "Person", "name": "Daksh" }
       ],
       "serviceType": [
-        "AI Consulting",
-        "Creative AI Services", 
+        "AI Video Generator",
         "Voice AI Solutions",
-        "AI MVP Development",
-        "AI Automation",
-        "LLMO/GEO Optimization"
-      ]
+        "AI Consulting Services", 
+        "Conversational AI",
+        "Custom Voice AI Development",
+        "Enterprise AI Consulting",
+        "Automated Video Generation",
+        "AI Video Creation",
+        "Professional AI Video Production",
+        "AI Video Marketing Tools",
+        "Voice AI Assistant Development",
+        "AI Implementation Consulting"
+      ],
+      "keywords": "ai video generator, ai voice generator, ai consulting services, artificial intelligence video, voice ai development, conversational ai, ai video creation, automated video generation, best ai video generator 2025"
     });
   }, []);
 
