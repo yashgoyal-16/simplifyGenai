@@ -16,10 +16,20 @@ const Orb: React.FC = () => {
  
   useEffect(() => {
     console.log("Initializing visualization...");
-    initViz();
+    // Add a small delay to ensure DOM is fully loaded and sized
+    const timer = setTimeout(() => {
+      initViz();
+    }, 100);
+    
     window.addEventListener('resize', onWindowResize);
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('resize', onWindowResize);
+      // Cleanup WebGL resources
+      if (rendererRef.current) {
+        rendererRef.current.dispose();
+        rendererRef.current = null;
+      }
     };
   }, []);
  
@@ -37,14 +47,20 @@ const Orb: React.FC = () => {
     console.log("Initializing Three.js visualization...");
     const outElement = document.getElementById('out');
     if (!outElement) {
-      console.warn("Element with ID 'out' not found, skipping WebGL initialization");
+      console.log("Element with ID 'out' not found, Orb component not needed on this page");
       return;
     }
 
     const scene = new THREE.Scene();
     const group = new THREE.Group();
-    const width = outElement.clientWidth || 300;
-    const height = outElement.clientHeight || 300;
+    const width = Math.max(outElement.clientWidth || 300, 1);
+    const height = Math.max(outElement.clientHeight || 300, 1);
+    
+    // Additional safety check for valid dimensions
+    if (width <= 0 || height <= 0) {
+      console.warn('Invalid canvas dimensions, skipping WebGL initialization');
+      return;
+    }
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.5, 100);
     camera.position.set(0, 0, 100);
     camera.lookAt(scene.position);
@@ -103,9 +119,15 @@ const Orb: React.FC = () => {
       return;
     }
  
-    groupRef.current.rotation.y += 0.005;
-    rendererRef.current.render(sceneRef.current, cameraRef.current);
-    requestAnimationFrame(render);
+    try {
+      groupRef.current.rotation.y += 0.005;
+      rendererRef.current.render(sceneRef.current, cameraRef.current);
+      requestAnimationFrame(render);
+    } catch (error) {
+      console.warn('WebGL render error, stopping animation:', error);
+      // Stop the render loop to prevent continuous errors
+      return;
+    }
   };
  
   const onWindowResize = () => {

@@ -7,7 +7,15 @@
       "Bash(git remote set-url:*)",
       "Bash(npm ls:*)",
       "Bash(npm install:*)",
-      "Bash(timeout 120 npm run build)"
+      "Bash(timeout 120 npm run build)",
+      "Bash(dir:*)",
+      "Bash(timeout 60 npm run build)",
+      "Bash(git add:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)",
+      "WebFetch(domain:player.vimeo.com)"
     ],
     "deny": [],
     "ask": []

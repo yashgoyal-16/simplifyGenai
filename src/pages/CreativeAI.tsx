@@ -177,9 +177,20 @@ const CreativeAI = () => {
       const currentSrc = iframe.src
       
       if (isMuted) {
-        iframe.src = currentSrc.replace('muted=1', 'muted=0')
+        // Unmute the video
+        const newSrc = currentSrc.replace('muted=1', 'muted=0')
+        iframe.src = newSrc
+        // Also use postMessage API for better reliability
+        setTimeout(() => {
+          iframe.contentWindow?.postMessage('{"method":"setVolume","value":1}', '*')
+        }, 500)
       } else {
-        iframe.src = currentSrc.replace('muted=0', 'muted=1')
+        // Mute the video
+        const newSrc = currentSrc.replace('muted=0', 'muted=1')
+        iframe.src = newSrc
+        setTimeout(() => {
+          iframe.contentWindow?.postMessage('{"method":"setVolume","value":0}', '*')
+        }, 500)
       }
       
       setIsMuted(!isMuted)
@@ -190,7 +201,10 @@ const CreativeAI = () => {
     // Force video to play by posting message to Vimeo player
     if (iframeRef.current) {
       try {
-        iframeRef.current.contentWindow?.postMessage('{"method":"play"}', '*')
+        // Wait a moment for iframe to fully load
+        setTimeout(() => {
+          iframeRef.current?.contentWindow?.postMessage('{"method":"play"}', '*')
+        }, 500)
       } catch (error) {
         console.log('Video autoplay handled by iframe parameters')
       }
@@ -299,14 +313,14 @@ const CreativeAI = () => {
           {/* Load video after initial render */}
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?autoplay=1&loop=1&muted=1&background=1&controls=0&title=0&byline=0&portrait=0&transparent=1`}
+            src={`https://player.vimeo.com/video/1105971548?badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=1&logo=0&fun=0&dnt=1`}
             className="absolute inset-0 w-full h-full object-cover"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
             onLoad={handleIframeLoad}
             style={{
-              pointerEvents: 'none',
-              opacity: '0.9',
+              opacity: '1',
               zIndex: 1
             }}
           />
