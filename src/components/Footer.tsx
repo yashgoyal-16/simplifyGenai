@@ -8,9 +8,15 @@ const Footer = () => {
         {/* Curved container */}
         <div className="mx-4 sm:mx-8 bg-black rounded-t-[2rem] sm:rounded-t-[3rem] pt-16 pb-20 px-8">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight break-words">
-              SimplifyGenAI
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-200 tracking-wide break-words">
+              Simplify<span className="text-blue-400">Gen</span><span className="text-cyan-400">AI</span>
             </h1>
+            {/* AI Symbol */}
+            <div className="flex justify-center mt-4">
+              <div className="w-16 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
+              <div className="w-3 h-3 bg-blue-400 rounded-full mx-3 -mt-1 animate-pulse"></div>
+              <div className="w-16 h-0.5 bg-gradient-to-l from-blue-400 to-cyan-400 rounded-full"></div>
+            </div>
           </div>
         </div>
         

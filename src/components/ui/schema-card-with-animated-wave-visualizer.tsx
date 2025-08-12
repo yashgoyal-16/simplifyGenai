@@ -79,11 +79,11 @@ export default function SchemaCard() {
     <>
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
       <div className="fixed inset-0 flex items-center justify-center p-4 z-10">
-        {/* SIMPLIFYGENAI Text */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-semibold text-white/10 select-none pointer-events-none z-0 font-['Inter'] whitespace-nowrap">
-            SIMPLIFYGENAI
-          </h1>
+        {/* Subtle geometric background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-64 h-64 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-32 right-32 w-48 h-48 border border-white/10 rotate-45"></div>
+          <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-white/15 rotate-12"></div>
         </div>
         
         <div className="w-full max-w-xs">

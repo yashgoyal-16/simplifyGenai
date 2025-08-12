@@ -88,11 +88,29 @@ function StackedCircularFooter({ variant = "default" }: StackedCircularFooterPro
             </Button>
           </div>
           <div>
-            <h2 className={`text-4xl sm:text-6xl md:text-8xl font-bold text-center ${
-              variant === "light" ? "text-black" : "text-white"
+            <h2 className={`text-4xl sm:text-6xl md:text-8xl font-display font-black text-center ${
+              variant === "light" 
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-blue-600 to-cyan-600"
+                : "text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-200"
             }`}>
-              SIMPLIFYGENAI
+              Simplify<span className={variant === "light" ? "text-blue-600" : "text-blue-400"}>Gen</span><span className={variant === "light" ? "text-cyan-600" : "text-cyan-400"}>AI</span>
             </h2>
+            {/* AI Symbol */}
+            <div className="flex justify-center mt-4">
+              <div className={`w-20 h-0.5 rounded-full ${
+                variant === "light" 
+                  ? "bg-gradient-to-r from-blue-600 to-cyan-600"
+                  : "bg-gradient-to-r from-blue-400 to-cyan-400"
+              }`}></div>
+              <div className={`w-4 h-4 rounded-full mx-4 -mt-1.5 animate-pulse ${
+                variant === "light" ? "bg-blue-600" : "bg-blue-400"
+              }`}></div>
+              <div className={`w-20 h-0.5 rounded-full ${
+                variant === "light" 
+                  ? "bg-gradient-to-l from-blue-600 to-cyan-600"
+                  : "bg-gradient-to-l from-blue-400 to-cyan-400"
+              }`}></div>
+            </div>
           </div>
         </div>
       </div>

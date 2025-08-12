@@ -28,6 +28,10 @@ const headingVariants = cva(
         xxxl: "text-5xl sm:text-6xl lg:text-7xl",
         display: "text-6xl sm:text-7xl lg:text-8xl",
         hero: "text-7xl sm:text-8xl lg:text-9xl",
+        "brand-sm": "text-brand-sm",
+        "brand-md": "text-brand-md",
+        "brand-lg": "text-brand-lg",
+        "brand-xl": "text-brand-xl",
       },
       weight: {
         default: "font-semibold",
@@ -82,6 +86,10 @@ export type Size =
   | "xxxl"
   | "display"
   | "hero"
+  | "brand-sm"
+  | "brand-md"
+  | "brand-lg"
+  | "brand-xl"
 export type Weight = "default" | "light" | "normal" | "medium" | "semi" | "bold" | "black"
 
 export { GradientHeading, headingVariants }
