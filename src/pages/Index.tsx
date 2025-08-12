@@ -7,6 +7,7 @@ import CTASection from "@/components/CTASection";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import DemoSection from "@/components/DemoSection";
 import { LazySection } from "@/components/ui/lazy-section";
+import { DeferredSpline } from "@/components/ui/deferred-spline";
 
 // Error Boundary for Spline component
 class ErrorBoundary extends Component<
@@ -34,14 +35,14 @@ class ErrorBoundary extends Component<
   }
 }
 
-// Lazy load the heavy Spline component with timeout fallback
+// Defer Spline loading with intersection observer and user interaction
 const SplineSceneBasic = lazy(() => 
   Promise.race([
     import("@/components/SplineDemo").then(module => ({
       default: module.SplineSceneBasic
     })),
     new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Spline timeout')), 10000)
+      setTimeout(() => reject(new Error('Spline timeout')), 15000)
     )
   ])
 );
@@ -66,25 +67,44 @@ const Index = () => {
         </div>
         
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full pt-16 md:pt-0 pb-20 md:pb-0">
-          <Suspense fallback={
-            <div className="flex items-center justify-center min-h-[60vh] w-full">
-              <div className="text-center">
-                <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-white/60 text-sm">Loading 3D Experience...</p>
+          <DeferredSpline
+            enableOnInteraction={true}
+            fallback={
+              <div className="flex flex-col items-center justify-center min-h-[60vh] w-full">
+                <div className="text-center">
+                  <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    SimplifyGenAI
+                  </h2>
+                  <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl">
+                    Professional AI Video Generator & Voice AI Solutions
+                  </p>
+                  <div className="bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-lg px-4 py-2 mb-4">
+                    <p className="text-blue-200 text-sm">👆 Click anywhere to load interactive 3D experience</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          }>
-            <ErrorBoundary fallback={
+            }
+          >
+            <Suspense fallback={
               <div className="flex items-center justify-center min-h-[60vh] w-full">
                 <div className="text-center">
-                  <h2 className="text-2xl font-semibold text-white mb-4">SimplifyGenAI</h2>
-                  <p className="text-white/60 text-sm">Professional AI Video Generator & Voice AI Solutions</p>
+                  <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                  <p className="text-white/60 text-sm">Loading 3D Experience...</p>
                 </div>
               </div>
             }>
-              <SplineSceneBasic />
-            </ErrorBoundary>
-          </Suspense>
+              <ErrorBoundary fallback={
+                <div className="flex items-center justify-center min-h-[60vh] w-full">
+                  <div className="text-center">
+                    <h2 className="text-2xl font-semibold text-white mb-4">SimplifyGenAI</h2>
+                    <p className="text-white/60 text-sm">Professional AI Video Generator & Voice AI Solutions</p>
+                  </div>
+                </div>
+              }>
+                <SplineSceneBasic />
+              </ErrorBoundary>
+            </Suspense>
+          </DeferredSpline>
         </div>
         {/* Graceful blur transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>

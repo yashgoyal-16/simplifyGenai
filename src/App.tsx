@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBarDemo } from "./components/NavBarDemo";
+import { PerformanceMonitor } from "@/components/ui/performance-monitor";
 import Index from "./pages/Index";
 
 // Lazy load pages for better performance
@@ -108,6 +109,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <PerformanceMonitor />
         <div className="w-full max-w-full overflow-x-hidden min-h-screen">
           <Toaster />
           <Sonner />

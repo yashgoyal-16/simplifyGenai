@@ -22,25 +22,45 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split Spline into separate chunk - reduce size by excluding from main bundle
-          'spline-runtime': ['@splinetool/runtime', '@splinetool/react-spline'],
-          // Split heavy UI libraries
-          'ui-libs': ['framer-motion', 'embla-carousel-react'],
-          // Split React and core dependencies
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          // Split chart and data visualization
-          'charts': ['recharts'],
-          // Split form libraries
-          'forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
+        manualChunks: (id) => {
+          // Spline - largest chunk, load only when needed
+          if (id.includes('@splinetool') || id.includes('SplineDemo')) {
+            return 'spline-runtime';
+          }
+          // Heavy physics and 3D libraries
+          if (id.includes('three') || id.includes('physics') || id.includes('gaussian')) {
+            return 'physics';
+          }
+          // React vendor
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('react-router')) {
+            return 'react-vendor';
+          }
+          // Heavy animation libraries
+          if (id.includes('framer-motion') || id.includes('embla-carousel')) {
+            return 'ui-libs';
+          }
+          // Charts
+          if (id.includes('recharts') || id.includes('d3')) {
+            return 'charts';
+          }
+          // Forms
+          if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+            return 'forms';
+          }
+          // Radix UI components - only load what's used
+          if (id.includes('@radix-ui')) {
+            return 'radix-ui';
+          }
+          // Core utilities - keep small and cached
+          if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('class-variance-authority')) {
+            return 'utils';
+          }
         }
       }
     },
-    // Reduce chunk size warning limit to force smaller bundles
-    chunkSizeWarningLimit: 500,
-    // Enable gzip compression simulation
+    // More aggressive chunk size limits
+    chunkSizeWarningLimit: 400,
     reportCompressedSize: true,
-    // Minify for production - balanced optimization
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -48,10 +68,19 @@ export default defineConfig(({ mode }) => ({
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
         dead_code: true,
-        unused: true
+        unused: true,
+        // More aggressive tree shaking
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        passes: 3
       },
       mangle: {
-        safari10: true
+        safari10: true,
+        toplevel: true
+      },
+      format: {
+        comments: false
       }
     }
   },
