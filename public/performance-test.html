@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SimplifyGenAI Performance Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #000; color: #fff; }
+        .metric { margin: 10px 0; padding: 10px; background: #111; border-radius: 5px; }
+        .good { border-left: 4px solid #4CAF50; }
+        .warning { border-left: 4px solid #FF9800; }
+        .error { border-left: 4px solid #f44336; }
+    </style>
+</head>
+<body>
+    <h1>SimplifyGenAI Performance Metrics</h1>
+    <div id="metrics"></div>
+    
+    <script>
+        function getPerformanceMetrics() {
+            const metrics = {};
+            
+            // Navigation Timing API
+            const navigation = performance.getEntriesByType('navigation')[0];
+            if (navigation) {
+                metrics.domContentLoaded = Math.round(navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart);
+                metrics.loadComplete = Math.round(navigation.loadEventEnd - navigation.loadEventStart);
+                metrics.totalLoadTime = Math.round(navigation.loadEventEnd - navigation.fetchStart);
+            }
+            
+            // Paint Timing API
+            const paintEntries = performance.getEntriesByType('paint');
+            paintEntries.forEach(entry => {
+                metrics[entry.name] = Math.round(entry.startTime);
+            });
+            
+            // Largest Contentful Paint
+            if ('PerformanceObserver' in window) {
+                const observer = new PerformanceObserver((list) => {
+                    const entries = list.getEntries();
+                    const lastEntry = entries[entries.length - 1];
+                    metrics.largestContentfulPaint = Math.round(lastEntry.startTime);
+                    displayMetrics(metrics);
+                });
+                observer.observe({entryTypes: ['largest-contentful-paint']});
+            }
+            
+            // First Input Delay (if available)
+            if ('PerformanceObserver' in window) {
+                const observer = new PerformanceObserver((list) => {
+                    const firstInput = list.getEntries()[0];
+                    metrics.firstInputDelay = Math.round(firstInput.processingStart - firstInput.startTime);
+                    displayMetrics(metrics);
+                });
+                observer.observe({entryTypes: ['first-input'], buffered: true});
+            }
+            
+            return metrics;
+        }
+        
+        function getScoreClass(value, thresholds) {
+            if (value <= thresholds.good) return 'good';
+            if (value <= thresholds.warning) return 'warning';
+            return 'error';
+        }
+        
+        function displayMetrics(metrics) {
+            const container = document.getElementById('metrics');
+            container.innerHTML = '';
+            
+            const metricConfigs = [
+                {
+                    key: 'first-paint',
+                    name: 'First Paint',
+                    unit: 'ms',
+                    thresholds: { good: 1000, warning: 2500 }
+                },
+                {
+                    key: 'first-contentful-paint',
+                    name: 'First Contentful Paint',
+                    unit: 'ms',
+                    thresholds: { good: 1800, warning: 3000 }
+                },
+                {
+                    key: 'largestContentfulPaint',
+                    name: 'Largest Contentful Paint',
+                    unit: 'ms',
+                    thresholds: { good: 2500, warning: 4000 }
+                },
+                {
+                    key: 'totalLoadTime',
+                    name: 'Total Load Time',
+                    unit: 'ms',
+                    thresholds: { good: 3000, warning: 5000 }
+                },
+                {
+                    key: 'firstInputDelay',
+                    name: 'First Input Delay',
+                    unit: 'ms',
+                    thresholds: { good: 100, warning: 300 }
+                }
+            ];
+            
+            metricConfigs.forEach(config => {
+                const value = metrics[config.key];
+                if (value !== undefined) {
+                    const scoreClass = getScoreClass(value, config.thresholds);
+                    const div = document.createElement('div');
+                    div.className = `metric ${scoreClass}`;
+                    div.innerHTML = `
+                        <strong>${config.name}:</strong> ${value}${config.unit}
+                        <small style="float: right;">
+                            ${scoreClass === 'good' ? '✅ Good' : 
+                              scoreClass === 'warning' ? '⚠️ Needs Improvement' : 
+                              '❌ Poor'}
+                        </small>
+                    `;
+                    container.appendChild(div);
+                }
+            });
+            
+            // Bundle Size Check
+            const resources = performance.getEntriesByType('resource');
+            let totalSize = 0;
+            let jsSize = 0;
+            let cssSize = 0;
+            
+            resources.forEach(resource => {
+                if (resource.transferSize) {
+                    totalSize += resource.transferSize;
+                    if (resource.name.endsWith('.js')) jsSize += resource.transferSize;
+                    if (resource.name.endsWith('.css')) cssSize += resource.transferSize;
+                }
+            });
+            
+            const bundleDiv = document.createElement('div');
+            bundleDiv.className = `metric ${totalSize < 1000000 ? 'good' : totalSize < 2000000 ? 'warning' : 'error'}`;
+            bundleDiv.innerHTML = `
+                <strong>Total Bundle Size:</strong> ${(totalSize / 1024 / 1024).toFixed(2)}MB
+                <br><small>JS: ${(jsSize / 1024).toFixed(0)}KB | CSS: ${(cssSize / 1024).toFixed(0)}KB</small>
+            `;
+            container.appendChild(bundleDiv);
+        }
+        
+        // Run after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const metrics = getPerformanceMetrics();
+                displayMetrics(metrics);
+            }, 1000);
+        });
+        
+        // Update timestamp
+        document.body.innerHTML += `<p><small>Last updated: ${new Date().toLocaleString()}</small></p>`;
+    </script>
+</body>
+</html>

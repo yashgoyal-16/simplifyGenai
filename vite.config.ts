@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split Spline into separate chunk
+          // Split Spline into separate chunk - reduce size by excluding from main bundle
           'spline-runtime': ['@splinetool/runtime', '@splinetool/react-spline'],
           // Split heavy UI libraries
           'ui-libs': ['framer-motion', 'embla-carousel-react'],
@@ -36,17 +36,22 @@ export default defineConfig(({ mode }) => ({
         }
       }
     },
-    // Increase chunk size warning limit
-    chunkSizeWarningLimit: 1000,
+    // Reduce chunk size warning limit to force smaller bundles
+    chunkSizeWarningLimit: 500,
     // Enable gzip compression simulation
     reportCompressedSize: true,
-    // Minify for production
+    // Minify for production - balanced optimization
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        dead_code: true,
+        unused: true
+      },
+      mangle: {
+        safari10: true
       }
     }
   },

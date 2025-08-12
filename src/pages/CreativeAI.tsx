@@ -263,19 +263,38 @@ const CreativeAI = () => {
 
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden -mt-20 sm:mt-0">
-        {/* Lazy load video only on interaction */}
-        <div className="absolute inset-0 bg-black">
+        {/* Background placeholder while video loads */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+          {/* Static content for PageSpeed */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center z-10">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+                Professional AI Video Generator
+              </h1>
+              <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                Create stunning AI-powered videos for your business with our advanced video generation technology
+              </p>
+            </div>
+          </div>
+          
+          {/* Load video after initial render */}
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
-            className="absolute inset-0 w-full h-full object-cover"
+            src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=0&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
+            className="absolute inset-0 w-full h-full object-cover opacity-0"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             loading="lazy"
             style={{
               pointerEvents: 'none',
-              filter: 'none'
+              filter: 'none',
+              transition: 'opacity 2s ease-in-out'
+            }}
+            onLoad={() => {
+              if (iframeRef.current) {
+                iframeRef.current.style.opacity = '0.8';
+              }
             }}
           />
         </div>

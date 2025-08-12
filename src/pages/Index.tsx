@@ -1,5 +1,5 @@
 
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, Component, ErrorInfo, ReactNode } from "react";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
@@ -8,10 +8,43 @@ import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import DemoSection from "@/components/DemoSection";
 import { LazySection } from "@/components/ui/lazy-section";
 
-// Lazy load the heavy Spline component
-const SplineSceneBasic = lazy(() => import("@/components/SplineDemo").then(module => ({
-  default: module.SplineSceneBasic
-})));
+// Error Boundary for Spline component
+class ErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(_: Error): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.warn('Spline component error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+// Lazy load the heavy Spline component with timeout fallback
+const SplineSceneBasic = lazy(() => 
+  Promise.race([
+    import("@/components/SplineDemo").then(module => ({
+      default: module.SplineSceneBasic
+    })),
+    new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Spline timeout')), 10000)
+    )
+  ])
+);
 
 const Index = () => {
   return (
@@ -41,7 +74,16 @@ const Index = () => {
               </div>
             </div>
           }>
-            <SplineSceneBasic />
+            <ErrorBoundary fallback={
+              <div className="flex items-center justify-center min-h-[60vh] w-full">
+                <div className="text-center">
+                  <h2 className="text-2xl font-semibold text-white mb-4">SimplifyGenAI</h2>
+                  <p className="text-white/60 text-sm">Professional AI Video Generator & Voice AI Solutions</p>
+                </div>
+              </div>
+            }>
+              <SplineSceneBasic />
+            </ErrorBoundary>
           </Suspense>
         </div>
         {/* Graceful blur transition */}
