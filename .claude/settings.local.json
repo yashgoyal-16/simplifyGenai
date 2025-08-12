@@ -4,7 +4,9 @@
       "Bash(npm run lint)",
       "Bash(npm run build:*)",
       "Bash(gh repo create:*)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

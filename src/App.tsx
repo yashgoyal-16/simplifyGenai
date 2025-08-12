@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,11 +7,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBarDemo } from "./components/NavBarDemo";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import CreativeAI from "./pages/CreativeAI";
-import VoiceAI from "./pages/VoiceAI";
-import NotFound from "./pages/NotFound";
+
+// Lazy load pages for better performance
+const About = lazy(() => import("./pages/About"));
+const Projects = lazy(() => import("./pages/Projects"));
+const CreativeAI = lazy(() => import("./pages/CreativeAI"));
+const VoiceAI = lazy(() => import("./pages/VoiceAI"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -112,15 +114,24 @@ const App = () => {
           <BrowserRouter>
             <NavBarDemo />
             <main className="w-full max-w-full overflow-x-hidden">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/creative-ai" element={<CreativeAI />} />
-                <Route path="/voice-ai" element={<VoiceAI />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <Suspense fallback={
+                <div className="flex items-center justify-center min-h-screen bg-black">
+                  <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-white/60 text-sm">Loading...</p>
+                  </div>
+                </div>
+              }>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/creative-ai" element={<CreativeAI />} />
+                  <Route path="/voice-ai" element={<VoiceAI />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
             </main>
           </BrowserRouter>
         </div>

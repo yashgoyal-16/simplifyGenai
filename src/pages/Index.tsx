@@ -1,5 +1,5 @@
 
-import { SplineSceneBasic } from "@/components/SplineDemo";
+import { lazy, Suspense } from "react";
 import { LogoCarouselDemo } from "@/components/LogoCarouselDemo";
 import { ServicesSection } from "@/components/ServicesSection";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
@@ -7,6 +7,11 @@ import CTASection from "@/components/CTASection";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import DemoSection from "@/components/DemoSection";
 import { LazySection } from "@/components/ui/lazy-section";
+
+// Lazy load the heavy Spline component
+const SplineSceneBasic = lazy(() => import("@/components/SplineDemo").then(module => ({
+  default: module.SplineSceneBasic
+})));
 
 const Index = () => {
   return (
@@ -28,7 +33,16 @@ const Index = () => {
         </div>
         
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full pt-16 md:pt-0 pb-20 md:pb-0">
-          <SplineSceneBasic />
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[60vh] w-full">
+              <div className="text-center">
+                <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-white/60 text-sm">Loading 3D Experience...</p>
+              </div>
+            </div>
+          }>
+            <SplineSceneBasic />
+          </Suspense>
         </div>
         {/* Graceful blur transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>

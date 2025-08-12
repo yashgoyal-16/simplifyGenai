@@ -1,12 +1,18 @@
 
-import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout"
-import VideoPlayer from "@/components/ui/video-player"
-import { PortfolioGrid } from "@/components/ui/portfolio-grid"
+import { lazy, Suspense } from "react"
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer"
 import { Button } from "@/components/ui/button"
 import { Volume2, VolumeX } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import { useIsMobile } from "@/hooks/use-mobile"
+
+// Lazy load heavy components
+const DynamicFrameLayout = lazy(() => import("@/components/ui/dynamic-frame-layout").then(module => ({
+  default: module.DynamicFrameLayout
+})))
+const PortfolioGrid = lazy(() => import("@/components/ui/portfolio-grid").then(module => ({
+  default: module.PortfolioGrid
+})))
 
 const demoFrames = [
   {
@@ -257,18 +263,22 @@ const CreativeAI = () => {
 
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden -mt-20 sm:mt-0">
-        <iframe
-          ref={iframeRef}
-          src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
-          className="absolute inset-0 w-full h-full object-cover"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          style={{
-            pointerEvents: 'none',
-            filter: 'none'
-          }}
-        />
+        {/* Lazy load video only on interaction */}
+        <div className="absolute inset-0 bg-black">
+          <iframe
+            ref={iframeRef}
+            src={`https://player.vimeo.com/video/${isMobile ? '1105971548' : '1105362692'}?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1`}
+            className="absolute inset-0 w-full h-full object-cover"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+            style={{
+              pointerEvents: 'none',
+              filter: 'none'
+            }}
+          />
+        </div>
         
       {/* Audio Toggle Button */}
         <Button
@@ -283,7 +293,16 @@ const CreativeAI = () => {
 
       {/* Portfolio Section - moved to top position after hero */}
       <div className="py-20">
-        <PortfolioGrid />
+        <Suspense fallback={
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-white/60 text-sm">Loading Portfolio...</p>
+            </div>
+          </div>
+        }>
+          <PortfolioGrid />
+        </Suspense>
       </div>
 
       {/* Content Section with improved spacing */}
@@ -374,12 +393,21 @@ const CreativeAI = () => {
 
       {/* Dynamic Frame Layout Section with improved spacing */}
       <section className="h-screen bg-black mt-20">
-        <DynamicFrameLayout 
-          frames={demoFrames} 
-          className="w-full h-full" 
-          hoverSize={6}
-          gapSize={4}
-        />
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-screen">
+            <div className="text-center">
+              <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-white/60 text-sm">Loading Interactive Demo...</p>
+            </div>
+          </div>
+        }>
+          <DynamicFrameLayout 
+            frames={demoFrames} 
+            className="w-full h-full" 
+            hoverSize={6}
+            gapSize={4}
+          />
+        </Suspense>
       </section>
 
       {/* Footer */}

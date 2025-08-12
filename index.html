@@ -9,6 +9,18 @@
     <meta name="keywords" content="ai video generator, ai voice generator, ai consulting services, artificial intelligence video, voice ai development, ai video creation, conversational ai, ai video maker, voice ai solutions, generative ai video, ai video marketing tools, enterprise ai consulting" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://simplifygenai.com" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="//aybvvjxzepenfyzrhdrk.supabase.co">
+    <link rel="dns-prefetch" href="//pbwgakwdrtkvnmewsajp.supabase.co">
+    
+    <!-- Preload critical resources -->
+    <link rel="modulepreload" href="/src/main.tsx">
+    <link rel="modulepreload" href="/src/App.tsx">
+    <link rel="modulepreload" href="/src/pages/Index.tsx">
 
     <meta property="og:title" content="AI Video Generator & Voice AI Solutions | SimplifyGenAI" />
     <meta property="og:description" content="Professional AI video generator for business & custom voice AI solutions. Enterprise AI consulting services for automated video generation & conversational AI development." />
@@ -46,5 +58,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration for Performance -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
