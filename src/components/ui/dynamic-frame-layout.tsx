@@ -49,11 +49,18 @@ function FrameComponent({
 
   useEffect(() => {
     if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Silently handle autoplay failure
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (videoRef.current) {
       if (isHovered) {
         videoRef.current.play()
-      } else {
-        videoRef.current.pause()
       }
+      // Don't pause when not hovered, let videos continue playing
     }
   }, [isHovered])
 
@@ -93,6 +100,7 @@ function FrameComponent({
               className="w-full h-full object-cover"
               loop
               muted
+              autoPlay
               playsInline
               preload="metadata"
               style={{

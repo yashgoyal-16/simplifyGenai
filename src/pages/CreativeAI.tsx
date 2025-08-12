@@ -158,7 +158,7 @@ const CreativeAI = () => {
     // Update page title and meta description for this specific page
     document.title = "Professional AI Video Generator for Business | Creative AI Services - SimplifyGenAI"
     
-    let metaDescription = document.querySelector('meta[name="description"]')
+    const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Best AI video generator 2025 for professional business videos. Automated video generation, AI video creation, and custom AI video production services. Transform your marketing with AI.')
     }
