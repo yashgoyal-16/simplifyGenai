@@ -170,6 +170,38 @@ const CreativeAI = () => {
         handleIframeLoad()
       }
     }, 2000)
+    
+    // Add fallback video logic if iframe fails to load
+    const fallbackTimer = setTimeout(() => {
+      console.log('Checking if iframe loaded successfully...')
+      const iframe = iframeRef.current
+      if (iframe && iframe.contentWindow) {
+        try {
+          // Try to access iframe content to see if it loaded
+          iframe.contentWindow.postMessage('{"method":"ping"}', '*')
+        } catch (error) {
+          console.log('Iframe not accessible, showing fallback video')
+          const fallbackVideo = document.getElementById('fallback-video') as HTMLVideoElement
+          if (fallbackVideo) {
+            fallbackVideo.style.opacity = '1'
+            fallbackVideo.style.zIndex = '10'
+          }
+        }
+      }
+    }, 5000)
+    
+    // Add message event listener for Vimeo player responses
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin.includes('vimeo.com')) {
+        console.log('Vimeo message received:', event.data)
+        if (event.data.event === 'ready') {
+          console.log('Vimeo player ready, attempting to play...')
+          iframeRef.current?.contentWindow?.postMessage('{"method":"play"}', '*')
+        }
+      }
+    }
+    
+    window.addEventListener('message', handleMessage)
 
     return () => {
       const scriptElement = document.querySelector('#creative-ai-structured-data')
@@ -177,6 +209,8 @@ const CreativeAI = () => {
         scriptElement.remove()
       }
       clearTimeout(timer)
+      clearTimeout(fallbackTimer)
+      window.removeEventListener('message', handleMessage)
     }
   }, [])
 
@@ -232,6 +266,15 @@ const CreativeAI = () => {
             iframeRef.current.src = newSrc
           }
         }, 3000)
+        
+        // Additional attempt with different Vimeo API
+        setTimeout(() => {
+          console.log('Attempting with Vimeo API...')
+          if (iframeRef.current) {
+            iframeRef.current.contentWindow?.postMessage('{"method":"addEventListener","event":"ready"}', '*')
+            iframeRef.current.contentWindow?.postMessage('{"method":"play"}', '*')
+          }
+        }, 4000)
       } catch (error) {
         console.log('Video autoplay handled by iframe parameters')
       }
@@ -332,13 +375,20 @@ const CreativeAI = () => {
           {/* Load video after initial render */}
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/1105971548?h=1234567890&badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1&title=0&byline=0&portrait=0`}
+            src={`https://player.vimeo.com/video/1105971548?badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1&title=0&byline=0&portrait=0&h=1234567890&s=1234567890`}
             className="absolute inset-0 w-full h-full object-cover"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             onLoad={handleIframeLoad}
-            onError={() => console.log('Iframe failed to load, using fallback')}
+            onError={() => {
+              console.log('Iframe failed to load, using fallback')
+              const fallbackVideo = document.getElementById('fallback-video') as HTMLVideoElement
+              if (fallbackVideo) {
+                fallbackVideo.style.opacity = '1'
+                fallbackVideo.style.zIndex = '10'
+              }
+            }}
             style={{
               opacity: '1',
               zIndex: 1,
@@ -349,12 +399,13 @@ const CreativeAI = () => {
           
           {/* Fallback video element in case iframe fails */}
           <video
-            className="absolute inset-0 w-full h-full object-cover hidden"
+            id="fallback-video"
+            className="absolute inset-0 w-full h-full object-cover"
             autoPlay
             loop
             muted
             playsInline
-            style={{ zIndex: 0 }}
+            style={{ zIndex: 0, opacity: 0.8 }}
           >
             <source src="https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//AI%20Avatars.mp4" type="video/mp4" />
             Your browser does not support the video tag.
