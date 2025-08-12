@@ -76,7 +76,7 @@ const Index = () => {
                     SimplifyGenAI
                   </h2>
                   <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl">
-                    Professional AI Video Generator & Voice AI Solutions
+                    Creative AI Services & Voice AI Solutions
                   </p>
                   <div className="bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-lg px-4 py-2 mb-4">
                     <p className="text-blue-200 text-sm">👆 Click anywhere to load interactive 3D experience</p>
@@ -97,7 +97,7 @@ const Index = () => {
                 <div className="flex items-center justify-center min-h-[60vh] w-full">
                   <div className="text-center">
                     <h2 className="text-2xl font-semibold text-white mb-4">SimplifyGenAI</h2>
-                    <p className="text-white/60 text-sm">Professional AI Video Generator & Voice AI Solutions</p>
+                    <p className="text-white/60 text-sm">Creative AI Services & Voice AI Solutions</p>
                   </div>
                 </div>
               }>

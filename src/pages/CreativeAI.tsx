@@ -401,71 +401,71 @@ const CreativeAI = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
             <div className="space-y-8">
-              <h2 className="text-3xl font-semibold text-white font-['Inter']">AI Video Generator for B2B Marketing</h2>
+              <h2 className="text-3xl font-semibold text-white font-['Inter']">Creative AI Services for B2B Marketing</h2>
               <p className="text-gray-400 text-lg leading-relaxed font-['Inter']">
-                Transform your B2B marketing with our professional AI video creation platform. Our enterprise 
-                AI video generator combines advanced artificial intelligence video technology with business-focused 
+                Transform your B2B marketing with our professional AI content creation platform. Our enterprise 
+                AI services combine advanced artificial intelligence technology with business-focused 
                 storytelling to deliver campaigns that generate qualified leads and drive enterprise sales.
               </p>
               <ul className="space-y-4 text-gray-400 font-['Inter']">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-4"></div>
-                  Enterprise AI video production software
+                  Enterprise AI content production software
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-4"></div>
-                  Automated video generation with data insights
+                  Automated content generation with data insights
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
-                  AI-powered video creator with voice synthesis
+                  AI-powered content creator with voice synthesis
                 </li>
               </ul>
             </div>
 
             <div className="space-y-8">
-              <h2 className="text-3xl font-semibold text-white font-['Inter']">Best AI Video Generator 2025 for D2C</h2>
+              <h2 className="text-3xl font-semibold text-white font-['Inter']">Best Creative AI Services 2025 for D2C</h2>
               <p className="text-gray-400 text-lg leading-relaxed font-['Inter']">
-                Create viral content with our cutting-edge AI video maker designed for direct-to-consumer brands. 
-                Our text to video AI technology and generative AI video platform leverage psychological triggers 
+                Create viral content with our cutting-edge AI content maker designed for direct-to-consumer brands. 
+                Our AI technology and generative AI platform leverage psychological triggers 
                 to maximize engagement and drive conversions across all social media platforms.
               </p>
               <ul className="space-y-4 text-gray-400 font-['Inter']">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-4"></div>
-                  AI video generator for social media optimization
+                  AI content services for social media optimization
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-4"></div>
-                  AI video marketing tools for maximum reach
+                  AI marketing tools for maximum reach
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
-                  Custom AI video production for brand storytelling
+                  Custom AI content production for brand storytelling
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold text-white mb-12 font-['Inter']">
-              Why Choose Our Professional AI Video Generator
-            </h2>
+                     <div className="text-center">
+             <h2 className="text-4xl font-semibold text-white mb-12 font-['Inter']">
+               Why Choose Our Creative AI Services
+             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Professional AI Video Creation</h3>
-                <p className="text-gray-400 font-['Inter']">Our AI video generator delivers cinema-quality results. We maintain the highest standards in artificial intelligence video production for enterprise clients.</p>
-              </div>
-              
-              <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-secondary/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Proven AI Video Marketing Results</h3>
-                <p className="text-gray-400 font-['Inter']">Our AI-powered video creator consistently delivers 3-5x higher engagement rates compared to traditional video production methods.</p>
-              </div>
-              
-              <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-accent/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Automated Video Generation at Scale</h3>
-                <p className="text-gray-400 font-['Inter']">From concept to final delivery in days using our automated video generation platform. Scale your video production without compromising quality.</p>
-              </div>
+                             <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:transform hover:scale-105">
+                 <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Professional AI Content Creation</h3>
+                 <p className="text-gray-400 font-['Inter']">Our AI services deliver high-quality results. We maintain the highest standards in artificial intelligence content production for enterprise clients.</p>
+               </div>
+               
+               <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-secondary/50 transition-all duration-300 hover:transform hover:scale-105">
+                 <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Proven AI Marketing Results</h3>
+                 <p className="text-gray-400 font-['Inter']">Our AI-powered content creator consistently delivers 3-5x higher engagement rates compared to traditional content production methods.</p>
+               </div>
+               
+               <div className="p-10 rounded-xl bg-gray-900/50 border border-gray-700 hover:border-accent/50 transition-all duration-300 hover:transform hover:scale-105">
+                 <h3 className="text-xl font-semibold text-white mb-4 font-['Inter']">Automated Content Generation at Scale</h3>
+                 <p className="text-gray-400 font-['Inter']">From concept to final delivery in days using our automated content generation platform. Scale your content production without compromising quality.</p>
+               </div>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ const App = () => {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Professional AI video generator for business & custom voice AI solutions. Enterprise AI consulting services for video creation, conversational AI, and automated video generation. Transform your business with cutting-edge AI technology.');
+    metaDescription.setAttribute('content', 'Creative AI services for business & custom voice AI solutions. Enterprise AI consulting services for content creation, conversational AI, and automated content generation. Transform your business with cutting-edge AI technology.');
 
     // Add keywords meta tag with comprehensive keyword list
     let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -53,7 +53,7 @@ const App = () => {
     // Add Open Graph tags with target keywords
     const ogTags = [
       { property: 'og:title', content: 'AI Video Generator & Voice AI Solutions | SimplifyGenAI' },
-      { property: 'og:description', content: 'Professional AI video generator for business & custom voice AI solutions. Enterprise AI consulting for automated video generation & conversational AI development.' },
+      { property: 'og:description', content: 'Creative AI services for business & custom voice AI solutions. Enterprise AI consulting for automated content generation & conversational AI development.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'SimplifyGenAI' },
       { property: 'og:locale', content: 'en_US' }
@@ -82,27 +82,27 @@ const App = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "SimplifyGenAI",
-      "description": "Leading AI video generator and voice AI solutions provider. Professional AI consulting for automated video creation, conversational AI, and custom voice AI development.",
+      "description": "Leading creative AI services and voice AI solutions provider. Professional AI consulting for automated content creation, conversational AI, and custom voice AI development.",
       "url": window.location.origin,
       "founder": [
         { "@type": "Person", "name": "Gurleen" },
         { "@type": "Person", "name": "Daksh" }
       ],
       "serviceType": [
-        "AI Video Generator",
+        "Creative AI Services",
         "Voice AI Solutions",
         "AI Consulting Services", 
         "Conversational AI",
         "Custom Voice AI Development",
         "Enterprise AI Consulting",
-        "Automated Video Generation",
-        "AI Video Creation",
-        "Professional AI Video Production",
-        "AI Video Marketing Tools",
+        "Automated Content Generation",
+        "AI Content Creation",
+        "Professional AI Content Production",
+        "AI Content Marketing Tools",
         "Voice AI Assistant Development",
         "AI Implementation Consulting"
       ],
-      "keywords": "ai video generator, ai voice generator, ai consulting services, artificial intelligence video, voice ai development, conversational ai, ai video creation, automated video generation, best ai video generator 2025"
+      "keywords": "creative ai services, ai voice generator, ai consulting services, artificial intelligence content, voice ai development, conversational ai, ai content creation, automated content generation, best ai services 2025"
     });
   }, []);
 
