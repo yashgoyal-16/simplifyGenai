@@ -303,7 +303,6 @@ const CreativeAI = () => {
             className="absolute inset-0 w-full h-full object-cover"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
             onLoad={handleIframeLoad}
             style={{
               pointerEvents: 'none',

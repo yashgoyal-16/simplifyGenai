@@ -35,9 +35,17 @@ const Orb: React.FC = () => {
  
   const initViz = () => {
     console.log("Initializing Three.js visualization...");
+    const outElement = document.getElementById('out');
+    if (!outElement) {
+      console.warn("Element with ID 'out' not found, skipping WebGL initialization");
+      return;
+    }
+
     const scene = new THREE.Scene();
     const group = new THREE.Group();
-    const camera = new THREE.PerspectiveCamera(45, 300 / 300, 0.5, 100);
+    const width = outElement.clientWidth || 300;
+    const height = outElement.clientHeight || 300;
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.5, 100);
     camera.position.set(0, 0, 100);
     camera.lookAt(scene.position);
  
@@ -47,7 +55,12 @@ const Orb: React.FC = () => {
     cameraRef.current = camera;
  
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(300, 300);
+    // Only set size if dimensions are valid
+    if (width > 0 && height > 0) {
+      renderer.setSize(width, height);
+    } else {
+      renderer.setSize(300, 300);
+    }
     rendererRef.current = renderer;
  
     const icosahedronGeometry = new THREE.IcosahedronGeometry(10, 8);
@@ -77,12 +90,10 @@ const Orb: React.FC = () => {
  
     scene.add(group);
  
-    const outElement = document.getElementById('out');
-    if (outElement) {
-      outElement.innerHTML = ''; // Clear any existing renderer
-      outElement.appendChild(renderer.domElement);
-      renderer.setSize(outElement.clientWidth, outElement.clientHeight);
-    }
+    // We already checked for outElement at the start, so it exists
+    outElement.innerHTML = ''; // Clear any existing renderer
+    outElement.appendChild(renderer.domElement);
+    // Size was already set above with proper validation
  
     render();
   };
