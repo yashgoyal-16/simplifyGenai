@@ -123,22 +123,22 @@ const CreativeAI = () => {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "AI Video Generator & Creative AI Services",
-      "description": "Professional AI video generator for business, automated video generation, and AI video marketing tools. Enterprise AI video creation services.",
+      "name": "Creative AI Services",
+      "description": "Creative AI services for business, automated content generation, and AI creation tools. Enterprise AI content creation services.",
       "provider": {
         "@type": "Organization",
         "name": "SimplifyGenAI",
         "url": "https://simplifygenai.com"
       },
       "serviceType": [
-        "AI Video Generator",
-        "Automated Video Generation", 
-        "AI Video Creation",
-        "Professional AI Video Production",
-        "AI Video Marketing Tools",
-        "Custom AI Video Production"
+        "Creative AI Services",
+        "Automated Content Generation", 
+        "AI Content Creation",
+        "Professional AI Production",
+        "AI Creation Tools",
+        "Custom AI Production"
       ],
-      "keywords": "ai video generator, ai video creation, artificial intelligence video, automated video generation, ai video marketing tools, professional ai video production, best ai video generator 2025",
+      "keywords": "creative ai services, ai content creation, artificial intelligence content, automated content generation, ai creation tools, professional ai production, best ai services 2025",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -156,18 +156,27 @@ const CreativeAI = () => {
     script.textContent = JSON.stringify(structuredData)
 
     // Update page title and meta description for this specific page
-    document.title = "Professional AI Video Generator for Business | Creative AI Services - SimplifyGenAI"
+    document.title = "Creative AI Services for Business | SimplifyGenAI"
     
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Best AI video generator 2025 for professional business videos. Automated video generation, AI video creation, and custom AI video production services. Transform your marketing with AI.')
+      metaDescription.setAttribute('content', 'Best creative AI services 2025 for professional business content. Automated content generation, AI creation, and custom AI production services. Transform your business with AI.')
     }
+
+    // Add video loading logic
+    const timer = setTimeout(() => {
+      if (iframeRef.current) {
+        console.log('Attempting to force video play after page load...')
+        handleIframeLoad()
+      }
+    }, 2000)
 
     return () => {
       const scriptElement = document.querySelector('#creative-ai-structured-data')
       if (scriptElement) {
         scriptElement.remove()
       }
+      clearTimeout(timer)
     }
   }, [])
 
@@ -198,13 +207,31 @@ const CreativeAI = () => {
   }
 
   const handleIframeLoad = () => {
+    console.log('Iframe loaded, attempting to play video...')
     // Force video to play by posting message to Vimeo player
     if (iframeRef.current) {
       try {
         // Wait a moment for iframe to fully load
         setTimeout(() => {
+          console.log('Attempting to play video (first attempt)...')
           iframeRef.current?.contentWindow?.postMessage('{"method":"play"}', '*')
-        }, 500)
+        }, 1000)
+        
+        // Additional attempt to ensure video plays
+        setTimeout(() => {
+          console.log('Attempting to play video (second attempt)...')
+          iframeRef.current?.contentWindow?.postMessage('{"method":"setVolume","value":0}', '*')
+          iframeRef.current?.contentWindow?.postMessage('{"method":"play"}', '*')
+        }, 2000)
+        
+        // Final attempt with different approach
+        setTimeout(() => {
+          console.log('Final attempt to play video...')
+          if (iframeRef.current) {
+            const newSrc = iframeRef.current.src + '&autoplay=1'
+            iframeRef.current.src = newSrc
+          }
+        }, 3000)
       } catch (error) {
         console.log('Video autoplay handled by iframe parameters')
       }
@@ -298,32 +325,40 @@ const CreativeAI = () => {
       <div className="relative h-screen w-full overflow-hidden -mt-20 sm:mt-0">
         {/* Background placeholder while video loads */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-          {/* Static content for PageSpeed - subtle overlay */}
-          <div className="absolute inset-0 flex items-center justify-center video-fallback" style={{ zIndex: 2 }}>
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-                Professional AI Video Generator
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
-                Create stunning AI-powered videos for your business with our advanced video generation technology
-              </p>
-            </div>
+          {/* Video loading placeholder - removed text overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" style={{ zIndex: 2 }}>
           </div>
           
           {/* Load video after initial render */}
           <iframe
             ref={iframeRef}
-            src={`https://player.vimeo.com/video/1105971548?badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=1&logo=0&fun=0&dnt=1`}
+            src={`https://player.vimeo.com/video/1105971548?h=1234567890&badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&controls=0&background=1&transparent=0&logo=0&fun=0&dnt=1&title=0&byline=0&portrait=0`}
             className="absolute inset-0 w-full h-full object-cover"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             onLoad={handleIframeLoad}
+            onError={() => console.log('Iframe failed to load, using fallback')}
             style={{
               opacity: '1',
-              zIndex: 1
+              zIndex: 1,
+              width: '100%',
+              height: '100%'
             }}
           />
+          
+          {/* Fallback video element in case iframe fails */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover hidden"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ zIndex: 0 }}
+          >
+            <source src="https://pbwgakwdrtkvnmewsajp.supabase.co/storage/v1/object/public/simplifygenai-website//AI%20Avatars.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         
       {/* Audio Toggle Button */}
@@ -356,11 +391,11 @@ const CreativeAI = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <h1 className="text-5xl md:text-6xl font-semibold text-white mb-8 font-['Inter']">
-              Professional <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">AI Video Generator</span> for Business
+              Creative <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">AI Services</span> for Business
             </h1>
             <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-['Inter']">
-              We're the leading AI video creation agency, delivering best-in-class AI video generator solutions for enterprise clients. 
-              Our automated video generation platform creates professional AI videos that drive conversions and maximize ROI for businesses worldwide.
+              We're the leading AI creation agency, delivering best-in-class AI solutions for enterprise clients. 
+              Our automated generation platform creates professional AI content that drives conversions and maximizes ROI for businesses worldwide.
             </p>
           </div>
 
