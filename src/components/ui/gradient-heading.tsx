@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const headingVariants = cva(
-  "tracking-tight pb-3 bg-clip-text text-transparent",
+  "font-heading pb-3 bg-clip-text text-transparent",
   {
     variants: {
       variant: {
@@ -18,20 +18,22 @@ const headingVariants = cva(
       },
       size: {
         default: "text-2xl sm:text-3xl lg:text-4xl",
-        xxs: "text-base sm:text-lg lg:text-lg",
-        xs: "text-lg sm:text-xl lg:text-2xl",
-        sm: "text-xl sm:text-2xl lg:text-3xl",
-        md: "text-2xl sm:text-3xl lg:text-4xl",
+        xxs: "text-sm sm:text-base lg:text-lg",
+        xs: "text-base sm:text-lg lg:text-xl",
+        sm: "text-lg sm:text-xl lg:text-2xl",
+        md: "text-xl sm:text-2xl lg:text-3xl",
         lg: "text-2xl sm:text-3xl lg:text-4xl",
         xl: "text-3xl sm:text-4xl lg:text-5xl",
-        xll: "text-4xl sm:text-5xl lg:text-[4.5rem] lg:leading-[0.5rem]",
-        xxl: "text-4xl sm:text-5xl lg:text-[5rem]",
-        xxxl: "text-5xl sm:text-6xl lg:text-[8rem]",
+        xxl: "text-4xl sm:text-5xl lg:text-6xl",
+        xxxl: "text-5xl sm:text-6xl lg:text-7xl",
+        display: "text-6xl sm:text-7xl lg:text-8xl",
+        hero: "text-7xl sm:text-8xl lg:text-9xl",
       },
       weight: {
-        default: "font-bold",
-        thin: "font-thin",
-        base: "font-base",
+        default: "font-semibold",
+        light: "font-light",
+        normal: "font-normal",
+        medium: "font-medium",
         semi: "font-semibold",
         bold: "font-bold",
         black: "font-black",
@@ -78,6 +80,8 @@ export type Size =
   | "xl"
   | "xxl"
   | "xxxl"
-export type Weight = "default" | "thin" | "base" | "semi" | "bold" | "black"
+  | "display"
+  | "hero"
+export type Weight = "default" | "light" | "normal" | "medium" | "semi" | "bold" | "black"
 
 export { GradientHeading, headingVariants }

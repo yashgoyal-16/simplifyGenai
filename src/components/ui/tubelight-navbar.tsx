@@ -72,10 +72,10 @@ export function NavBar({ items, className, variant = "default" }: NavBarProps) {
               to={item.url}
               onClick={() => handleNavClick(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold rounded-full transition-colors touch-manipulation",
+                "relative cursor-pointer text-sm font-sans font-medium rounded-full transition-colors touch-manipulation",
                 "px-3 py-3 sm:px-6 sm:py-2 min-w-[44px] min-h-[44px] flex items-center justify-center",
                 item.special 
-                  ? "text-yellow-400 font-bold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
+                  ? "text-yellow-400 font-semibold shadow-md ring-1 ring-yellow-400/30 bg-yellow-400/10" 
                   : variant === "light"
                     ? "text-black/80 hover:text-black"
                     : "text-white/80 hover:text-white",
