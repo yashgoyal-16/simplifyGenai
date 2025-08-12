@@ -66,28 +66,25 @@ export function ServicesSection() {
   }, []);
   return (
     <section 
+      id="services-section"
       className="py-24 bg-black relative overflow-hidden"
       itemScope 
       itemType="https://schema.org/Organization"
+      aria-labelledby="services-heading"
     >
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary-800/10 to-transparent pointer-events-none" aria-hidden="true" />
       
       <div className="container mx-auto px-4 relative z-10">
         <LazySection fadeIn slideUp className="text-center mb-16">
-          <div className="flex justify-center items-center gap-8 mb-8">
-            <span className="text-zinc-400 text-sm font-medium tracking-wider">CREATIVE SOLUTIONS</span>
-            <GradientHeading 
-              size="xl" 
-              variant="light" 
-              weight="bold"
-              className="text-4xl md:text-6xl"
-            >
-              SERVICES
-            </GradientHeading>
+          <div className="mb-8">
+            <span className="text-muted-foreground text-sm font-semibold tracking-wider uppercase mb-4 block">Creative Solutions</span>
+            <h2 id="services-heading" className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Services</span>
+            </h2>
           </div>
-          <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mx-auto">
-        An AI-first lens, a human-in-the-loop heartbeat. We hunt for the leaking points in your funnel and ops, then build—from tiny automations to full stacks of AI—until the leaks are gone.
+          <p className="text-white/80 text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto">
+            An AI-first approach with human expertise at its core. We identify efficiency gaps in your operations and implement AI solutions—from simple automations to comprehensive AI stacks—until every leak is sealed.
           </p>
         </LazySection>
 

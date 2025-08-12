@@ -1,0 +1,294 @@
+/* ==========================================================================
+   SimplifyGenAI - Global Styles & Design System
+   Modern, accessible CSS with WCAG AA+ compliance
+   ========================================================================== */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* Color System - WCAG AA+ Compliant */
+  --color-primary: 218 100% 65%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 210 40% 12%;
+  --color-secondary-foreground: 0 0% 95%;
+  --color-accent: 196 100% 60%;
+  --color-accent-foreground: 0 0% 0%;
+  
+  --color-background: 0 0% 0%;
+  --color-foreground: 0 0% 95%;
+  --color-muted: 210 40% 20%;
+  --color-muted-foreground: 0 0% 85%;
+  
+  --color-border: 210 40% 20%;
+  --color-input: 210 40% 15%;
+  --color-ring: 218 100% 65%;
+  
+  /* Status Colors */
+  --color-success: 142 76% 36%;
+  --color-warning: 45 93% 47%;
+  --color-destructive: 0 84% 60%;
+  
+  /* UI Component Colors */
+  --color-card: 210 40% 10%;
+  --color-card-foreground: 0 0% 95%;
+  --color-popover: 210 40% 8%;
+  --color-popover-foreground: 0 0% 95%;
+  
+  /* Spacing System */
+  --radius: 0.5rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Typography System */
+  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+  
+  /* Animation & Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+  
+  /* Z-index System */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Focus Management & Accessibility
+   ========================================================================== */
+
+/* Custom focus ring for better accessibility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: 0 0% 100%;
+    --color-background: 0 0% 0%;
+    --color-foreground: 0 0% 100%;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Container utilities */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* ==========================================================================
+   Component Base Styles
+   ========================================================================== */
+
+/* Enhanced button base styles */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 ease-in-out focus-ring disabled:pointer-events-none disabled:opacity-50 active:scale-95;
+}
+
+/* Card component styles */
+.card {
+  @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm;
+}
+
+/* Input component styles */
+.input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* ==========================================================================
+   Animation Keyframes
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-normal) ease-out;
+}
+
+/* ==========================================================================
+   Loading States & Skeletons
+   ========================================================================== */
+
+.skeleton {
+  @apply animate-pulse bg-muted rounded;
+}
+
+.loading-spinner {
+  @apply w-4 h-4 border-2 border-muted border-t-foreground rounded-full animate-spin;
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  p, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}

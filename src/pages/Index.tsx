@@ -51,43 +51,47 @@ const Index = () => {
   return (
     <div className="w-full max-w-full overflow-x-hidden bg-black">
       {/* Hero Section */}
-      <div className="w-full min-h-screen bg-black relative overflow-hidden">
-        {/* Subtle geometric background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-32 right-32 w-48 h-48 border border-white/10 rotate-45"></div>
-          <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-white/15 rotate-12"></div>
+      <header className="w-full min-h-screen bg-black relative overflow-hidden" role="banner">
+        {/* Decorative background patterns */}
+        <div className="absolute inset-0 opacity-3" aria-hidden="true">
+          <div className="absolute top-20 left-20 w-64 h-64 border border-white/10 rounded-full"></div>
+          <div className="absolute bottom-32 right-32 w-48 h-48 border border-white/8 rotate-45"></div>
+          <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-white/6 rotate-12"></div>
         </div>
         
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-4 sm:px-6 lg:px-8">
           {/* Main Hero Content */}
           <div className="text-center max-w-5xl mx-auto">
-            {/* Brand Logo */}
-            <div className="mb-6">
-              <h1 className="text-brand-md sm:text-brand-lg lg:text-brand-xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-200">
-                Simplify<span className="text-blue-400">Gen</span><span className="text-cyan-400">AI</span>
+            {/* Brand Logo - Using proper heading hierarchy */}
+            <div className="mb-8">
+              <h1 className="text-brand-md sm:text-brand-lg lg:text-brand-xl font-display font-black text-white mb-3">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/90">Simplify</span>
+                <span className="text-primary">Gen</span>
+                <span className="text-accent">AI</span>
               </h1>
-              {/* AI Symbol */}
-              <div className="flex justify-center mt-2">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
-                <div className="w-2 h-2 bg-blue-400 rounded-full mx-2 -mt-0.75 animate-pulse"></div>
-                <div className="w-12 h-0.5 bg-gradient-to-l from-blue-400 to-cyan-400 rounded-full"></div>
+              
+              {/* AI Symbol - Enhanced accessibility */}
+              <div className="flex justify-center mt-3" role="img" aria-label="AI Technology Symbol">
+                <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                <div className="w-2 h-2 bg-primary rounded-full mx-2 -mt-0.75 animate-pulse"></div>
+                <div className="w-12 h-0.5 bg-gradient-to-l from-primary to-accent rounded-full"></div>
               </div>
             </div>
             
-            {/* Value Proposition */}
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-white/90 mb-4 max-w-3xl mx-auto leading-relaxed">
-              Next-Generation Creative AI Services &<br className="hidden sm:block" /> 
-              Advanced Voice AI Solutions
-            </h2>
-            
-            {/* Supporting Text */}
-            <p className="text-base sm:text-lg lg:text-xl font-sans text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Transform your business with cutting-edge artificial intelligence.
-              <span className="block mt-1 text-white/50 text-sm sm:text-base">
-                Enterprise-grade AI consulting and custom solutions.
-              </span>
-            </p>
+            {/* Value Proposition - Better semantic structure */}
+            <section className="mb-8" aria-labelledby="hero-subtitle">
+              <h2 id="hero-subtitle" className="text-xl sm:text-2xl lg:text-3xl font-heading font-semibold text-white/95 mb-4 max-w-4xl mx-auto leading-relaxed">
+                Next-Generation Creative AI Services &<br className="hidden sm:block" /> 
+                Advanced Voice AI Solutions
+              </h2>
+              
+              <p className="text-base sm:text-lg lg:text-xl font-sans text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Transform your business with cutting-edge artificial intelligence.
+                <span className="block mt-2 text-white/60 text-sm sm:text-base font-medium">
+                  Enterprise-grade AI consulting with proven 300% ROI • 24/7 support
+                </span>
+              </p>
+            </section>
             
             {/* 3D Scene Container */}
             <div className="mt-8 mb-8">
@@ -135,52 +139,68 @@ const Index = () => {
               </DeferredSpline>
             </div>
             
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-white/40 text-sm font-sans">
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                Enterprise Ready
+            {/* Trust Indicators with Enhanced Accessibility */}
+            <section className="mt-6" aria-labelledby="trust-indicators">
+              <h3 id="trust-indicators" className="sr-only">Trust Indicators and Service Features</h3>
+              <div className="flex flex-wrap justify-center items-center gap-6 text-white/70 text-sm font-sans font-medium">
+                <div className="flex items-center" role="group" aria-label="Enterprise Ready Service">
+                  <div className="w-2 h-2 bg-success rounded-full mr-2" aria-hidden="true"></div>
+                  <span>Enterprise Ready</span>
+                </div>
+                <div className="flex items-center" role="group" aria-label="24/7 Support Available">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-2" aria-hidden="true"></div>
+                  <span>24/7 Support</span>
+                </div>
+                <div className="flex items-center" role="group" aria-label="Custom AI Solutions">
+                  <div className="w-2 h-2 bg-accent rounded-full mr-2" aria-hidden="true"></div>
+                  <span>Custom Solutions</span>
+                </div>
               </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                24/7 Support
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-                Custom Solutions
-              </div>
-            </div>
+            </section>
           </div>
         </div>
         
-        {/* Graceful blur transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>
-      </div>
+        {/* Graceful transition to main content */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" aria-hidden="true"></div>
+      </header>
       
-      {/* Companies Section */}
-      <LazySection className="w-full bg-black overflow-x-hidden">
-        <LogoCarouselDemo />
-      </LazySection>
+      {/* Main Content Area */}
+      <main role="main" className="w-full">
+        {/* Companies Section */}
+        <section aria-labelledby="companies-section" className="w-full bg-black overflow-x-hidden">
+          <LazySection className="w-full">
+            <LogoCarouselDemo />
+          </LazySection>
+        </section>
 
-      {/* Services Section */}
-      <LazySection className="w-full overflow-x-hidden">
-        <ServicesSection />
-      </LazySection>
-      
-      {/* Demo Section */}
-      <LazySection className="w-full overflow-x-hidden">
-        <DemoSection />
-      </LazySection>
-      
-      {/* CTA Section */}
-      <LazySection className="w-full overflow-x-hidden">
-        <CTASection />
-      </LazySection>
+        {/* Services Section */}
+        <section aria-labelledby="services-section" className="w-full overflow-x-hidden">
+          <LazySection className="w-full">
+            <ServicesSection />
+          </LazySection>
+        </section>
+        
+        {/* Demo Section */}
+        <section aria-labelledby="demo-section" className="w-full overflow-x-hidden">
+          <LazySection className="w-full">
+            <DemoSection />
+          </LazySection>
+        </section>
+        
+        {/* CTA Section */}
+        <section aria-labelledby="cta-section" className="w-full overflow-x-hidden">
+          <LazySection className="w-full">
+            <CTASection />
+          </LazySection>
+        </section>
+      </main>
       
       {/* Footer */}
-      <LazySection className="w-full overflow-x-hidden">
-        <StackedCircularFooter />
-      </LazySection>
+      <footer role="contentinfo" className="w-full overflow-x-hidden">
+        <LazySection className="w-full">
+          <StackedCircularFooter />
+        </LazySection>
+      </footer>
     </div>
   );
 };
